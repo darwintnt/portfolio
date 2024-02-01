@@ -10,31 +10,32 @@
           <span class="text-red-500">Darwin</span> Gómez
         </h1>
         <p class="text-white">
-          Ingeniero de Sistemas -
-          <span class="text-red-500 font-semibold">Software Engineer </span>
           <span class="text-white">#OpenToWork</span> ✌🏼
+          <span class="text-red-500 font-semibold">Software Engineer 🇨🇴 </span>
         </p>
         <p class="my-5 text-white">
-          Desarrollador FullStack especializado en backend con más de 6 años de
-          experiencia en el desarrollo de aplicaciones web, mi último cargo fue
-          como Líder Técnico para
+          FullStack developer specialized in backend with more than 6 years of
+          experience in web application development, my last position was as
+          Technical Leader for
           <span class="font-bold text-red-500"
             ><a
               href="https://www.insoftar.com/"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Insoftar webpage"
             >
               Intelligent Software Architecture (Insoftar S.A)
             </a></span
           >
-          creando aplicaciones a medida para empresas del sector privado en las
-          áreas de la salud, finanzas, automatización y de empaques flexibles.
+          creating custom applications for private sector companies in the areas
+          of health, finance, automation and flexible packaging.
         </p>
         <div class="flex gap-4 justify-center md:justify-start">
           <a
             href="https://github.com/darwintnt"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Darwin's Github account"
           >
             <svg
               role="img"
@@ -53,6 +54,7 @@
             href="https://www.linkedin.com/in/darwintnt"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Darwin's Linkedin account"
           >
             <svg
               role="img"

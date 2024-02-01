@@ -1,19 +1,23 @@
 <template>
   <div class="card">
-    <img
-      src="https://cdn.pixabay.com/photo/2017/11/06/11/49/texture-2923443_1280.jpg"
-      alt="img"
-    />
+    <img :src="data.image" alt="img" />
     <div class="card-body">
-      <h2 class="text-md mb-2 text-bold">Title</h2>
-      <p class="text-xs mb-2">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, ab!
-        Debitis provident soluta laboriosam nam corporis ipsum quo odio rerum
-        consectetur, illum ab similique repellendus magnam ea impedit odit eum!
-      </p>
+      <h2 class="text-md mb-2 font-bold capitalize text-red-500">
+        {{ data.title }}
+      </h2>
+      <p class="text-xs mb-2">{{ data.description }}</p>
+      <div class="flex gap-2 flex-wrap">
+        <p
+          v-for="(tool, idx) in data.tools"
+          :key="idx"
+          class="bg-[#222831] text-xs text-white rounded-md py-1 px-2 inline-block"
+        >
+          {{ tool }}
+        </p>
+      </div>
     </div>
     <div class="card-footer">
-      <a href="#" target="_blank" rel="noopener noreferrer">
+      <a v-if="data.github_link" :href="data.github_link" target="_blank" rel="noopener noreferrer" aria-label="Github link">
         <svg
           role="img"
           viewBox="0 0 24 24"
@@ -26,7 +30,7 @@
         </svg>
       </a>
 
-      <a href="#" target="_blank" rel="noopener noreferrer">
+      <a :href="data.link" target="_blank" rel="noopener noreferrer" aria-label="Link page">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -50,14 +54,23 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'Card',
+  props: {
+    data: Object,
+  },
 })
 </script>
 <style lang="css">
+img {
+  max-height: 200px;
+  min-height: 200px;
+  width: 100%;
+}
 .card {
-  width: 320px;
+  max-width: 320px;
+  width: 100%;
   min-height: 400px;
   max-height: 400px;
-  @apply shadow bg-white rounded-2xl overflow-hidden;
+  @apply flex flex-col justify-between shadow bg-white rounded-md overflow-hidden;
 }
 
 .card-body {

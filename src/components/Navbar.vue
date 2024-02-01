@@ -3,9 +3,9 @@
     <div class="w-screen p-5 flex justify-between items-center">
       <span class="text-lg font-bold">Darwin Gómez</span>
       <ul class="hidden md:flex gap-4 justify-end items-center">
-        <li><a href="">Tecnologías</a></li>
-        <li><a href="">Portafolio</a></li>
-        <li><a href="">Contacto</a></li>
+        <li><a href="">Tecnologies</a></li>
+        <li><a href="">Portfolio</a></li>
+        <li><a href="">Contact me</a></li>
       </ul>
 
       <!-- Burger Menu -->
@@ -22,10 +22,9 @@
             <div className="w-6 h-1 rotate-45 absolute bg-white rounded-md"></div>
             <div className="w-6 h-1 -rotate-45 absolute bg-white rounded-md"></div>
           </button>
-          <li><a href="">Home</a></li>
-          <li><a href="">Projects</a></li>
-          <li><a href="">About</a></li>
-          <li><a href="">Resume</a></li>
+          <li><a href="">Tecnologies</a></li>
+          <li><a href="">Portfolio</a></li>
+          <li><a href="">Contact me</a></li>
         </ul>
       </button>
     </div>

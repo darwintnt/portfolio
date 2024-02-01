@@ -1,9 +1,9 @@
 <template>
   <section class="tecnologies flex flex-col">
     <div class="text-center mb-20 flex flex-col gap-8">
-      <h2 class="text-[40px] font-semibold text-red-500">Tecnologías</h2>
+      <h2 class="text-[40px] font-semibold text-red-500">Tecnologies</h2>
       <p>
-        Durante mi experiencia profesional he manejado una <br /> gran variedad de herramientas entre las que destaco
+        During my professional experience, I have handled a wide variety of tools <br /> among which I would like to highlight the following ones
       </p>
     </div>
     <div
@@ -38,6 +38,7 @@ import Laravel from '../assets/logos/laravel.svg?url'
 import PHP from '../assets/logos/php.svg?url'
 import Angular from '../assets/logos/angular.svg?url'
 import Vue from '../assets/logos/vuedotjs.svg?url'
+import React from '../assets/logos/react.svg?url'
 import AWS from '../assets/logos/amazonaws.svg?url'
 import CSS from '../assets/logos/css3.svg?url'
 import HTML from '../assets/logos/html5.svg?url'
@@ -70,6 +71,7 @@ export default defineComponent({
       { src: JavaScript, alt: 'JavaScript' },
       { src: Angular, alt: 'Angular' },
       { src: Vue, alt: 'Vue' },
+      { src: React, alt: 'React' },
       { src: MySQL, alt: 'MySQL' },
       { src: SQLServer, alt: 'SQLServer' },
       { src: MongoDB, alt: 'MongoDB' },

@@ -1,0 +1,66 @@
+[
+  {
+    "title": "Servibien.co",
+    "description": "Personal, special and professional accompaniment to improve your quality of life. Personalized and confidential procedures.",
+    "image": "https://licify-images.s3.amazonaws.com/servibien.webp",
+    "github_link": "https://github.com/darwintnt/svelte_servibien",
+    "link": "https://svelte-servibien.vercel.app",
+    "tools": ["JavaScript", "Svelte", "Tailwind", "Vercel"]
+  },
+  {
+    "title": "WeSmart App (Private)",
+    "description": "Web application focused on the design and development of flexible packaging for food products.",
+    "image": "https://licify-images.s3.amazonaws.com/wesmart.webp",
+    "github_link": false,
+    "link": "https://test.wesmart.com.co/",
+    "tools": ["PHP", "Laravel", "UIKit", "JavaScript", "MySQL"]
+  },
+  {
+    "title": "AdmDent App (Private)",
+    "description": "Web application for dental office management.",
+    "image": "https://licify-images.s3.amazonaws.com/admdent.webp",
+    "github_link": false,
+    "link": "https://admdent.wesmart.com.co/",
+    "tools": ["PHP", "Laravel", "UIKit", "JavaScript", "MySQL"]
+  },
+  {
+    "title": "BataBit (Platzi Project)",
+    "description": "Design and layout of a page to obtain real time information about the most important exchange offices and currencies in the world.",
+    "image": "https://licify-images.s3.amazonaws.com/batabit.webp",
+    "github_link": "https://github.com/darwintnt/batabit-platzi",
+    "link": "https://darwintnt.github.io/batabit-platzi/",
+    "tools": ["HTML", "CSS"]
+  },
+  {
+    "title": "Social Media Dashboard",
+    "description": "Frontend Mentor - Social media dashboard.",
+    "image": "https://github.com/darwintnt/social_media_dashboard/blob/master/assets/design/desktop-preview.jpg?raw=true",
+    "github_link": "https://github.com/darwintnt/social_media_dashboard",
+    "link": "https://awesome-northcutt-b977c9.netlify.app/",
+    "tools": ["HTML", "CSS"]
+  },
+  {
+    "title": "404 Not found",
+    "description": "Solution for a challenge from Devchallenges.io.",
+    "image": "https://github.com/darwintnt/404NotFound/blob/master/assets/image_preview.png?raw=true",
+    "github_link": "https://github.com/darwintnt/404NotFound",
+    "link": "https://vigorous-shannon-2ec0fd.netlify.app/",
+    "tools": ["HTML", "CSS"]
+  },
+  {
+    "title": "Weekly expense",
+    "description": "Project made in React.js as a manager to calculate expenses according to a budget.",
+    "image": "https://licify-images.s3.amazonaws.com/control-gastos.webp",
+    "github_link": "https://github.com/darwintnt/weekly_expense_react_hooks",
+    "link": "https://objective-mccarthy-812513.netlify.app/",
+    "tools": ["HTML", "CSS", "JavaScript", "React"]
+  },
+  {
+    "title": "Meet manager",
+    "description": "Project made in React.js as an appointment manager for veterinary offices.",
+    "image": "https://licify-images.s3.amazonaws.com/control-gastos.webp",
+    "github_link": "https://github.com/darwintnt/meetings_react_hooks",
+    "link": "https://gallant-neumann-26b788.netlify.com/",
+    "tools": ["HTML", "CSS", "JavaScript", "React"]
+  }
+]
