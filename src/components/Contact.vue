@@ -1,5 +1,5 @@
 <template>
-  <section class="contact bg-[#222831] text-white">
+  <section class="contact bg-[#222831] text-white" id="contact_me">
     <div class="text-center mb-6 flex flex-col gap-8">
       <h2 class="text-[40px] font-semibold text-red-500">Contact me</h2>
       <p>

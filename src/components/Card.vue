@@ -1,8 +1,8 @@
 <template>
   <div class="card">
-    <img :src="data.image" alt="img" />
+    <v-lazy-image :src="data.image" alt="img" />
     <div class="card-body">
-      <h2 class="text-md mb-2 font-bold capitalize text-red-500">
+      <h2 class="text-md mb-2 font-bold text-red-500">
         {{ data.title }}
       </h2>
       <p class="text-xs mb-2">{{ data.description }}</p>
@@ -17,7 +17,13 @@
       </div>
     </div>
     <div class="card-footer">
-      <a v-if="data.github_link" :href="data.github_link" target="_blank" rel="noopener noreferrer" aria-label="Github link">
+      <a
+        v-if="data.github_link"
+        :href="data.github_link"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Github link"
+      >
         <svg
           role="img"
           viewBox="0 0 24 24"
@@ -30,7 +36,12 @@
         </svg>
       </a>
 
-      <a :href="data.link" target="_blank" rel="noopener noreferrer" aria-label="Link page">
+      <a
+        :href="data.link"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Link page"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -49,17 +60,22 @@
     </div>
   </div>
 </template>
+
 <script>
 import { defineComponent } from 'vue'
+import VLazyImage from 'v-lazy-image'
 
 export default defineComponent({
   name: 'Card',
+  components: {
+    VLazyImage,
+  },
   props: {
     data: Object,
   },
 })
 </script>
-<style lang="css">
+<style lang="css" scoped>
 img {
   max-height: 200px;
   min-height: 200px;

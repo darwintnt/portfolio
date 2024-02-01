@@ -1,19 +1,31 @@
-<script setup>
-import Navbar from './components/Navbar.vue'
-import Hero from './components/Hero.vue'
-import Tecnologies from './components/Tecnologies.vue'
-import Portfolio from './components/Portfolio.vue'
-import Contact from './components/Contact.vue'
-import Footer from './components/Footer.vue'
-</script>
-
 <template>
   <div>
     <Navbar />
     <Hero />
-    <Tecnologies />
+    <Technologies />
     <Portfolio />
     <Contact />
     <Footer />
   </div>
 </template>
+
+<script lang="js">
+import { defineComponent, defineAsyncComponent } from 'vue'
+
+export default defineComponent({
+  name: 'App',
+  components: {
+    Navbar: defineAsyncComponent(() => import('@/components/Navbar.vue')),
+    Hero: defineAsyncComponent(() => import('@/components/Hero.vue')),
+    Technologies: defineAsyncComponent(() =>
+      import('@/components/Technologies.vue')
+    ),
+    Portfolio: defineAsyncComponent(() => import('@/components/Portfolio.vue')),
+    Contact: defineAsyncComponent(() => import('@/components/Contact.vue')),
+    Footer: defineAsyncComponent(() => import('@/components/Footer.vue')),
+  },
+  props: {
+    data: Object,
+  },
+})
+</script>

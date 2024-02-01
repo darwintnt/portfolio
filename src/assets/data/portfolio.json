@@ -46,21 +46,5 @@
     "github_link": "https://github.com/darwintnt/404NotFound",
     "link": "https://vigorous-shannon-2ec0fd.netlify.app/",
     "tools": ["HTML", "CSS"]
-  },
-  {
-    "title": "Weekly expense",
-    "description": "Project made in React.js as a manager to calculate expenses according to a budget.",
-    "image": "https://licify-images.s3.amazonaws.com/control-gastos.webp",
-    "github_link": "https://github.com/darwintnt/weekly_expense_react_hooks",
-    "link": "https://objective-mccarthy-812513.netlify.app/",
-    "tools": ["HTML", "CSS", "JavaScript", "React"]
-  },
-  {
-    "title": "Meet manager",
-    "description": "Project made in React.js as an appointment manager for veterinary offices.",
-    "image": "https://licify-images.s3.amazonaws.com/control-gastos.webp",
-    "github_link": "https://github.com/darwintnt/meetings_react_hooks",
-    "link": "https://gallant-neumann-26b788.netlify.com/",
-    "tools": ["HTML", "CSS", "JavaScript", "React"]
   }
 ]

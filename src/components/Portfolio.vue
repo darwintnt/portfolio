@@ -1,7 +1,7 @@
 <template>
-  <section class="portfolio">
+  <section class="portfolio" id="portfolio">
     <div class="text-center mb-6 flex flex-col gap-8">
-      <h2 class="text-[40px] font-semibold text-red-500">Portafolio</h2>
+      <h2 class="text-[40px] font-semibold text-red-500">Portfolio</h2>
       <p class="px-5">
         Over the years I have done several projects in different technologies
         and of various types, <br /> here I show some projects from the most recent to
@@ -21,11 +21,12 @@
 </template>
 <script>
 import { defineComponent, defineAsyncComponent } from 'vue'
-import portfolios from '../assets/data/portfolio.json'
+import portfolios from '@/assets/data/portfolio.json'
 
 export default defineComponent({
+  name: 'Portfolio',
   components: {
-    Card: defineAsyncComponent(() => import('../components/Card.vue')),
+    Card: defineAsyncComponent(() => import('@/components/Card.vue')),
   },
   setup() {
     return {
@@ -34,8 +35,8 @@ export default defineComponent({
   },
 })
 </script>
-<style lang="css">
+<style lang="css" scoped>
 .portfolio {
-  @apply pb-10 md:pb-20 items-center;
+  @apply p-10 md:py-20 items-center;
 }
 </style>
