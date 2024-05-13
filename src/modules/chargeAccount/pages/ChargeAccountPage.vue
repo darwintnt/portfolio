@@ -205,7 +205,10 @@
                   >Condiciones de pago</label
                 >
                 <div class="mt-2">
-                  <ckeditor :editor="editor" v-model="paymentConditions"></ckeditor>
+                  <ckeditor
+                    :editor="editor"
+                    v-model="paymentConditions"
+                  ></ckeditor>
                 </div>
               </div>
 
@@ -322,12 +325,11 @@
 
 <script lang="js">
 import { defineComponent, defineAsyncComponent, ref } from 'vue'
+import { useStore } from 'vuex';
 import { Field, Form, ErrorMessage } from 'vee-validate'
 import Swal from 'sweetalert2'
 import CKEditor from '@ckeditor/ckeditor5-vue'
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
-
-
 import { validationSchema } from '@/modules/chargeAccount/schemas/validationSchema'
 
 export default defineComponent({
@@ -341,6 +343,8 @@ export default defineComponent({
       Footer: defineAsyncComponent(() => import('@/components/Footer.vue'))
     },
     setup() {
+      const store = useStore();
+
       const chargeAccountId = ref(`CA${new Date().getTime().toString()}`);
 
       const considerations = ref()
@@ -349,7 +353,10 @@ export default defineComponent({
       const onSubmit = async(values) => {
         values.considerations = considerations.value
         values.payment_conditions = paymentConditions.value
-        console.log(values);
+
+        const response = await store.dispatch('chargeAccount/generate', values)
+
+        console.log("api response", response);
         Swal.fire({
           icon: "success",
           title: "Perfecto!",
