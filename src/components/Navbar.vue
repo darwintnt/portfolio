@@ -1,7 +1,7 @@
 <template>
   <nav class="w-full overflow-hidden bg-[#222831] text-white">
     <div class="w-full py-5 px-10 flex justify-between items-center">
-      <span class="text-lg font-bold">Darwin Gómez</span>
+      <RouterLink to="/"><span class="text-lg font-bold">Darwin Gómez</span></RouterLink>
       <ul class="hidden md:flex gap-4 justify-end items-center">
         <li><a href="#technologies">Technologies</a></li>
         <li><a href="#portfolio">Portfolio</a></li>

@@ -62,12 +62,5 @@
   font-style: italic;
 }
 
-body {
-    background-image: url(./assets/Textura.svg);
-    background-position: top;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-    width: 100%;
-}
+
 
