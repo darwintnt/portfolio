@@ -353,15 +353,35 @@ export default defineComponent({
       const onSubmit = async(values) => {
         values.considerations = considerations.value
         values.payment_conditions = paymentConditions.value
+        try {
 
-        const response = await store.dispatch('chargeAccount/generate', values)
 
-        console.log("api response", response);
-        Swal.fire({
-          icon: "success",
-          title: "Perfecto!",
-          text: "Cuenta de cobro generada correctamente",
-        })
+          const response = await store.dispatch('chargeAccount/generate', values)
+          .then(res => {
+            console.log(res.data);
+            const newBlob = new Blob([res.data], {
+              type: 'application/pdf',
+            });
+            const windowUrl = window.URL || window.webkitURL;
+            const url = windowUrl.createObjectURL(newBlob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', 'cuenta_cobro');
+            link.click();
+          })
+
+
+
+
+          console.log("api response", response);
+          Swal.fire({
+            icon: "success",
+            title: "Perfecto!",
+            text: "Cuenta de cobro generada correctamente",
+          })
+        } catch (error) {
+          console.error('Error:', error);
+        }
       }
 
       return {
