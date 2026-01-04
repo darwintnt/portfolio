@@ -4,12 +4,12 @@
 <script>
 export default {
   setup() {
-    const date = new Date().getFullYear()
+    const date = new Date().getFullYear();
 
     return {
       date,
-    }
+    };
   },
-}
+};
 </script>
 <style lang="css"></style>

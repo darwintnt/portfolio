@@ -3,7 +3,9 @@
     <div class="text-center mb-20 flex flex-col gap-8">
       <h2 class="text-[40px] font-semibold text-red-500">Technologies</h2>
       <p>
-        During my professional experience, I have handled a wide variety of tools <br /> among which I would like to highlight the following ones
+        During my professional experience, I have handled a wide variety of
+        tools <br />
+        among which I would like to highlight the following ones
       </p>
     </div>
     <div
@@ -32,29 +34,29 @@
   </section>
 </template>
 <script>
-import { defineComponent } from 'vue'
+import { defineComponent } from 'vue';
 
-import Laravel from '@/assets/logos/laravel.svg?url'
-import PHP from '@/assets/logos/php.svg?url'
-import Angular from '@/assets/logos/angular.svg?url'
-import Vue from '@/assets/logos/vuedotjs.svg?url'
-import React from '@/assets/logos/react.svg?url'
-import AWS from '@/assets/logos/amazonaws.svg?url'
-import CSS from '@/assets/logos/css3.svg?url'
-import HTML from '@/assets/logos/html5.svg?url'
-import JavaScript from '@/assets/logos/javascript.svg?url'
-import SQLServer from '@/assets/logos/microsoftsqlserver.svg?url'
-import MySQL from '@/assets/logos/mysql.svg?url'
-import ElasticSearch from '@/assets/logos/elasticsearch.svg?url'
-import Nestjs from '@/assets/logos/nestjs.svg?url'
-import Nodejs from '@/assets/logos/nodedotjs.svg?url'
-import DigitalOcean from '@/assets/logos/digitalocean.svg?url'
-import Python from '@/assets/logos/python.svg?url'
-import Tailwind from '@/assets/logos/tailwindcss.svg?url'
-import MongoDB from '@/assets/logos/mongodb.svg?url'
-import Bootstrap from '@/assets/logos/bootstrap.svg?url'
-import Java from '@/assets/logos/java.svg?url'
-import SpringBoot from '@/assets/logos/springboot.svg?url'
+import Laravel from '@/assets/logos/laravel.svg?url';
+import PHP from '@/assets/logos/php.svg?url';
+import Angular from '@/assets/logos/angular.svg?url';
+import Vue from '@/assets/logos/vuedotjs.svg?url';
+import React from '@/assets/logos/react.svg?url';
+import AWS from '@/assets/logos/amazonaws.svg?url';
+import CSS from '@/assets/logos/css3.svg?url';
+import HTML from '@/assets/logos/html5.svg?url';
+import JavaScript from '@/assets/logos/javascript.svg?url';
+import SQLServer from '@/assets/logos/microsoftsqlserver.svg?url';
+import MySQL from '@/assets/logos/mysql.svg?url';
+import ElasticSearch from '@/assets/logos/elasticsearch.svg?url';
+import Nestjs from '@/assets/logos/nestjs.svg?url';
+import Nodejs from '@/assets/logos/nodedotjs.svg?url';
+import DigitalOcean from '@/assets/logos/digitalocean.svg?url';
+import Python from '@/assets/logos/python.svg?url';
+import Tailwind from '@/assets/logos/tailwindcss.svg?url';
+import MongoDB from '@/assets/logos/mongodb.svg?url';
+import Bootstrap from '@/assets/logos/bootstrap.svg?url';
+import Java from '@/assets/logos/java.svg?url';
+import SpringBoot from '@/assets/logos/springboot.svg?url';
 
 export default defineComponent({
   name: 'Technologies',
@@ -81,17 +83,35 @@ export default defineComponent({
       { src: DigitalOcean, alt: 'DigitalOcean' },
       { src: Tailwind, alt: 'Tailwind' },
       { src: Bootstrap, alt: 'Bootstrap' },
-    ]
+    ];
 
     return {
       logos,
-    }
+    };
   },
-})
+});
 </script>
-<style lang="css">
+<style scoped>
+@reference "tailwindcss";
 .tecnologies {
   @apply p-10 md:py-20 items-center;
   width: 100%;
+}
+
+@keyframes infinite-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-infinite-scroll {
+  animation: infinite-scroll 50s linear infinite;
+}
+
+.animate-infinite-scroll:hover {
+  animation-play-state: paused;
 }
 </style>

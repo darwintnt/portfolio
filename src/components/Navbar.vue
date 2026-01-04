@@ -13,7 +13,6 @@
         <div class="w-6 h-1 bg-white rounded-md"></div>
         <div class="w-6 h-1 bg-white rounded-md"></div>
 
-
         <ul
           class="bg-[#222831] w-full pb-8 absolute -top-full group-focus:top-0 right-0 duration-300 flex flex-col gap-4 justify-end text-white z-10"
         >
@@ -36,9 +35,10 @@
 <script>
 export default {
   setup() {},
-}
+};
 </script>
 <style scoped>
+@reference "tailwindcss";
 * {
   font-family: 'Lato', sans-serif;
 }

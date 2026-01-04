@@ -25,7 +25,9 @@
           />
         </svg>
 
-        <a href="mailto:darwintnt@hotmail.com" aria-label="Darwin's email">darwintnt@hotmail.com</a>
+        <a href="mailto:darwintnt@hotmail.com" aria-label="Darwin's email"
+          >darwintnt@hotmail.com</a
+        >
       </div>
 
       <div class="flex gap-2">
@@ -139,9 +141,11 @@
   </section>
 </template>
 <script>
-export default {}
+export default {};
 </script>
-<style lang="css">
+<style scoped>
+@reference "tailwindcss";
+
 .contact {
   @apply p-10 md:py-20 items-center;
   width: 100%;

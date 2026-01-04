@@ -62,8 +62,8 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue'
-import VLazyImage from 'v-lazy-image'
+import { defineComponent } from 'vue';
+import VLazyImage from 'v-lazy-image';
 
 export default defineComponent({
   name: 'Card',
@@ -73,9 +73,10 @@ export default defineComponent({
   props: {
     data: Object,
   },
-})
+});
 </script>
-<style lang="css" scoped>
+<style scoped>
+@reference "tailwindcss";
 img {
   max-height: 200px;
   min-height: 200px;

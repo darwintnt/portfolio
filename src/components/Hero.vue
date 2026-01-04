@@ -98,9 +98,10 @@
 <script>
 export default {
   setup() {},
-}
+};
 </script>
-<style lang="css">
+<style scoped>
+@reference "tailwindcss";
 .hero {
   position: relative;
   background-size: cover;
