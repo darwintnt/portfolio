@@ -16,13 +16,18 @@
           Software Engineer 🇨🇴
         </h2>
 
+        <p class="text-primary font-bold py-2">
+          Open to new opportunities ✌🏼 #OpenToWork
+        </p>
+
         <p
           class="text-lg text-muted-foreground max-w-2xl mx-auto mb-10 animate-slide-up"
           :style="{ animationDelay: '0.4s' }"
         >
-          I'm a software engineer specializing in building exceptional digital
-          experiences. Currently focused on creating accessible, human-centered
-          products with modern technologies.
+          With over 8 years of experience building scalable, high-performance
+          systems, I am dedicated to creating exceptional digital experiences.
+          My current focus is on developing accessible, user-centered products
+          using modern technologies.
         </p>
 
         <div

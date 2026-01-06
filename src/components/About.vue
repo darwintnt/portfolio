@@ -9,7 +9,7 @@
         <div class="grid md:grid-cols-5 gap-12 items-start">
           <div class="md:col-span-3 space-y-4 text-muted-foreground">
             <p>
-              I'm Software Engineer specialized in backend with more than 8
+              I'm a Software Engineer specialized in backend with more than 8
               years of experience in web application development, my last
               position was as Senior Developer for
               <span class="text-gradient font-bold"
@@ -19,11 +19,14 @@
                   rel="noopener noreferrer"
                   aria-label="Insoftar webpage"
                 >
-                  Insoftar LLC
+                  Insoftar LLC.
                 </a></span
               >
-              creating custom applications for private sector companies in the
-              areas of health, finance, automation and flexible packaging.
+              I architected and delivered custom backend systems for critical
+              industries like finance, services and healthcare, focusing on
+              scalability, data integrity, and security. I thrive on
+              transforming complex business requirements into robust and
+              efficient technical solutions.
             </p>
           </div>
 

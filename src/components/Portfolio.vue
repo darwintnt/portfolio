@@ -23,7 +23,10 @@
                 <div
                   class="aspect-video from-primary/10 to-primary/5 flex items-center justify-center"
                 >
-                  <v-lazy-image :src="project.image" alt="img" />
+                  <v-lazy-image
+                    :src="project.image"
+                    alt="Captura del proyecto"
+                  />
                 </div>
                 <div
                   class="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
