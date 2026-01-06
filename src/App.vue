@@ -1,10 +1,13 @@
 <template>
-  <div>
-    <Navbar />
-    <Hero />
-    <Technologies />
-    <Portfolio />
-    <Contact />
+  <div className="min-h-screen bg-background">
+    <Navigation />
+    <main>
+      <Hero />
+      <About />
+      <Technologies />
+      <Portfolio />
+      <Contact />
+    </main>
     <Footer />
   </div>
 </template>
@@ -15,8 +18,11 @@ import { defineComponent, defineAsyncComponent } from 'vue';
 export default defineComponent({
   name: 'App',
   components: {
-    Navbar: defineAsyncComponent(() => import('@/components/Navbar.vue')),
+    Navigation: defineAsyncComponent(
+      () => import('@/components/Navigation.vue')
+    ),
     Hero: defineAsyncComponent(() => import('@/components/Hero.vue')),
+    About: defineAsyncComponent(() => import('@/components/About.vue')),
     Technologies: defineAsyncComponent(
       () => import('@/components/Technologies.vue')
     ),

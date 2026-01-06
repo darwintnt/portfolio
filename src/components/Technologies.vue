@@ -1,35 +1,42 @@
 <template>
-  <section class="tecnologies flex flex-col" id="technologies">
-    <div class="text-center mb-20 flex flex-col gap-8">
-      <h2 class="text-[40px] font-semibold text-red-500">Technologies</h2>
-      <p>
-        During my professional experience, I have handled a wide variety of
-        tools <br />
-        among which I would like to highlight the following ones
-      </p>
-    </div>
-    <div
-      class="w-[300px] md:w-[800px] inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]"
-    >
-      <ul
-        class="flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none animate-infinite-scroll"
-      >
-        <template v-for="logo in logos">
-          <li>
-            <img :src="logo.src" :alt="logo.alt" width="70" height="70" />
-          </li>
-        </template>
-      </ul>
-      <ul
-        class="flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none animate-infinite-scroll"
-        aria-hidden="true"
-      >
-        <template v-for="logo in logos">
-          <li>
-            <img :src="logo.src" :alt="logo.alt" width="70" height="70" />
-          </li>
-        </template>
-      </ul>
+  <section id="technologies" class="py-24 relative">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto">
+        <h3 class="text-3xl md:text-4xl font-bold mb-8">Technologies</h3>
+
+        <div class="grid md:grid-cols-5 gap-12 items-start">
+          <div class="md:col-span-3 space-y-4 text-muted-foreground">
+            <p>
+              During my professional experience, I have handled a wide variety
+              of tools among which I would like to highlight the following ones
+            </p>
+          </div>
+
+          <div
+            class="w-75 inline-flex flex-nowrap overflow-hidden mask-[linear-gradient(to_right,transparent_0,black_128px,black_calc(100%-128px),transparent_100%)]"
+          >
+            <ul
+              class="flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none animate-infinite-scroll"
+            >
+              <template v-for="logo in logos">
+                <li>
+                  <img :src="logo.src" :alt="logo.alt" width="70" height="70" />
+                </li>
+              </template>
+            </ul>
+            <ul
+              class="flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none animate-infinite-scroll"
+              aria-hidden="true"
+            >
+              <template v-for="logo in logos">
+                <li>
+                  <img :src="logo.src" :alt="logo.alt" width="70" height="70" />
+                </li>
+              </template>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </template>
@@ -62,17 +69,17 @@ export default defineComponent({
   name: 'Technologies',
   setup() {
     const logos = [
+      { src: HTML, alt: 'HTML' },
+      { src: CSS, alt: 'CSS' },
+      { src: JavaScript, alt: 'JavaScript' },
+      { src: Nodejs, alt: 'Nodejs' },
+      { src: Nestjs, alt: 'Nestjs' },
+      { src: Angular, alt: 'Angular' },
       { src: PHP, alt: 'PHP' },
       { src: Laravel, alt: 'Laravel' },
       { src: Java, alt: 'Java' },
       { src: SpringBoot, alt: 'SpringBoot' },
-      { src: Nodejs, alt: 'Nodejs' },
-      { src: Nestjs, alt: 'Nestjs' },
       { src: Python, alt: 'Python' },
-      { src: HTML, alt: 'HTML' },
-      { src: CSS, alt: 'CSS' },
-      { src: JavaScript, alt: 'JavaScript' },
-      { src: Angular, alt: 'Angular' },
       { src: Vue, alt: 'Vue' },
       { src: React, alt: 'React' },
       { src: MySQL, alt: 'MySQL' },
