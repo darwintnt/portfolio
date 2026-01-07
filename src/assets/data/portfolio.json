@@ -5,7 +5,8 @@
     "image": "https://licify-images.s3.amazonaws.com/servibien.webp",
     "github_link": "https://github.com/darwintnt/svelte_servibien",
     "link": "https://svelte-servibien.vercel.app",
-    "tools": ["JavaScript", "Svelte", "Tailwind", "Vercel"]
+    "tools": ["JavaScript", "Svelte", "Tailwind", "Vercel"],
+    "principal": true
   },
   {
     "title": "WeSmart App (Private)",
@@ -13,7 +14,8 @@
     "image": "https://licify-images.s3.amazonaws.com/wesmart.webp",
     "github_link": false,
     "link": "https://test.wesmart.com.co/",
-    "tools": ["PHP", "Laravel", "UIKit", "JavaScript", "MySQL"]
+    "tools": ["PHP", "Laravel", "UIKit", "JavaScript", "MySQL"],
+    "principal": true
   },
   {
     "title": "AdmDent App (Private)",
@@ -21,7 +23,8 @@
     "image": "https://licify-images.s3.amazonaws.com/admdent.webp",
     "github_link": false,
     "link": "https://admdent.wesmart.com.co/",
-    "tools": ["PHP", "Laravel", "UIKit", "JavaScript", "MySQL"]
+    "tools": ["PHP", "Laravel", "UIKit", "JavaScript", "MySQL"],
+    "principal": true
   },
   {
     "title": "BataBit (Platzi Project)",
@@ -29,7 +32,8 @@
     "image": "https://licify-images.s3.amazonaws.com/batabit.webp",
     "github_link": "https://github.com/darwintnt/batabit-platzi",
     "link": "https://darwintnt.github.io/batabit-platzi/",
-    "tools": ["HTML", "CSS"]
+    "tools": ["HTML", "CSS"],
+    "principal": false
   },
   {
     "title": "Social Media Dashboard",
@@ -37,7 +41,8 @@
     "image": "https://github.com/darwintnt/social_media_dashboard/blob/master/assets/design/desktop-preview.jpg?raw=true",
     "github_link": "https://github.com/darwintnt/social_media_dashboard",
     "link": "https://awesome-northcutt-b977c9.netlify.app/",
-    "tools": ["HTML", "CSS"]
+    "tools": ["HTML", "CSS"],
+    "principal": false
   },
   {
     "title": "404 Not found",
@@ -45,6 +50,7 @@
     "image": "https://github.com/darwintnt/404NotFound/blob/master/assets/image_preview.png?raw=true",
     "github_link": "https://github.com/darwintnt/404NotFound",
     "link": "https://vigorous-shannon-2ec0fd.netlify.app/",
-    "tools": ["HTML", "CSS"]
+    "tools": ["HTML", "CSS"],
+    "principal": false
   }
 ]
