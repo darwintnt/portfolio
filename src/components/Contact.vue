@@ -94,7 +94,7 @@
             <div class="flex justify-start items-center">
               <a
                 class="button-primary flex items-center justify-center text-white gap-2"
-                href="https://drive.google.com/file/d/1pUpD4wXgvQimkN4JEDYxCTuIG1yuW5v0/view?usp=drive_link"
+                href="https://drive.google.com/file/d/1KEiBgsVAdC561gz0YiCa_F9JlLLT14bx/view?usp=drive_link"
                 target="_blank"
                 rel="noreferrer"
               >
@@ -118,7 +118,7 @@
             <div class="flex justify-start items-center">
               <a
                 class="button-primary flex items-center justify-center text-white gap-2"
-                href="https://drive.google.com/file/d/1ssuJv-Ibdi0VwZTr-ScIWGmXEeoTDk1l/view?usp=drive_link"
+                href="https://drive.google.com/file/d/1VqqjekoOJlcvfjVfN0jQc1X6xDFza-wU/view?usp=drive_link"
                 target="_blank"
                 rel="noreferrer"
               >
