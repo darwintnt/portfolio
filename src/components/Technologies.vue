@@ -1,26 +1,44 @@
 <template>
-  <section id="technologies" class="py-24 relative">
-    <div class="container mx-auto px-6">
-      <div class="max-w-4xl mx-auto">
-        <h3 class="text-3xl md:text-4xl font-bold mb-8">Technologies</h3>
+  <section id="technologies" class="py-32 relative overflow-hidden">
+    <!-- Background decorative element -->
+    <div
+      class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-nova-purple-500/5 rounded-full blur-3xl"
+    ></div>
 
-        <div class="grid md:grid-cols-5 gap-12 items-start">
-          <div class="md:col-span-3 space-y-4 text-muted-foreground">
-            <p>
-              During my professional experience, I have handled a wide variety
-              of tools among which I would like to highlight the following ones
-            </p>
-          </div>
+    <div class="container mx-auto px-6 relative">
+      <div class="max-w-6xl mx-auto">
+        <h3 class="text-4xl md:text-5xl font-bold mb-16 text-center">
+          <span class="text-gradient">Technologies</span>
+        </h3>
 
+        <div class="mb-12 text-center max-w-3xl mx-auto">
+          <p class="text-lg md:text-xl text-muted-foreground">
+            During my professional experience, I have handled a wide variety of
+            tools among which I would like to highlight the following ones
+          </p>
+        </div>
+
+        <!-- Logo carousel -->
+        <div class="relative">
           <div
-            class="w-90 inline-flex flex-nowrap overflow-hidden mask-[linear-gradient(to_right,transparent_0,black_128px,black_calc(100%-128px),transparent_100%)]"
+            class="w-full inline-flex flex-nowrap overflow-hidden [mask-image:linear-gradient(to_right,transparent_0,black_128px,black_calc(100%-128px),transparent_100%)]"
           >
             <ul
               class="flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none animate-infinite-scroll"
             >
               <template v-for="logo in logos">
-                <li>
-                  <img :src="logo.src" :alt="logo.alt" width="70" height="70" />
+                <li class="group">
+                  <div
+                    class="p-4 rounded-xl bg-white/90 border border-muted/20 transition-all duration-300 hover:border-primary/50 hover:bg-white hover:scale-110 hover:shadow-lg hover:shadow-primary/20"
+                  >
+                    <img
+                      :src="logo.src"
+                      :alt="logo.alt"
+                      width="60"
+                      height="60"
+                      class="group-hover:scale-110 transition-transform"
+                    />
+                  </div>
                 </li>
               </template>
             </ul>
@@ -29,8 +47,18 @@
               aria-hidden="true"
             >
               <template v-for="logo in logos">
-                <li>
-                  <img :src="logo.src" :alt="logo.alt" width="70" height="70" />
+                <li class="group">
+                  <div
+                    class="p-4 rounded-xl bg-white/90 border border-muted/20 transition-all duration-300 hover:border-primary/50 hover:bg-white hover:scale-110 hover:shadow-lg hover:shadow-primary/20"
+                  >
+                    <img
+                      :src="logo.src"
+                      :alt="logo.alt"
+                      width="60"
+                      height="60"
+                      class="group-hover:scale-110 transition-transform"
+                    />
+                  </div>
                 </li>
               </template>
             </ul>
@@ -100,10 +128,6 @@ export default defineComponent({
 </script>
 <style scoped>
 @reference "tailwindcss";
-.tecnologies {
-  @apply p-10 md:py-20 items-center;
-  width: 100%;
-}
 
 @keyframes infinite-scroll {
   from {

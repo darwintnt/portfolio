@@ -1,5 +1,5 @@
 <template>
-  <div className="min-h-screen bg-background">
+  <div class="min-h-screen">
     <Navigation />
     <main>
       <Hero />

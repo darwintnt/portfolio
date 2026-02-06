@@ -2,35 +2,42 @@
   <header
     :class="[
       'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-      isScrolled ? 'bg-background/90 backdrop-blur-xs' : 'bg-transparent',
+      isScrolled
+        ? 'bg-background/95 backdrop-blur-lg shadow-lg'
+        : 'bg-transparent',
     ]"
   >
-    <nav class="max-w-5xl mx-auto px-6 py-6 flex items-center justify-between">
-      <a href="#" class="text-lg font-medium tracking-tight"> DG </a>
+    <nav class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
+      <a href="#" class="text-2xl font-bold tracking-tight text-gradient">
+        DG
+      </a>
 
       <!-- Desktop Navigation -->
-      <div class="hidden md:flex items-center gap-10">
+      <div class="hidden md:flex items-center gap-8">
         <a
           v-for="link in navLinks"
           :key="link.name"
           :href="link.href"
-          class="text-sm tracking-widest uppercase text-muted-foreground"
+          class="text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-200 relative group"
         >
           {{ link.name }}
+          <span
+            class="absolute -bottom-1 left-0 w-0 h-0.5 bg-linear-to-r from-nova-blue-500 to-nova-purple-500 group-hover:w-full transition-all duration-300"
+          ></span>
         </a>
       </div>
 
       <!-- Mobile Menu Button -->
       <button
-        class="md:hidden text-foreground"
+        class="md:hidden text-foreground hover:text-primary transition-colors"
         @click="toggleMobileMenu"
         aria-label="Toggle menu"
       >
         <svg
           v-if="isMobileMenuOpen"
           xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
+          width="24"
+          height="24"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -45,8 +52,8 @@
         <svg
           v-else
           xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
+          width="24"
+          height="24"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -63,13 +70,16 @@
     </nav>
 
     <!-- Mobile Menu -->
-    <div v-if="isMobileMenuOpen" class="md:hidden bg-white">
+    <div
+      v-if="isMobileMenuOpen"
+      class="md:hidden bg-card/95 backdrop-blur-lg border-muted/20"
+    >
       <div class="px-6 py-6 space-y-4">
         <a
           v-for="link in navLinks"
           :key="link.name"
           :href="link.href"
-          class="block text-sm tracking-widest uppercase text-muted-foreground"
+          class="block text-base font-medium text-muted-foreground hover:text-primary transition-colors py-2"
           @click="closeMobileMenu"
         >
           {{ link.name }}
