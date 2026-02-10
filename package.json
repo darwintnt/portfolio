@@ -9,12 +9,14 @@
     "preview": "vite preview",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,vue,json,css,scss,md,html}\"",
     "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,vue,json,css,scss,md,html}\"",
+    "i18n:validate": "node scripts/validate-translations.js",
     "prepare": "husky install"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.18",
     "v-lazy-image": "^2.1.1",
-    "vue": "^3.5.26"
+    "vue": "^3.5.26",
+    "vue-i18n": "^9.14.5"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^6.0.3",

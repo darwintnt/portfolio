@@ -8,17 +8,16 @@
     <div class="container mx-auto px-6 relative">
       <div class="max-w-6xl mx-auto">
         <h3 class="text-4xl md:text-5xl font-bold mb-16 text-center">
-          About <span class="text-gradient">Me</span>
+          {{ t('about.title').split(' ')[0] }}
+          <span class="text-gradient">{{ t('about.titleHighlight') }}</span>
         </h3>
 
         <div class="grid md:grid-cols-5 gap-16 items-center">
           <div class="md:col-span-3 space-y-6">
             <p class="text-lg md:text-xl text-muted-foreground leading-relaxed">
-              I'm a Software Engineer specialized in backend with more than 8
-              years of experience in web application development, my last
-              position was as Senior Developer for
-              <span class="text-gradient font-bold"
-                ><a
+              {{ t('about.description') }}
+              <span class="text-gradient font-bold">
+                <a
                   href="https://www.insoftar.com/"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -26,13 +25,9 @@
                   class="hover:underline"
                 >
                   Insoftar LLC.
-                </a></span
-              >
-              I architected and delivered custom backend systems for critical
-              industries like finance, services and healthcare, focusing on
-              scalability, data integrity, and security. I thrive on
-              transforming complex business requirements into robust and
-              efficient technical solutions.
+                </a>
+              </span>
+              {{ t('about.descriptionContinue') }}
             </p>
           </div>
 
@@ -60,8 +55,10 @@
   </section>
 </template>
 
-<script>
-export default {};
+<script setup>
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
 </script>
 
 <style scoped>

@@ -25,6 +25,9 @@
             class="absolute -bottom-1 left-0 w-0 h-0.5 bg-linear-to-r from-nova-blue-500 to-nova-purple-500 group-hover:w-full transition-all duration-300"
           ></span>
         </a>
+
+        <!-- Language Switcher -->
+        <LanguageSwitcher />
       </div>
 
       <!-- Mobile Menu Button -->
@@ -84,28 +87,36 @@
         >
           {{ link.name }}
         </a>
+
+        <!-- Language Switcher Mobile -->
+        <div class="pt-4 border-t border-border">
+          <LanguageSwitcher />
+        </div>
       </div>
     </div>
   </header>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted, computed } from 'vue';
+import { useI18n } from 'vue-i18n';
+import LanguageSwitcher from './LanguageSwitcher.vue';
 
 interface NavLink {
   name: string;
   href: string;
 }
 
+const { t } = useI18n();
 const isScrolled = ref<boolean>(false);
 const isMobileMenuOpen = ref<boolean>(false);
 
-const navLinks: NavLink[] = [
-  { name: 'About', href: '#about' },
-  { name: 'Technologies', href: '#technologies' },
-  { name: 'Projects', href: '#portfolio' },
-  { name: 'Contact', href: '#contact_me' },
-];
+const navLinks = computed<NavLink[]>(() => [
+  { name: t('nav.about'), href: '#about' },
+  { name: t('nav.technologies'), href: '#technologies' },
+  { name: t('nav.portfolio'), href: '#portfolio' },
+  { name: t('nav.contact'), href: '#contact_me' },
+]);
 
 const handleScroll = (): void => {
   isScrolled.value = window.scrollY > 50;

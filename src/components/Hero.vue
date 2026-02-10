@@ -28,24 +28,21 @@
           class="text-3xl md:text-5xl font-semibold text-muted-foreground mb-8 animate-slide-up"
           :style="{ animationDelay: '0.2s' }"
         >
-          Software Engineer 🇨🇴
+          {{ t('hero.subtitle') }} 🇨🇴
         </h2>
 
         <p
           class="text-primary font-bold py-4 text-lg animate-slide-up"
           :style="{ animationDelay: '0.3s' }"
         >
-          Open to new opportunities ✌🏼 #OpenToWork
+          {{ t('hero.openToWork') }} {{ t('hero.openToWorkTag') }}
         </p>
 
         <p
           class="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed animate-slide-up"
           :style="{ animationDelay: '0.4s' }"
         >
-          With over 8 years of experience building scalable, high-performance
-          systems, I am dedicated to creating exceptional digital experiences.
-          My current focus is on developing accessible, user-centered products
-          using modern technologies.
+          {{ t('hero.description') }}
         </p>
 
         <div
@@ -53,10 +50,10 @@
           :style="{ animationDelay: '0.6s' }"
         >
           <button class="button-primary text-lg">
-            <a href="#portfolio">View My Work</a>
+            <a href="#portfolio">{{ t('hero.btnPortfolio') }}</a>
           </button>
           <button class="button-primary text-lg">
-            <a href="#contact_me">Get In Touch</a>
+            <a href="#contact_me">{{ t('hero.btnContact') }}</a>
           </button>
         </div>
 
@@ -131,8 +128,8 @@
   </section>
 </template>
 
-<script>
-export default {
-  setup() {},
-};
+<script setup>
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
 </script>

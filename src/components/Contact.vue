@@ -7,13 +7,14 @@
     <div className="container mx-auto px-6 relative z-10">
       <div className="max-w-2xl mx-auto text-center">
         <h3 className="text-3xl md:text-4xl font-bold mb-6">
-          Get In <span className="text-gradient">Touch</span>
+          {{ t('contact.getInTouch').split(' ').slice(0, 2).join(' ') }}
+          <span className="text-gradient">{{
+            t('contact.titleHighlight')
+          }}</span>
         </h3>
 
         <p className="text-muted-foreground text-lg mb-10">
-          I'm currently open to new opportunities and would love to hear from
-          you. Whether you have a question, a project idea, or just want to say
-          hi, feel free to reach out! ✌🏼
+          {{ t('contact.description') }}
         </p>
 
         <div class="flex gap-8 justify-center md:justify-center">
@@ -90,7 +91,7 @@
               />
             </svg>
 
-            <span>Bogotá - Colombia</span>
+            <span>{{ t('contact.location') }}</span>
           </div>
           <div class="flex flex-col md:flex-row gap-2 my-4 items-center">
             <div class="flex justify-start items-center">
@@ -100,7 +101,7 @@
                 target="_blank"
                 rel="noreferrer"
               >
-                <span class="block">English CV</span>
+                <span class="block">{{ t('contact.cvEnglish') }}</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -126,7 +127,7 @@
                 target="_blank"
                 rel="noreferrer"
               >
-                <span class="block">Spanish CV</span>
+                <span class="block">{{ t('contact.cvSpanish') }}</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -151,6 +152,12 @@
     </div>
   </section>
 </template>
+
+<script setup>
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
+</script>
 <script>
 export default {};
 </script>

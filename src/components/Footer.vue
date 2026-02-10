@@ -71,7 +71,7 @@
         </div>
 
         <p class="text-muted-foreground text-sm">
-          © {{ date }} Designed & Built by
+          © {{ date }} {{ t('footer.designedBy') }}
           <span class="text-gradient font-semibold">DarwinTnT</span>
         </p>
       </div>
@@ -79,15 +79,10 @@
   </footer>
 </template>
 
-<script>
-export default {
-  setup() {
-    const date = new Date().getFullYear();
+<script setup>
+import { useI18n } from 'vue-i18n';
 
-    return {
-      date,
-    };
-  },
-};
+const { t } = useI18n();
+const date = new Date().getFullYear();
 </script>
 <style lang="css"></style>

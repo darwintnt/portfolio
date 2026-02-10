@@ -11,7 +11,8 @@
     <div class="container mx-auto px-6 relative">
       <div class="max-w-7xl mx-auto">
         <h3 class="text-4xl md:text-5xl font-bold mb-20 text-center">
-          Featured <span class="text-gradient">Projects</span>
+          {{ t('portfolio.title').split(' ')[0] }}
+          <span class="text-gradient">{{ t('portfolio.titleFeatured') }}</span>
         </h3>
 
         <!-- Featured Projects -->
@@ -45,7 +46,7 @@
                 <p
                   class="font-mono text-primary text-xs mb-2 font-semibold uppercase tracking-wider"
                 >
-                  Featured Project
+                  {{ t('portfolio.featuredProject') }}
                 </p>
                 <h4
                   class="text-2xl font-bold text-foreground mb-4 group-hover:text-gradient transition-colors"
@@ -124,7 +125,10 @@
 
         <!-- Other Projects -->
         <h4 class="text-3xl md:text-4xl font-bold text-center mb-16">
-          Other Noteworthy <span class="text-gradient">Projects</span>
+          {{ t('portfolio.otherProjects') }}
+          <span class="text-gradient">{{
+            t('portfolio.otherProjectsHighlight')
+          }}</span>
         </h4>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 justify-center">
           <div
@@ -226,8 +230,11 @@
 </template>
 
 <script setup>
+import { useI18n } from 'vue-i18n';
 import portfolios from '@/assets/data/portfolio.json';
 import VLazyImage from 'v-lazy-image';
+
+const { t } = useI18n();
 const featuredProjects = portfolios.filter((project) => project.principal);
 const otherProjects = portfolios.filter((project) => !project.principal);
 </script>

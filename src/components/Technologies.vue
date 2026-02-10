@@ -8,13 +8,12 @@
     <div class="container mx-auto px-6 relative">
       <div class="max-w-6xl mx-auto">
         <h3 class="text-4xl md:text-5xl font-bold mb-16 text-center">
-          <span class="text-gradient">Technologies</span>
+          <span class="text-gradient">{{ t('technologies.title') }}</span>
         </h3>
 
         <div class="mb-12 text-center max-w-3xl mx-auto">
           <p class="text-lg md:text-xl text-muted-foreground">
-            During my professional experience, I have handled a wide variety of
-            tools among which I would like to highlight the following ones
+            {{ t('technologies.description') }}
           </p>
         </div>
 
@@ -68,8 +67,8 @@
     </div>
   </section>
 </template>
-<script>
-import { defineComponent } from 'vue';
+<script setup>
+import { useI18n } from 'vue-i18n';
 
 import Laravel from '@/assets/logos/laravel.svg?url';
 import PHP from '@/assets/logos/php.svg?url';
@@ -93,38 +92,31 @@ import Bootstrap from '@/assets/logos/bootstrap.svg?url';
 import Java from '@/assets/logos/java.svg?url';
 import SpringBoot from '@/assets/logos/springboot.svg?url';
 
-export default defineComponent({
-  name: 'Technologies',
-  setup() {
-    const logos = [
-      { src: HTML, alt: 'HTML' },
-      { src: CSS, alt: 'CSS' },
-      { src: JavaScript, alt: 'JavaScript' },
-      { src: Nodejs, alt: 'Nodejs' },
-      { src: Nestjs, alt: 'Nestjs' },
-      { src: Angular, alt: 'Angular' },
-      { src: PHP, alt: 'PHP' },
-      { src: Laravel, alt: 'Laravel' },
-      { src: Java, alt: 'Java' },
-      { src: SpringBoot, alt: 'SpringBoot' },
-      { src: Python, alt: 'Python' },
-      { src: Vue, alt: 'Vue' },
-      { src: React, alt: 'React' },
-      { src: MySQL, alt: 'MySQL' },
-      { src: SQLServer, alt: 'SQLServer' },
-      { src: MongoDB, alt: 'MongoDB' },
-      { src: ElasticSearch, alt: 'ElasticSearch' },
-      { src: AWS, alt: 'AWS' },
-      { src: DigitalOcean, alt: 'DigitalOcean' },
-      { src: Tailwind, alt: 'Tailwind' },
-      { src: Bootstrap, alt: 'Bootstrap' },
-    ];
+const { t } = useI18n();
 
-    return {
-      logos,
-    };
-  },
-});
+const logos = [
+  { src: HTML, alt: 'HTML' },
+  { src: CSS, alt: 'CSS' },
+  { src: JavaScript, alt: 'JavaScript' },
+  { src: Nodejs, alt: 'Nodejs' },
+  { src: Nestjs, alt: 'Nestjs' },
+  { src: Angular, alt: 'Angular' },
+  { src: PHP, alt: 'PHP' },
+  { src: Laravel, alt: 'Laravel' },
+  { src: Java, alt: 'Java' },
+  { src: SpringBoot, alt: 'SpringBoot' },
+  { src: Python, alt: 'Python' },
+  { src: Vue, alt: 'Vue' },
+  { src: React, alt: 'React' },
+  { src: MySQL, alt: 'MySQL' },
+  { src: SQLServer, alt: 'SQLServer' },
+  { src: MongoDB, alt: 'MongoDB' },
+  { src: ElasticSearch, alt: 'ElasticSearch' },
+  { src: AWS, alt: 'AWS' },
+  { src: DigitalOcean, alt: 'DigitalOcean' },
+  { src: Tailwind, alt: 'Tailwind' },
+  { src: Bootstrap, alt: 'Bootstrap' },
+];
 </script>
 <style scoped>
 @reference "tailwindcss";
