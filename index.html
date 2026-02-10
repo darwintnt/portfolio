@@ -1,63 +1,85 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
+
+    <!-- Viewport para responsive design -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="canonical" href="https://www.darwintnt.co/" />
-    <title>Darwin Gómez | Software Engineer</title>
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.darwintnt.co/" />
-    <meta property="og:title" content="Darwin Gómez - Software Engineer" />
-    <meta
-      property="og:description"
-      content="Desarrollador FullStack especializado en Backend con más de 6 años de experiencia en el desarrollo de aplicaciones web"
-    />
-    <meta property="og:image" content="" />
-    <meta property="fb:app_id" content="" />
-    <meta name="og:locale" content="es_CO" />
-    <meta name="description" content="Darwin Gómez - Software Engineer" />
-    <meta
-      name="keywords"
-      content="software, engineer, web development, web, software engineer, backend, frontend"
-    />
-    <meta name="image" content="" />
-    <meta itemprop="name" content="Darwin Gómez - Software Engineer" />
+
+    <!-- Theme color para PWA y navegadores móviles -->
+    <meta name="theme-color" content="#1a202c" />
+
+    <!-- Preconnect para optimizar carga de fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- DNS prefetch para recursos externos -->
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+
+    <!-- Fuentes optimizadas con display=swap para evitar FOIT -->
     <link
       href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
       rel="stylesheet"
     />
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Darwin Gómez",
-        "jobTitle": "Software Engineer",
-        "url": "https://www.darwintnt.co",
-        "sameAs": [
-          "https://github.com/darwintnt",
-          "https://linkedin.com/in/darwintnt"
-        ]
+
+    <!-- Favicon (añade tus propios favicons) -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <!-- Manifest para PWA -->
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- 
+      Los metadatos SEO (title, description, OG, Twitter, etc.) 
+      se gestionan dinámicamente con @unhead/vue en App.vue
+      Esto permite metadatos específicos por idioma y mejor control
+    -->
+
+    <!-- Google Analytics - Mantener antes de otros scripts para mejor tracking -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-24F6G2V9KG"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
       }
+      gtag('js', new Date());
+      gtag('config', 'G-24F6G2V9KG');
     </script>
   </head>
   <body>
+    <!-- Contenedor principal de la aplicación -->
     <div id="app"></div>
-    <script type="module" src="/src/main.js" async></script>
-  </body>
-  <!-- Google tag (gtag.js) -->
-  <script
-    async
-    src="https://www.googletagmanager.com/gtag/js?id=G-24F6G2V9KG"
-  ></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
 
-    gtag('config', 'G-24F6G2V9KG');
-  </script>
+    <!-- 
+      Script principal - removido 'async' para asegurar carga correcta
+      Vite ya optimiza el bundle para carga rápida
+    -->
+    <script type="module" src="/src/main.js"></script>
+
+    <!-- Noscript fallback para usuarios sin JavaScript -->
+    <noscript>
+      <div
+        style="
+          text-align: center;
+          padding: 2rem;
+          font-family:
+            system-ui,
+            -apple-system,
+            sans-serif;
+        "
+      >
+        <h1>Darwin Gómez | Software Engineer</h1>
+        <p>Este sitio requiere JavaScript para funcionar correctamente.</p>
+        <p>Por favor, habilita JavaScript en tu navegador.</p>
+        <p>---</p>
+        <p>This site requires JavaScript to work properly.</p>
+        <p>Please enable JavaScript in your browser.</p>
+      </div>
+    </noscript>
+  </body>
 </html>

@@ -1,0 +1,32 @@
+# Robots.txt - Darwin Gómez Portfolio
+# https://www.darwintnt.co/robots.txt
+
+# Permitir acceso a todos los bots
+User-agent: *
+Allow: /
+
+# Crawl-delay (opcional, solo si tienes problemas de carga)
+# Crawl-delay: 1
+
+# Disallow para archivos que no deben indexarse
+Disallow: /api/
+Disallow: /*.json$
+Disallow: /src/
+Disallow: /node_modules/
+
+# Sitemap
+Sitemap: https://www.darwintnt.co/sitemap.xml
+
+# Bots específicos (opcional)
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Bloquear bots problemáticos (opcional)
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
