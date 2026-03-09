@@ -1,19 +1,17 @@
 <template>
-  <section id="contact" className="py-24 relative">
+  <section id="contact_me" class="py-24 relative">
     <div
-      className="absolute inset-0 from-primary/5 via-transparent to-transparent"
+      class="absolute inset-0 from-primary/5 via-transparent to-transparent"
     />
 
-    <div className="container mx-auto px-6 relative z-10">
-      <div className="max-w-2xl mx-auto text-center">
-        <h3 className="text-3xl md:text-4xl font-bold mb-6">
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="max-w-2xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">
           {{ t('contact.getInTouch').split(' ').slice(0, 2).join(' ') }}
-          <span className="text-gradient">{{
-            t('contact.titleHighlight')
-          }}</span>
-        </h3>
+          <span class="text-gradient">{{ t('contact.titleHighlight') }}</span>
+        </h2>
 
-        <p className="text-muted-foreground text-lg mb-10">
+        <p class="text-muted-foreground text-lg mb-10">
           {{ t('contact.description') }}
         </p>
 
@@ -25,7 +23,7 @@
             aria-label="Darwin's Github account"
           >
             <svg
-              role="img"
+              aria-hidden="true"
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
               width="36"
@@ -44,7 +42,7 @@
             aria-label="Darwin's Linkedin account"
           >
             <svg
-              role="img"
+              aria-hidden="true"
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
               width="36"

@@ -13,7 +13,7 @@
 </template>
 
 <script lang="js">
-import { defineComponent, defineAsyncComponent, onMounted } from 'vue';
+import { defineComponent, defineAsyncComponent, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import {
   useSEO,
@@ -38,40 +38,36 @@ export default defineComponent({
     Footer: defineAsyncComponent(() => import('@/components/Footer.vue')),
   },
   setup() {
-    const { t, locale } = useI18n();
+    const { locale } = useI18n();
 
-    // Configurar SEO principal
-    onMounted(() => {
-      const description =
+    // Metadata SEO reactiva: se actualiza automáticamente al cambiar el idioma
+    const seoMetadata = computed(() => ({
+      title: locale.value === 'es' ? 'Inicio' : 'Home',
+      description:
         locale.value === 'es'
-          ? 'Desarrollador FullStack especializado en Backend con más de 6 años de experiencia en el desarrollo de aplicaciones web escalables y de alto rendimiento.'
-          : 'FullStack Developer specialized in Backend with over 6 years of experience developing scalable and high-performance web applications.';
-
-      const keywords =
+          ? 'Desarrollador FullStack especializado en Backend con más de 8 años de experiencia en el desarrollo de aplicaciones web escalables y de alto rendimiento.'
+          : 'FullStack Developer specialized in Backend with over 8 years of experience developing scalable and high-performance web applications.',
+      keywords:
         locale.value === 'es'
           ? 'Darwin Gómez, Software Engineer, Desarrollador Web, Backend Developer, Frontend Developer, Vue.js, Node.js, TypeScript, Colombia, Desarrollador FullStack'
-          : 'Darwin Gómez, Software Engineer, Web Developer, Backend Developer, Frontend Developer, Vue.js, Node.js, TypeScript, Colombia, FullStack Developer';
+          : 'Darwin Gómez, Software Engineer, Web Developer, Backend Developer, Frontend Developer, Vue.js, Node.js, TypeScript, Colombia, FullStack Developer',
+      type: 'website',
+      url: '/',
+    }));
 
-      // Configurar metadatos SEO
-      useSEO(
-        {
-          title: locale.value === 'es' ? 'Inicio' : 'Home',
-          description,
-          keywords,
-          type: 'website',
-          url: '/',
-        },
-        // Combinar múltiples datos estructurados
-        {
-          '@context': 'https://schema.org',
-          '@graph': [
-            createWebSiteStructuredData(locale.value),
-            createPersonStructuredData(locale.value),
-            createProfilePageStructuredData(locale.value),
-          ],
-        }
-      );
-    });
+    // Datos estructurados reactivos por idioma
+    const structuredData = computed(() => ({
+      '@context': 'https://schema.org',
+      '@graph': [
+        createWebSiteStructuredData(locale.value),
+        createPersonStructuredData(locale.value),
+        createProfilePageStructuredData(locale.value),
+      ],
+    }));
+
+    // useSEO llamado sincrónicamente en setup() para que los bots reciban
+    // los metadatos en la primera evaluación del componente
+    useSEO(seoMetadata, structuredData);
 
     return {};
   },

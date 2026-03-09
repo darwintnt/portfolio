@@ -10,10 +10,10 @@
 
     <div class="container mx-auto px-6 relative">
       <div class="max-w-7xl mx-auto">
-        <h3 class="text-4xl md:text-5xl font-bold mb-20 text-center">
+        <h2 class="text-4xl md:text-5xl font-bold mb-20 text-center">
           {{ t('portfolio.title').split(' ')[0] }}
           <span class="text-gradient">{{ t('portfolio.titleFeatured') }}</span>
-        </h3>
+        </h2>
 
         <!-- Featured Projects -->
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-32">
@@ -32,12 +32,12 @@
                 >
                   <v-lazy-image
                     :src="project.image"
-                    alt="Captura del proyecto"
+                    :alt="project.title"
                     class="w-full h-full object-cover"
                   />
                 </div>
                 <div
-                  class="absolute inset-0 bg-gradient-to-br from-nova-blue-500/20 to-nova-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  class="absolute inset-0 bg-linear-to-br from-nova-blue-500/20 to-nova-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                 />
               </div>
 
@@ -48,11 +48,11 @@
                 >
                   {{ t('portfolio.featuredProject') }}
                 </p>
-                <h4
+                <h3
                   class="text-2xl font-bold text-foreground mb-4 group-hover:text-gradient transition-colors"
                 >
                   {{ project.title }}
-                </h4>
+                </h3>
                 <p
                   class="text-muted-foreground text-base leading-relaxed mb-6 flex-1"
                 >
@@ -124,12 +124,12 @@
         </div>
 
         <!-- Other Projects -->
-        <h4 class="text-3xl md:text-4xl font-bold text-center mb-16">
+        <h3 class="text-3xl md:text-4xl font-bold text-center mb-16">
           {{ t('portfolio.otherProjects') }}
           <span class="text-gradient">{{
             t('portfolio.otherProjectsHighlight')
           }}</span>
-        </h4>
+        </h3>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 justify-center">
           <div
             v-for="project in otherProjects"
@@ -205,11 +205,11 @@
                 </a>
               </div>
             </div>
-            <h5
+            <h4
               class="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors"
             >
               {{ project.title }}
-            </h5>
+            </h4>
             <p class="text-muted-foreground text-base mb-6 leading-relaxed">
               {{ project.description }}
             </p>

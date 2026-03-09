@@ -10,7 +10,7 @@ Allow: /
 
 # Disallow para archivos que no deben indexarse
 Disallow: /api/
-Disallow: /*.json$
+Disallow: /*.json
 Disallow: /src/
 Disallow: /node_modules/
 

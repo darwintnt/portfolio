@@ -1,5 +1,6 @@
 import { useHead } from '@unhead/vue';
-import { computed } from 'vue';
+import { computed, isRef } from 'vue';
+import type { Ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 /**
@@ -30,80 +31,82 @@ export interface StructuredData {
 const SITE_URL = 'https://www.darwintnt.co';
 const SITE_NAME = 'Darwin Gómez | Software Engineer';
 const DEFAULT_IMAGE = `${SITE_URL}/og-image.png`;
-// const TWITTER_HANDLE = '';
-// const FB_APP_ID = '';
-
 export function useSEO(
-  metadata?: SEOMetadata,
-  structuredData?: StructuredData
+  metadata?: SEOMetadata | Ref<SEOMetadata>,
+  structuredData?: StructuredData | Ref<StructuredData>
 ) {
   const { locale } = useI18n();
 
+  // Normalizar metadata y structuredData para soportar refs reactivas
+  const getMeta = (): SEOMetadata | undefined =>
+    isRef(metadata) ? metadata.value : metadata;
+
+  const getSD = (): StructuredData | undefined =>
+    isRef(structuredData) ? structuredData.value : structuredData;
+
   // Construir URL completa basada en el idioma
   const currentUrl = computed(() => {
-    const path = metadata?.url || '';
+    const path = getMeta()?.url || '';
     const lang = locale.value === 'es' ? '' : `/${locale.value}`;
     return `${SITE_URL}${lang}${path}`;
   });
 
   // Construir URLs alternativas para hreflang
   const alternateUrls = computed(() => ({
-    es: `${SITE_URL}${metadata?.url || ''}`,
-    en: `${SITE_URL}/en${metadata?.url || ''}`,
+    es: `${SITE_URL}${getMeta()?.url || ''}`,
+    en: `${SITE_URL}/en${getMeta()?.url || ''}`,
   }));
 
   // Construir título completo
   const fullTitle = computed(() => {
-    if (!metadata?.title) return SITE_NAME;
-    return `${metadata.title} | Darwin Gómez`;
+    const meta = getMeta();
+    if (!meta?.title) return SITE_NAME;
+    return `${meta.title} | Darwin Gómez`;
   });
 
   // Configurar metadatos
   if (metadata) {
     useHead({
-      title: fullTitle.value,
+      // Getters reactivos: se actualizan cuando cambia el idioma
+      title: () => fullTitle.value,
       htmlAttrs: {
-        lang: locale.value,
+        lang: () => locale.value,
       },
       meta: [
         // Meta tags básicos
         {
           name: 'description',
-          content: metadata.description,
+          content: () => getMeta()?.description ?? '',
         },
-        ...(metadata.keywords
-          ? [
-              {
-                name: 'keywords',
-                content: metadata.keywords,
-              },
-            ]
-          : []),
+        {
+          name: 'keywords',
+          content: () => getMeta()?.keywords ?? '',
+        },
         {
           name: 'author',
-          content: metadata.author || 'Darwin Gómez',
+          content: () => getMeta()?.author || 'Darwin Gómez',
         },
 
         // Open Graph
         {
           property: 'og:title',
-          content: fullTitle.value,
+          content: () => fullTitle.value,
         },
         {
           property: 'og:description',
-          content: metadata.description,
+          content: () => getMeta()?.description ?? '',
         },
         {
           property: 'og:type',
-          content: metadata.type || 'website',
+          content: () => getMeta()?.type || 'website',
         },
         {
           property: 'og:url',
-          content: currentUrl.value,
+          content: () => currentUrl.value,
         },
         {
           property: 'og:image',
-          content: metadata.image || DEFAULT_IMAGE,
+          content: () => getMeta()?.image || DEFAULT_IMAGE,
         },
         {
           property: 'og:image:width',
@@ -113,115 +116,93 @@ export function useSEO(
           property: 'og:image:height',
           content: '630',
         },
+        // Alt text para accesibilidad en compartir social
+        {
+          property: 'og:image:alt',
+          content: () => fullTitle.value,
+        },
         {
           property: 'og:site_name',
           content: SITE_NAME,
         },
         {
           property: 'og:locale',
-          content: locale.value === 'es' ? 'es_CO' : 'en_US',
+          content: () => (locale.value === 'es' ? 'es_CO' : 'en_US'),
         },
         {
           property: 'og:locale:alternate',
-          content: locale.value === 'es' ? 'en_US' : 'es_CO',
+          content: () => (locale.value === 'es' ? 'en_US' : 'es_CO'),
         },
-        // ...(FB_APP_ID ? [{
-        //   property: 'fb:app_id',
-        //   content: FB_APP_ID,
-        // }] : []),
 
-        // // Twitter Cards
-        // {
-        //   name: 'twitter:card',
-        //   content: 'summary_large_image',
-        // },
-        // {
-        //   name: 'twitter:site',
-        //   content: TWITTER_HANDLE,
-        // },
-        // {
-        //   name: 'twitter:creator',
-        //   content: TWITTER_HANDLE,
-        // },
-        // {
-        //   name: 'twitter:title',
-        //   content: fullTitle.value,
-        // },
-        // {
-        //   name: 'twitter:description',
-        //   content: metadata.description,
-        // },
-        // {
-        //   name: 'twitter:image',
-        //   content: metadata.image || DEFAULT_IMAGE,
-        // },
+        // Twitter / X Cards
+        {
+          name: 'twitter:card',
+          content: 'summary_large_image',
+        },
+        {
+          name: 'twitter:title',
+          content: () => fullTitle.value,
+        },
+        {
+          name: 'twitter:description',
+          content: () => getMeta()?.description ?? '',
+        },
+        {
+          name: 'twitter:image',
+          content: () => getMeta()?.image || DEFAULT_IMAGE,
+        },
+        {
+          name: 'twitter:image:alt',
+          content: () => fullTitle.value,
+        },
 
         // Metadatos adicionales de artículo (si aplica)
-        ...(metadata.publishedTime
-          ? [
-              {
-                property: 'article:published_time',
-                content: metadata.publishedTime,
-              },
-            ]
-          : []),
-        ...(metadata.modifiedTime
-          ? [
-              {
-                property: 'article:modified_time',
-                content: metadata.modifiedTime,
-              },
-            ]
-          : []),
-        ...(metadata.section
-          ? [
-              {
-                property: 'article:section',
-                content: metadata.section,
-              },
-            ]
-          : []),
-        ...(metadata.tags
-          ? metadata.tags.map((tag) => ({
-              property: 'article:tag',
-              content: tag,
-            }))
-          : []),
+        {
+          property: 'article:published_time',
+          content: () => getMeta()?.publishedTime ?? '',
+        },
+        {
+          property: 'article:modified_time',
+          content: () => getMeta()?.modifiedTime ?? '',
+        },
+        {
+          property: 'article:section',
+          content: () => getMeta()?.section ?? '',
+        },
       ],
       link: [
         // Canonical
         {
           rel: 'canonical',
-          href: currentUrl.value,
+          href: () => currentUrl.value,
         },
         // Hreflang para SEO multiidioma
         {
           rel: 'alternate',
           hreflang: 'es',
-          href: alternateUrls.value.es,
+          href: () => alternateUrls.value.es,
         },
         {
           rel: 'alternate',
           hreflang: 'en',
-          href: alternateUrls.value.en,
+          href: () => alternateUrls.value.en,
         },
         {
           rel: 'alternate',
           hreflang: 'x-default',
-          href: alternateUrls.value.es, // El idioma predeterminado
+          href: () => alternateUrls.value.es,
         },
       ],
-      // JSON-LD para datos estructurados
-      ...(structuredData
-        ? {
-            script: [
-              {
-                type: 'application/ld+json',
-                children: JSON.stringify(structuredData),
-              },
-            ],
-          }
-        : {}),
+      // JSON-LD reactivo para datos estructurados
+      script: [
+        {
+          type: 'application/ld+json',
+          children: () => {
+            const sd = getSD();
+            return sd ? JSON.stringify(sd) : '';
+          },
+        },
+      ],
     });
   }
 
@@ -246,11 +227,6 @@ export function createWebSiteStructuredData(locale: string): StructuredData {
         ? 'Portafolio de Darwin Gómez, Full Stack Software Engineer especializado en desarrollo web y backend'
         : 'Portfolio of Darwin Gómez, Full Stack Software Engineer specialized in web development and backend',
     inLanguage: locale === 'es' ? 'es-CO' : 'en-US',
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: `${SITE_URL}/?s={search_term_string}`,
-      'query-input': 'required name=search_term_string',
-    },
   };
 }
 
@@ -268,10 +244,10 @@ export function createPersonStructuredData(locale: string): StructuredData {
     description:
       locale === 'es'
         ? 'Ingeniero de software FullStack especializado en Backend con más de 8 años de experiencia'
-        : 'FullStack Software enginer specialized in Backend with over 8 years of experience',
+        : 'FullStack Software Engineer specialized in Backend with over 8 years of experience',
     sameAs: [
       'https://github.com/darwintnt',
-      'https://linkedin.com/in/darwintnt',
+      'https://www.linkedin.com/in/darwintnt',
     ],
     knowsAbout: [
       'Software Engineering',

@@ -7,10 +7,10 @@
 
     <div class="container mx-auto px-6 relative">
       <div class="max-w-6xl mx-auto">
-        <h3 class="text-4xl md:text-5xl font-bold mb-16 text-center">
+        <h2 class="text-4xl md:text-5xl font-bold mb-16 text-center">
           {{ t('about.title').split(' ')[0] }}
           <span class="text-gradient">{{ t('about.titleHighlight') }}</span>
-        </h3>
+        </h2>
 
         <div class="grid md:grid-cols-5 gap-16 items-center">
           <div class="md:col-span-3 space-y-6">
@@ -21,7 +21,6 @@
                   href="https://www.insoftar.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Insoftar webpage"
                   class="hover:underline"
                 >
                   Insoftar LLC.
@@ -43,9 +42,16 @@
               <div
                 class="relative bg-card rounded-2xl overflow-hidden shadow-2xl border-muted/20"
               >
-                <div
-                  class="aspect-square from-primary/20 to-transparent flex items-center justify-center me"
-                ></div>
+                <div class="aspect-square flex items-center justify-center">
+                  <img
+                    src="@/assets/hero2.webp"
+                    :alt="t('about.greeting')"
+                    class="w-full h-full object-cover object-top rounded-2xl"
+                    width="600"
+                    height="600"
+                    loading="lazy"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -60,15 +66,3 @@ import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
 </script>
-
-<style scoped>
-@reference "tailwindcss";
-.me {
-  background-image: url('@/assets/hero2.webp');
-  background-size: 100%;
-  background-position: center 25%;
-  background-repeat: no-repeat;
-  position: relative;
-  border-radius: 100%;
-}
-</style>
