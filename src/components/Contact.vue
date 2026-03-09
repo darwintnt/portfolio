@@ -1,5 +1,5 @@
 <template>
-  <section id="contact_me" className="py-24 relative">
+  <section id="contact" className="py-24 relative">
     <div
       className="absolute inset-0 from-primary/5 via-transparent to-transparent"
     />

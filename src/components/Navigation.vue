@@ -115,7 +115,7 @@ const navLinks = computed<NavLink[]>(() => [
   { name: t('nav.about'), href: '#about' },
   { name: t('nav.technologies'), href: '#technologies' },
   { name: t('nav.portfolio'), href: '#portfolio' },
-  { name: t('nav.contact'), href: '#contact_me' },
+  { name: t('nav.contact'), href: '#contact' },
 ]);
 
 const handleScroll = (): void => {

@@ -53,7 +53,7 @@
             <a href="#portfolio">{{ t('hero.btnPortfolio') }}</a>
           </button>
           <button class="button-primary text-lg">
-            <a href="#contact_me">{{ t('hero.btnContact') }}</a>
+            <a href="#contact">{{ t('hero.btnContact') }}</a>
           </button>
         </div>
 
