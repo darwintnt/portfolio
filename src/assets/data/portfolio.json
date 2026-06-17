@@ -1,5 +1,24 @@
 [
   {
+    "title": "English Tutor",
+    "description": "A PWA that acts as your personal AI English conversation tutor. Speak freely, get corrections in Spanish, improve your spoken English.",
+    "image": "https://res.cloudinary.com/danxyyswm/image/upload/f_auto,q_auto/english-tutor_oqwgip",
+    "github_link": "https://github.com/darwintnt/english-tutor",
+    "link": "https://tutor.darwintnt.co",
+    "tools": [
+      "JavaScript",
+      "Svelte",
+      "Tailwind",
+      "Dokploy",
+      "AI",
+      "LLM",
+      "Google",
+      "Groq",
+      "Whisper"
+    ],
+    "principal": true
+  },
+  {
     "title": "Servibien.co",
     "description": "Personal, special and professional accompaniment to improve your quality of life. Personalized and confidential procedures.",
     "image": "https://licify-images.s3.amazonaws.com/servibien.webp",
