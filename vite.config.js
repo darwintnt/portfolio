@@ -37,28 +37,9 @@ export default defineConfig({
     // Target para navegadores modernos
     target: 'es2015',
 
-    // Habilitar minificación
-    minify: 'esbuild',
-
-    // Optimizar CSS
-    cssMinify: true,
-
-    // Code splitting para mejor caching
+    // Code splitting con rolldown
     rollupOptions: {
       output: {
-        // Separar chunks por funcionalidad
-        manualChunks: {
-          // Vendor chunks (librerías de terceros)
-          'vue-vendor': ['vue'],
-          'i18n-vendor': ['vue-i18n', '@unhead/vue'],
-
-          // Componentes por sección (si crecen)
-          // 'components-core': [
-          //   './src/components/Navigation.vue',
-          //   './src/components/Footer.vue',
-          // ],
-        },
-
         // Naming para mejor caching
         chunkFileNames: 'assets/js/[name]-[hash].js',
         entryFileNames: 'assets/js/[name]-[hash].js',
@@ -81,7 +62,7 @@ export default defineConfig({
     // Configurar chunk size warning
     chunkSizeWarningLimit: 600,
 
-    // Source maps para producción (opcional, desactiva si no los necesitas)
+    // Source maps para producción
     sourcemap: false,
 
     // Reportar tamaños comprimidos
