@@ -1,14 +1,12 @@
 <template>
   <section id="technologies" class="py-32 relative overflow-hidden">
     <!-- Background decorative element -->
-    <div
-      class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-nova-purple-500/5 rounded-full blur-3xl"
-    ></div>
+    
 
     <div class="container mx-auto px-6 relative">
       <div class="max-w-6xl mx-auto">
         <h3 class="text-4xl md:text-5xl font-bold mb-16 text-center">
-          <span class="text-gradient">{{ t('technologies.title') }}</span>
+          <span class="text-primary">{{ t('technologies.title') }}</span>
         </h3>
 
         <div class="mb-12 text-center max-w-3xl mx-auto">
@@ -28,14 +26,14 @@
               <template v-for="logo in logos">
                 <li class="group">
                   <div
-                    class="p-4 rounded-xl bg-white/90 border border-muted/20 transition-all duration-300 hover:border-primary/50 hover:bg-white hover:scale-110 hover:shadow-lg hover:shadow-primary/20"
+                    class="p-4 rounded-xl bg-white transition-all duration-300"
                   >
                     <img
                       :src="logo.src"
                       :alt="logo.alt"
                       width="60"
                       height="60"
-                      class="group-hover:scale-110 transition-transform"
+                      class="transition-transform"
                     />
                   </div>
                 </li>
@@ -48,14 +46,14 @@
               <template v-for="logo in logos">
                 <li class="group">
                   <div
-                    class="p-4 rounded-xl bg-white/90 border border-muted/20 transition-all duration-300 hover:border-primary/50 hover:bg-white hover:scale-110 hover:shadow-lg hover:shadow-primary/20"
+                    class="p-4 rounded-xl bg-white transition-all duration-300"
                   >
                     <img
                       :src="logo.src"
                       :alt="logo.alt"
                       width="60"
                       height="60"
-                      class="group-hover:scale-110 transition-transform"
+                      class="transition-transform"
                     />
                   </div>
                 </li>

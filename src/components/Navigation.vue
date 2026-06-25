@@ -3,12 +3,12 @@
     :class="[
       'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
       isScrolled
-        ? 'bg-background/95 backdrop-blur-lg shadow-lg'
+        ? 'bg-background/95 backdrop-blur-lg shadow-sm'
         : 'bg-transparent',
     ]"
   >
     <nav class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
-      <a href="#" class="text-2xl font-bold tracking-tight text-gradient">
+      <a href="#" class="text-2xl font-bold tracking-tight text-foreground">
         DG
       </a>
 
@@ -22,7 +22,7 @@
         >
           {{ link.name }}
           <span
-            class="absolute -bottom-1 left-0 w-0 h-0.5 bg-linear-to-r from-nova-blue-500 to-nova-purple-500 group-hover:w-full transition-all duration-300"
+            class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"
           ></span>
         </a>
 
@@ -75,7 +75,7 @@
     <!-- Mobile Menu -->
     <div
       v-if="isMobileMenuOpen"
-      class="md:hidden bg-card/95 backdrop-blur-lg border-muted/20"
+      class="md:hidden bg-background/95 backdrop-blur-lg shadow-sm"
     >
       <div class="px-6 py-6 space-y-4">
         <a
@@ -89,7 +89,7 @@
         </a>
 
         <!-- Language Switcher Mobile -->
-        <div class="pt-4 border-t border-border">
+        <div class="pt-4">
           <LanguageSwitcher />
         </div>
       </div>

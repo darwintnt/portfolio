@@ -1,18 +1,12 @@
 <template>
   <section id="portfolio" class="py-32 relative overflow-hidden">
     <!-- Background decorative elements -->
-    <div
-      class="absolute top-1/4 right-0 w-96 h-96 bg-nova-blue-500/5 rounded-full blur-3xl"
-    ></div>
-    <div
-      class="absolute bottom-1/4 left-0 w-96 h-96 bg-nova-purple-500/5 rounded-full blur-3xl"
-    ></div>
 
     <div class="container mx-auto px-6 relative">
       <div class="max-w-7xl mx-auto">
         <h2 class="text-4xl md:text-5xl font-bold mb-20 text-center">
           {{ t('portfolio.title').split(' ')[0] }}
-          <span class="text-gradient">{{ t('portfolio.titleFeatured') }}</span>
+          <span class="text-primary">{{ t('portfolio.titleFeatured') }}</span>
         </h2>
 
         <!-- Featured Projects -->
@@ -23,46 +17,41 @@
             class="group"
           >
             <div
-              class="bg-card/80 backdrop-blur-sm rounded-2xl overflow-hidden border border-muted/20 hover:border-primary/50 transition-all duration-300 card-glow h-full flex flex-col"
+              class="bg-[#103242] rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 h-full flex flex-col"
             >
               <!-- Project Image -->
               <div class="relative overflow-hidden">
                 <div
-                  class="aspect-video from-primary/10 to-primary/5 flex items-center justify-center"
+                  class="aspect-video bg-background flex items-center justify-center"
                 >
                   <v-lazy-image
                     :src="project.image"
                     :alt="project.title"
-                    class="w-full h-full object-cover"
+                    class="w-full h-full object-cover rounded-none"
                   />
                 </div>
-                <div
-                  class="absolute inset-0 bg-linear-to-br from-nova-blue-500/20 to-nova-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                />
               </div>
 
               <!-- Project Info -->
               <div class="p-8 flex-1 flex flex-col">
                 <p
-                  class="font-mono text-primary text-xs mb-2 font-semibold uppercase tracking-wider"
+                  class="text-[#e0f9ff] text-xs mb-2 font-medium uppercase tracking-widest"
                 >
                   {{ t('portfolio.featuredProject') }}
                 </p>
                 <h3
-                  class="text-2xl font-bold text-foreground mb-4 group-hover:text-gradient transition-colors"
+                  class="text-xl font-semibold text-white mb-3 group-hover:text-primary transition-colors"
                 >
                   {{ project.title }}
                 </h3>
-                <p
-                  class="text-muted-foreground text-base leading-relaxed mb-6 flex-1"
-                >
+                <p class="text-white/70 text-sm leading-relaxed mb-6 flex-1">
                   {{ project.description }}
                 </p>
                 <div class="flex flex-wrap gap-2 mb-6">
                   <span
                     v-for="tech in project.tools"
                     :key="tech"
-                    class="text-xs font-mono text-primary font-semibold px-3 py-1 bg-primary/10 rounded-full"
+                    class="text-xs text-white font-medium px-3 py-1 bg-[#2a5e79] rounded-full"
                   >
                     {{ tech }}
                   </span>
@@ -73,7 +62,7 @@
                     :href="project.github_link"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="text-foreground hover:text-primary transition-colors"
+                    class="text-white hover:text-primary transition-colors"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -96,7 +85,7 @@
                     :href="project.link"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="text-foreground hover:text-primary transition-colors"
+                    class="text-white hover:text-primary transition-colors"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -126,7 +115,7 @@
         <!-- Other Projects -->
         <h3 class="text-3xl md:text-4xl font-bold text-center mb-16">
           {{ t('portfolio.otherProjects') }}
-          <span class="text-gradient">{{
+          <span class="text-primary">{{
             t('portfolio.otherProjectsHighlight')
           }}</span>
         </h3>
@@ -134,7 +123,7 @@
           <div
             v-for="project in otherProjects"
             :key="project.title"
-            class="group p-8 rounded-2xl bg-card/80 backdrop-blur-sm border border-muted/20 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 card-glow shadow-lg"
+            class="group p-8 rounded-2xl bg-[#103242] shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1"
           >
             <div class="flex items-center justify-between mb-6">
               <svg
@@ -158,7 +147,7 @@
                   :href="project.github_link"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="text-muted-foreground hover:text-primary transition-colors"
+                  class="text-white/70 hover:text-primary transition-colors"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -182,7 +171,7 @@
                   :href="project.link"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="text-muted-foreground hover:text-primary transition-colors"
+                  class="text-white/70 hover:text-primary transition-colors"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -206,18 +195,18 @@
               </div>
             </div>
             <h4
-              class="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors"
+              class="text-xl font-bold text-white mb-3 group-hover:text-primary transition-colors"
             >
               {{ project.title }}
             </h4>
-            <p class="text-muted-foreground text-base mb-6 leading-relaxed">
+            <p class="text-white/70 text-base mb-6 leading-relaxed">
               {{ project.description }}
             </p>
             <div class="flex flex-wrap gap-2">
               <span
                 v-for="tech in project.tools"
                 :key="tech"
-                class="text-sm font-mono text-primary font-semibold"
+                class="text-xs text-white font-medium px-3 py-1 bg-[#2a5e79] rounded-full"
               >
                 {{ tech }}
               </span>

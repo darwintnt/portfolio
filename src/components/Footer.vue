@@ -72,7 +72,7 @@
 
         <p class="text-muted-foreground text-sm">
           © {{ date }} {{ t('footer.designedBy') }}
-          <span class="text-gradient font-semibold">DarwinTnT</span>
+          <span class="text-primary font-semibold">DarwinTnT</span>
         </p>
       </div>
     </div>

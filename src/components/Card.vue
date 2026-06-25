@@ -10,7 +10,7 @@
         <p
           v-for="(tool, idx) in data.tools"
           :key="idx"
-          class="bg-[#222831] text-xs text-white rounded-md py-1 px-2 inline-block"
+          class="bg-primary text-xs text-white rounded-md py-1 px-2 inline-block"
         >
           {{ tool }}
         </p>

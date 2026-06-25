@@ -8,20 +8,13 @@
     ></div>
 
     <!-- Decorative elements -->
-    <div
-      class="absolute top-20 left-10 w-72 h-72 bg-nova-blue-500/10 rounded-full blur-3xl"
-    ></div>
-    <div
-      class="absolute bottom-20 right-10 w-96 h-96 bg-nova-purple-500/10 rounded-full blur-3xl"
-    ></div>
 
     <div class="container mx-auto px-6 relative z-10">
       <div class="max-w-5xl mx-auto text-center">
         <h1
           class="text-6xl md:text-8xl font-bold mb-6 animate-slide-up leading-tight"
         >
-          <span class="text-foreground">Darwin </span>
-          <span class="text-gradient">Gómez</span>
+          <span class="text-primary">Darwin Gómez</span>
         </h1>
 
         <h2
