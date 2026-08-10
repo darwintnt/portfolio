@@ -104,7 +104,7 @@
             <div class="flex justify-start items-center">
               <a
                 class="flex items-center align-middle justify-center bg-[#103242] hover:bg-[#0a212d] text-white rounded-lg transition-colors duration-200 p-4 gap-3 text-lg w-full md:w-60 font-semibold"
-                href="https://drive.google.com/file/d/1KEiBgsVAdC561gz0YiCa_F9JlLLT14bx/view?usp=drive_link"
+                :href="import.meta.env.VITE_CV_ENGLISH"
                 target="_blank"
                 rel="noreferrer"
               >
@@ -130,7 +130,7 @@
             <div class="flex justify-start items-center">
               <a
                 class="flex items-center align-middle justify-center bg-[#103242] hover:bg-[#0a212d] text-white rounded-lg transition-colors duration-200 p-4 gap-3 text-lg w-full md:w-60 font-semibold"
-                href="https://drive.google.com/file/d/1VqqjekoOJlcvfjVfN0jQc1X6xDFza-wU/view?usp=drive_link"
+                :href="import.meta.env.VITE_CV_SPANISH"
                 target="_blank"
                 rel="noreferrer"
               >
