@@ -3,7 +3,7 @@
     class="min-h-screen flex items-center relative overflow-hidden pt-24 pb-16"
   >
     <!-- Geometric decor: drifts down with scroll, below text, above bg -->
-    <SectionDecor variant="hero" class="z-[1]" />
+    <SectionDecor ref="decorComp" variant="hero" class="z-[1]" />
 
     <!-- Gradient overlay -->
     <div
@@ -124,8 +124,16 @@
 </template>
 
 <script setup>
+import { computed, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import SectionDecor from '@/components/SectionDecor.vue';
+import { useDecorTravel } from '@/composables/useDecorTravel';
 
 const { t } = useI18n();
+
+// Decor "travels" toward About as the user scrolls (drift + ring rotation)
+const decorComp = ref(null);
+const driftEl = computed(() => decorComp.value?.driftEl ?? null);
+const ringEl = computed(() => decorComp.value?.ringEl ?? null);
+useDecorTravel({ driftEl, ringEl, mode: 'hero' });
 </script>

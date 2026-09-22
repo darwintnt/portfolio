@@ -153,6 +153,8 @@
 </template>
 
 <script setup>
+import { ref } from 'vue';
+
 defineProps({
   variant: {
     type: String,
@@ -160,4 +162,10 @@ defineProps({
     validator: (value) => ['hero', 'about'].includes(value),
   },
 });
+
+// Exposed for scroll-linked travel motion (useDecorTravel)
+const driftEl = ref(null);
+const ringEl = ref(null);
+
+defineExpose({ driftEl, ringEl });
 </script>

@@ -43,7 +43,7 @@
           <div class="md:col-span-2">
             <div class="relative max-w-sm mx-auto">
               <!-- Same motif family as hero; ring tucked behind frame corner -->
-              <SectionDecor variant="about" />
+              <SectionDecor ref="decorComp" variant="about" />
               <!-- Warm glow frame (same treatment as Hero) -->
               <div
                 class="absolute -inset-4 rounded-[2rem] bg-linear-to-br from-accent/40 via-accent-strong/20 to-transparent blur-2xl opacity-70"
@@ -72,8 +72,15 @@
 </template>
 
 <script setup>
+import { computed, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import SectionDecor from '@/components/SectionDecor.vue';
+import { useDecorTravel } from '@/composables/useDecorTravel';
 
 const { t } = useI18n();
+
+// Counter-drift as About enters the viewport (motion echoes hero travel)
+const decorComp = ref(null);
+const driftEl = computed(() => decorComp.value?.driftEl ?? null);
+useDecorTravel({ driftEl, mode: 'about' });
 </script>
