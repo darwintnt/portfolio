@@ -24,14 +24,14 @@
 /* Light theme — opt-in via `html.light` (set by pre-paint script in index.html).
    Unlayered override beats @theme; dark tokens above remain the default. */
 html.light {
-  --color-background: #FAF6F0;
-  --color-surface: #FFFFFF;
-  --color-foreground: #241A2E;
-  --color-muted: #5E5568;
-  --color-soft-accent: #FFE8CC;
-  --color-border: #E8E0EF;
-  --color-accent: #C2410C;
-  --color-ring: #EA580C;
+  --color-background: #faf6f0;
+  --color-surface: #ffffff;
+  --color-foreground: #241a2e;
+  --color-muted: #5e5568;
+  --color-soft-accent: #ffe8cc;
+  --color-border: #e8e0ef;
+  --color-accent: #c2410c;
+  --color-ring: #ea580c;
 }
 
 body {
@@ -100,7 +100,7 @@ body {
   color: var(--color-accent);
 }
 
-/* Chips — soft accent tags */
+/* Chips — soft accent tags; consume optional per-chip vars (see .chip-c-*) */
 .chip {
   display: inline-flex;
   align-items: center;
@@ -110,13 +110,123 @@ body {
   line-height: 1.25rem;
   white-space: nowrap;
   border-radius: 9999px;
-  background-color: rgba(254, 215, 170, 0.1);
-  border: 1px solid rgba(254, 215, 170, 0.2);
-  color: var(--color-foreground);
+  color: var(--chip-text, var(--color-foreground));
+  background-color: var(--chip-bg, rgba(254, 215, 170, 0.1));
+  border: 1px solid var(--chip-border, rgba(254, 215, 170, 0.2));
   transition:
     color 200ms ease,
     border-color 200ms ease,
     transform 200ms ease;
+}
+
+/* Colored chips — per-tech identity; AA in both themes */
+.chip-c-orange {
+  --chip-text: #fb923c;
+  --chip-bg: rgba(251, 146, 60, 0.12);
+  --chip-border: rgba(251, 146, 60, 0.3);
+}
+
+.chip-c-blue {
+  --chip-text: #60a5fa;
+  --chip-bg: rgba(96, 165, 250, 0.12);
+  --chip-border: rgba(96, 165, 250, 0.3);
+}
+
+.chip-c-green {
+  --chip-text: #4ade80;
+  --chip-bg: rgba(74, 222, 128, 0.12);
+  --chip-border: rgba(74, 222, 128, 0.3);
+}
+
+.chip-c-purple {
+  --chip-text: #c084fc;
+  --chip-bg: rgba(192, 132, 252, 0.12);
+  --chip-border: rgba(192, 132, 252, 0.3);
+}
+
+.chip-c-pink {
+  --chip-text: #f472b6;
+  --chip-bg: rgba(244, 114, 182, 0.12);
+  --chip-border: rgba(244, 114, 182, 0.3);
+}
+
+.chip-c-cyan {
+  --chip-text: #22d3ee;
+  --chip-bg: rgba(34, 211, 238, 0.12);
+  --chip-border: rgba(34, 211, 238, 0.3);
+}
+
+html.light .chip-c-orange {
+  --chip-text: #c2410c;
+  --chip-bg: rgba(194, 65, 12, 0.08);
+  --chip-border: rgba(194, 65, 12, 0.25);
+}
+
+html.light .chip-c-blue {
+  --chip-text: #1d4ed8;
+  --chip-bg: rgba(29, 78, 216, 0.08);
+  --chip-border: rgba(29, 78, 216, 0.25);
+}
+
+html.light .chip-c-green {
+  --chip-text: #15803d;
+  --chip-bg: rgba(21, 128, 61, 0.08);
+  --chip-border: rgba(21, 128, 61, 0.25);
+}
+
+html.light .chip-c-purple {
+  --chip-text: #7e22ce;
+  --chip-bg: rgba(126, 34, 206, 0.08);
+  --chip-border: rgba(126, 34, 206, 0.25);
+}
+
+html.light .chip-c-pink {
+  --chip-text: #be185d;
+  --chip-bg: rgba(190, 24, 93, 0.08);
+  --chip-border: rgba(190, 24, 93, 0.25);
+}
+
+html.light .chip-c-cyan {
+  --chip-text: #0e7490;
+  --chip-bg: rgba(14, 116, 144, 0.08);
+  --chip-border: rgba(14, 116, 144, 0.25);
+}
+
+/* Inside the dark band, chips always use their dark-theme values */
+html.light .band-dark .chip-c-orange {
+  --chip-text: #fb923c;
+  --chip-bg: rgba(251, 146, 60, 0.12);
+  --chip-border: rgba(251, 146, 60, 0.3);
+}
+
+html.light .band-dark .chip-c-blue {
+  --chip-text: #60a5fa;
+  --chip-bg: rgba(96, 165, 250, 0.12);
+  --chip-border: rgba(96, 165, 250, 0.3);
+}
+
+html.light .band-dark .chip-c-green {
+  --chip-text: #4ade80;
+  --chip-bg: rgba(74, 222, 128, 0.12);
+  --chip-border: rgba(74, 222, 128, 0.3);
+}
+
+html.light .band-dark .chip-c-purple {
+  --chip-text: #c084fc;
+  --chip-bg: rgba(192, 132, 252, 0.12);
+  --chip-border: rgba(192, 132, 252, 0.3);
+}
+
+html.light .band-dark .chip-c-pink {
+  --chip-text: #f472b6;
+  --chip-bg: rgba(244, 114, 182, 0.12);
+  --chip-border: rgba(244, 114, 182, 0.3);
+}
+
+html.light .band-dark .chip-c-cyan {
+  --chip-text: #22d3ee;
+  --chip-bg: rgba(34, 211, 238, 0.12);
+  --chip-border: rgba(34, 211, 238, 0.3);
 }
 
 .chip:hover {
@@ -162,6 +272,34 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  /* Dark color band — JetBrains-style alternating section.
+   Pins the dark-theme palette so the band reads dark in BOTH page themes. */
+  .band-dark {
+    --color-foreground: #f4f0fa;
+    --color-primary: #f4f0fa;
+    --color-muted: #a79fb8;
+    --color-muted-foreground: #a79fb8;
+    --color-border: #3a2f4d;
+    --color-surface: #221b30;
+    --color-soft-accent: #fed7aa;
+    background-color: #161120;
+  }
+
+  /* In dark theme the page bg is already dark — lift the band one tone for contrast */
+  html:not(.light) .band-dark {
+    background-color: #221b30;
+  }
+
+  /* Warm accent band — light soft-accent in light theme, warm tint in dark */
+  .band-accent {
+    background-color: rgba(254, 215, 170, 0.08);
+  }
+
+  html.light .band-accent {
+    background-color: var(--color-soft-accent);
+    --color-accent: #9a3412; /* deepen accent for AA on #FFE8CC (4.7:1) */
+  }
+
   body {
     transition: none;
   }
