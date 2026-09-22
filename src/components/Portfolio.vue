@@ -19,39 +19,35 @@
           </h2>
         </div>
 
-        <!-- Featured Projects: immersive image cards -->
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-32">
+        <!-- Featured Projects: split zigzag cards (image one side / content the other) -->
+        <div class="grid md:grid-cols-2 gap-8 mb-32">
           <div
-            v-for="project in featuredProjects"
+            v-for="(project, index) in featuredProjects"
             :key="project.title"
-            class="card-immersive group relative flex aspect-[4/5] flex-col overflow-hidden rounded-3xl bg-surface transition-all duration-[250ms] hover:-translate-y-1 hover:shadow-[0_16px_40px_-12px_rgba(22,17,32,0.25)]"
+            class="group flex flex-col overflow-hidden rounded-3xl border border-border bg-surface transition-all duration-[250ms] hover:-translate-y-1 hover:border-accent/60 hover:shadow-[0_16px_40px_-12px_rgba(249,115,22,0.15)] md:flex-row"
+            :class="index % 2 === 1 ? 'lg:flex-row-reverse' : ''"
           >
-            <!-- Project image fills the whole card -->
-            <v-lazy-image
-              :src="project.image"
-              :alt="project.title"
-              class="absolute inset-0 h-full w-full object-cover transition-transform duration-[250ms] group-hover:scale-105"
-            />
-            <!-- Always-on dark scrim for text readability (both themes) -->
+            <!-- Image: full-width band on mobile, fixed share of the card on md+ -->
             <div
-              class="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#161120]/90 via-[#161120]/40 to-transparent"
-              aria-hidden="true"
-            />
-            <!-- Content layered over the scrim, anchored to the bottom -->
-            <div class="relative z-10 flex flex-1 flex-col justify-end p-8">
-              <span
-                class="font-accent text-sm leading-none mb-2 text-[#fb923c]"
-              >
+              class="relative aspect-[16/10] shrink-0 overflow-hidden md:aspect-auto md:w-2/5 lg:w-[42%]"
+            >
+              <v-lazy-image
+                :src="project.image"
+                :alt="project.title"
+                class="absolute inset-0 h-full w-full object-cover transition-transform duration-[250ms] group-hover:scale-105"
+              />
+            </div>
+            <!-- Content column: the site's own language (ink on surface, no scrim) -->
+            <div class="flex flex-1 min-w-0 flex-col p-8">
+              <span class="font-accent text-sm leading-none mb-2 text-accent">
                 ✦ {{ t('portfolio.featuredProject') }}
               </span>
               <h3
-                class="text-white text-2xl font-semibold tracking-tight mb-3 transition-colors md:text-3xl group-hover:text-[#fb923c]"
+                class="text-primary text-2xl font-semibold tracking-tight mb-3 transition-colors md:text-3xl group-hover:text-accent!"
               >
                 {{ project.title }}
               </h3>
-              <p
-                class="text-white/70 mb-6 text-sm leading-relaxed line-clamp-3"
-              >
+              <p class="text-muted mb-6 text-sm leading-relaxed line-clamp-3">
                 {{ project.description }}
               </p>
               <div class="mb-6 flex flex-wrap gap-2">
@@ -70,7 +66,8 @@
                   :href="project.github_link"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="text-white/60 transition-colors hover:text-[#fb923c]"
+                  aria-label="GitHub"
+                  class="text-muted hover:text-accent focus-visible:text-accent transition-colors"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -93,7 +90,8 @@
                   :href="project.link"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="text-white/60 transition-colors hover:text-[#fb923c]"
+                  :aria-label="project.title"
+                  class="text-muted hover:text-accent focus-visible:text-accent transition-colors"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
