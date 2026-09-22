@@ -1,62 +1,117 @@
 @import 'tailwindcss';
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300..800&family=Caveat:wght@600&display=swap');
 
-/* Radial gradient texture */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image:
-    radial-gradient(circle at 50% 100%, transparent 20%, #103242 21%, #103242 34%, transparent 35%, transparent),
-    radial-gradient(circle at 50% 0%, transparent 20%, #103242 21%, #103242 34%, transparent 35%, transparent);
-  background-position: 0 0, -20px 0;
-  background-size: 40px 30px;
-  opacity: 0.05;
-  pointer-events: none;
-  z-index: 0;
+/* Design tokens — "Cálido Nocturno" */
+@theme {
+  --color-background: #161120;
+  --color-surface: #221b30;
+  --color-foreground: #f4f0fa;
+  --color-muted: #a79fb8;
+  --color-muted-foreground: #a79fb8;
+  --color-primary: #f4f0fa;
+  --color-accent: #fb923c;
+  --color-accent-strong: #f97316;
+  --color-soft-accent: #fed7aa;
+  --color-border: #3a2f4d;
+  --color-ring: #fb923c;
+
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-accent: 'Caveat', cursive;
 }
 
 body {
-  background-color: #e0f9ff;
-  position: relative;
-  width: 100%;
+  background-color: #161120;
+  /* Subtle warm radial glow at the top — no dot texture */
+  background-image: radial-gradient(
+    ellipse 80% 50% at 50% -10%,
+    rgba(249, 115, 22, 0.06),
+    transparent
+  );
+  background-repeat: no-repeat;
   min-height: 100vh;
-  color: #103242;
-}
-
-* {
-  font-family: 'Manrope', sans-serif;
+  color: #f4f0fa;
+  font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
   font-optical-sizing: auto;
-  font-style: normal;
 }
 
+.font-accent {
+  font-family: 'Caveat', cursive;
+}
 
-
+/* Text utilities */
 .text-primary {
-  color: #103242;
+  color: var(--color-foreground);
 }
 
+.text-accent {
+  color: var(--color-accent);
+}
+
+/* Buttons */
 .button-primary {
   display: inline-block;
   padding: 0.75rem 2rem;
   font-weight: 600;
-  color: white;
-  background: #103242;
-  border-radius: 0.5rem;
-  transition: background-color 200ms ease;
+  color: #161120;
+  background-image: linear-gradient(135deg, #fb923c, #f97316);
+  border-radius: 9999px;
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease;
 }
 
 .button-primary:hover {
-  background: #0a212d;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(249, 115, 22, 0.35);
 }
 
+.button-outline {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  color: var(--color-foreground);
+  border: 1px solid rgba(254, 215, 170, 0.4);
+  border-radius: 9999px;
+  transition:
+    color 200ms ease,
+    border-color 200ms ease;
+}
 
+.button-outline:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
 
+/* Chips — soft accent tags */
+.chip {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+  border-radius: 9999px;
+  background-color: rgba(254, 215, 170, 0.1);
+  border: 1px solid rgba(254, 215, 170, 0.2);
+  color: var(--color-foreground);
+  transition:
+    color 200ms ease,
+    border-color 200ms ease;
+}
+
+.chip:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+::selection {
+  background-color: #fb923c;
+  color: #161120;
+}
+
+/* Entrance animation — staggered via inline animation-delay */
 .animate-slide-up {
   animation: slide-up 0.6s ease-out forwards;
   opacity: 0;
 }
-
-
 
 @keyframes slide-up {
   0% {
@@ -69,6 +124,7 @@ body {
   }
 }
 
+/* Marquee / infinite scroll */
 @keyframes animate-infinite-scroll {
   from {
     transform: translateX(0);
@@ -80,4 +136,16 @@ body {
 
 .animate-infinite-scroll {
   animation: animate-infinite-scroll 25s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-slide-up {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .animate-infinite-scroll {
+    animation: none;
+  }
 }
