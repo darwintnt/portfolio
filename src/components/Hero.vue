@@ -25,7 +25,7 @@
             class="text-2xl md:text-4xl font-semibold text-muted mb-4 animate-slide-up"
             :style="{ animationDelay: '0.15s' }"
           >
-            {{ t('hero.subtitle') }} 🇨🇴
+            {{ t('hero.subtitle') }}
           </h2>
 
           <p
