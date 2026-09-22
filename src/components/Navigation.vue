@@ -36,6 +36,54 @@
           ></span>
         </a>
 
+        <!-- Theme Toggle -->
+        <button
+          type="button"
+          class="p-2.5 rounded-full border border-border text-muted hover:border-accent hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 transition-colors duration-300"
+          :aria-label="t('nav.theme')"
+          :title="t('nav.theme')"
+          @click="toggleTheme"
+        >
+          <svg
+            v-if="!isLight"
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-sun"
+          >
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2" />
+            <path d="M12 20v2" />
+            <path d="m4.93 4.93 1.41 1.41" />
+            <path d="m17.66 17.66 1.41 1.41" />
+            <path d="M2 12h2" />
+            <path d="M20 12h2" />
+            <path d="m6.34 17.66-1.41 1.41" />
+            <path d="m19.07 4.93-1.41 1.41" />
+          </svg>
+          <svg
+            v-else
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-moon"
+          >
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+          </svg>
+        </button>
+
         <!-- Language Switcher -->
         <LanguageSwitcher />
       </div>
@@ -103,8 +151,56 @@
           {{ link.name }}
         </a>
 
-        <!-- Language Switcher Mobile -->
-        <div class="pt-4">
+        <!-- Theme + Language (mobile) -->
+        <div class="pt-4 flex items-center gap-3">
+          <button
+            type="button"
+            class="p-2.5 rounded-full border border-border text-muted hover:border-accent hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 transition-colors duration-300"
+            :aria-label="t('nav.theme')"
+            :title="t('nav.theme')"
+            @click="toggleTheme"
+          >
+            <svg
+              v-if="!isLight"
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-sun"
+            >
+              <circle cx="12" cy="12" r="4" />
+              <path d="M12 2v2" />
+              <path d="M12 20v2" />
+              <path d="m4.93 4.93 1.41 1.41" />
+              <path d="m17.66 17.66 1.41 1.41" />
+              <path d="M2 12h2" />
+              <path d="M20 12h2" />
+              <path d="m6.34 17.66-1.41 1.41" />
+              <path d="m19.07 4.93-1.41 1.41" />
+            </svg>
+            <svg
+              v-else
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-moon"
+            >
+              <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+            </svg>
+          </button>
+
+          <!-- Language Switcher Mobile -->
           <LanguageSwitcher />
         </div>
       </div>
@@ -128,6 +224,27 @@ const { t } = useI18n();
 const isScrolled = ref<boolean>(false);
 const isMobileMenuOpen = ref<boolean>(false);
 const activeSection = ref<string | null>(null);
+
+// Theme toggle: source of truth = 'light' class on <html> (set by pre-paint script)
+const isLight = ref<boolean>(false);
+
+const applyTheme = (light: boolean): void => {
+  document.documentElement.classList.toggle('light', light);
+  isLight.value = light;
+  try {
+    localStorage.setItem('theme', light ? 'light' : 'dark');
+  } catch {
+    /* localStorage unavailable */
+  }
+  const themeColor = document.querySelector('meta[name="theme-color"]');
+  if (themeColor) {
+    themeColor.setAttribute('content', light ? '#FAF6F0' : '#1a202c');
+  }
+};
+
+const toggleTheme = (): void => {
+  applyTheme(!isLight.value);
+};
 
 const navLinks = computed<NavLink[]>(() => [
   { name: t('nav.about'), href: '#about' },
@@ -169,6 +286,7 @@ const closeMobileMenu = (): void => {
 };
 
 onMounted((): void => {
+  isLight.value = document.documentElement.classList.contains('light');
   window.addEventListener('scroll', handleScroll, { passive: true });
   handleScroll();
 });
