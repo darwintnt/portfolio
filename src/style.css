@@ -18,7 +18,7 @@
   --color-ring: #fb923c;
 
   --font-sans: 'Quicksand Variable', ui-sans-serif, system-ui, sans-serif;
-  --font-accent: 'Caveat Variable', cursive;
+  --font-accent: 'Share Tech Mono', monospace;
 }
 
 /* Light theme — opt-in via `html.light` (set by pre-paint script in index.html).
@@ -53,7 +53,7 @@ body {
 }
 
 .font-accent {
-  font-family: 'Caveat Variable', cursive;
+  font-family: 'Share Tech Mono', monospace;
 }
 
 /* Text utilities */
