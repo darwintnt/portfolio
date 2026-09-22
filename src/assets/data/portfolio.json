@@ -1,5 +1,41 @@
 [
   {
+    "title": "Ecommerce Custom",
+    "description": "My own online store as an alternative to Shopify or other e-commerce SaaS platforms—focused on simplicity, avoiding buyer overwhelm or feature overload, and offering a clean, straightforward interface for the shopping experience.",
+    "image": "https://res.cloudinary.com/danxyyswm/image/upload/v1790108839/Screenshot_2026-09-22_at_3.26.50_PM_ewxcah.png",
+    "link": "https://ecommerce-piloto.darwintnt.co",
+    "tools": [
+      "Typescript",
+      "SvelteKit",
+      "Tailwind",
+      "Nestjs",
+      "Dokploy",
+      "Prisma",
+      "Postgresql",
+      "Online Payments",
+      "AI"
+    ],
+    "principal": true
+  },
+  {
+    "title": "Pollas Free",
+    "description": "Easily organize betting pools among friends. Create your free football prediction pool and find out who knows the most about football.",
+    "image": "https://res.cloudinary.com/danxyyswm/image/upload/v1790108839/Screenshot_2026-09-22_at_3.25.57_PM_bb4asw.png",
+    "link": "https://pollas-free.nexacreative.com.co",
+    "tools": [
+      "Typescript",
+      "SvelteKit",
+      "Tailwind",
+      "Nestjs",
+      "Dokploy",
+      "Prisma",
+      "Postgresql",
+      "Online Payments",
+      "AI"
+    ],
+    "principal": true
+  },
+  {
     "title": "English Tutor",
     "description": "A PWA that acts as your personal AI English conversation tutor. Speak freely, get corrections in Spanish, improve your spoken English.",
     "image": "https://res.cloudinary.com/danxyyswm/image/upload/f_auto,q_auto/english-tutor_oqwgip",

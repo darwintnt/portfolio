@@ -4,7 +4,8 @@
     "about": "About",
     "portfolio": "Portfolio",
     "technologies": "Technologies",
-    "contact": "Contact"
+    "contact": "Contact",
+    "theme": "Toggle theme"
   },
   "hero": {
     "title": "Darwin Gómez",

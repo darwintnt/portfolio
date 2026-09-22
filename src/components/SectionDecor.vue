@@ -1,0 +1,256 @@
+<template>
+  <!-- Decorative background layer (hero/about sections). Purely presentational:
+       aria-hidden, pointer-events-none, clipped by the parent section. -->
+  <div
+    ref="driftEl"
+    class="section-decor section-decor--fade pointer-events-none absolute z-0"
+    :class="variant === 'blob' ? '-inset-y-[14%] inset-x-0' : '-inset-4'"
+    aria-hidden="true"
+  >
+    <!-- Blob scene: Haikei geometry, recolorized. Gradient stops and path fills
+         both use --blob-ramp-1..6 tokens; the outermost path of each corner
+         group carries a blob-morph-a/b hook for the CSS d morphing (style.css).
+         Gradient ids are namespaced blob-grad-* to avoid id collisions. -->
+    <svg
+      v-if="variant === 'blob'"
+      :class="['h-full w-full', { '-scale-y-100': flipY }]"
+      viewBox="0 0 900 600"
+      preserveAspectRatio="xMidYMid slice"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <defs>
+        <linearGradient
+          id="blob-grad-a-0"
+          x1="33.3%"
+          y1="0%"
+          x2="100%"
+          y2="100%"
+        >
+          <stop offset="20%" stop-color="var(--blob-ramp-1)" stop-opacity="1" />
+          <stop offset="80%" stop-color="var(--blob-ramp-1)" stop-opacity="1" />
+        </linearGradient>
+      </defs>
+      <defs>
+        <linearGradient
+          id="blob-grad-a-1"
+          x1="33.3%"
+          y1="0%"
+          x2="100%"
+          y2="100%"
+        >
+          <stop offset="20%" stop-color="var(--blob-ramp-1)" stop-opacity="1" />
+          <stop offset="80%" stop-color="var(--blob-ramp-2)" stop-opacity="1" />
+        </linearGradient>
+      </defs>
+      <defs>
+        <linearGradient
+          id="blob-grad-a-2"
+          x1="33.3%"
+          y1="0%"
+          x2="100%"
+          y2="100%"
+        >
+          <stop offset="20%" stop-color="var(--blob-ramp-3)" stop-opacity="1" />
+          <stop offset="80%" stop-color="var(--blob-ramp-2)" stop-opacity="1" />
+        </linearGradient>
+      </defs>
+      <defs>
+        <linearGradient
+          id="blob-grad-a-3"
+          x1="33.3%"
+          y1="0%"
+          x2="100%"
+          y2="100%"
+        >
+          <stop offset="20%" stop-color="var(--blob-ramp-3)" stop-opacity="1" />
+          <stop offset="80%" stop-color="var(--blob-ramp-4)" stop-opacity="1" />
+        </linearGradient>
+      </defs>
+      <defs>
+        <linearGradient
+          id="blob-grad-a-4"
+          x1="33.3%"
+          y1="0%"
+          x2="100%"
+          y2="100%"
+        >
+          <stop offset="20%" stop-color="var(--blob-ramp-5)" stop-opacity="1" />
+          <stop offset="80%" stop-color="var(--blob-ramp-4)" stop-opacity="1" />
+        </linearGradient>
+      </defs>
+      <defs>
+        <linearGradient
+          id="blob-grad-a-5"
+          x1="33.3%"
+          y1="0%"
+          x2="100%"
+          y2="100%"
+        >
+          <stop offset="20%" stop-color="var(--blob-ramp-5)" stop-opacity="1" />
+          <stop offset="80%" stop-color="var(--blob-ramp-6)" stop-opacity="1" />
+        </linearGradient>
+      </defs>
+      <defs>
+        <linearGradient id="blob-grad-b-0" x1="0%" y1="0%" x2="66.7%" y2="100%">
+          <stop offset="20%" stop-color="var(--blob-ramp-1)" stop-opacity="1" />
+          <stop offset="80%" stop-color="var(--blob-ramp-1)" stop-opacity="1" />
+        </linearGradient>
+      </defs>
+      <defs>
+        <linearGradient id="blob-grad-b-1" x1="0%" y1="0%" x2="66.7%" y2="100%">
+          <stop offset="20%" stop-color="var(--blob-ramp-2)" stop-opacity="1" />
+          <stop offset="80%" stop-color="var(--blob-ramp-1)" stop-opacity="1" />
+        </linearGradient>
+      </defs>
+      <defs>
+        <linearGradient id="blob-grad-b-2" x1="0%" y1="0%" x2="66.7%" y2="100%">
+          <stop offset="20%" stop-color="var(--blob-ramp-2)" stop-opacity="1" />
+          <stop offset="80%" stop-color="var(--blob-ramp-3)" stop-opacity="1" />
+        </linearGradient>
+      </defs>
+      <defs>
+        <linearGradient id="blob-grad-b-3" x1="0%" y1="0%" x2="66.7%" y2="100%">
+          <stop offset="20%" stop-color="var(--blob-ramp-4)" stop-opacity="1" />
+          <stop offset="80%" stop-color="var(--blob-ramp-3)" stop-opacity="1" />
+        </linearGradient>
+      </defs>
+      <defs>
+        <linearGradient id="blob-grad-b-4" x1="0%" y1="0%" x2="66.7%" y2="100%">
+          <stop offset="20%" stop-color="var(--blob-ramp-4)" stop-opacity="1" />
+          <stop offset="80%" stop-color="var(--blob-ramp-5)" stop-opacity="1" />
+        </linearGradient>
+      </defs>
+      <defs>
+        <linearGradient id="blob-grad-b-5" x1="0%" y1="0%" x2="66.7%" y2="100%">
+          <stop offset="20%" stop-color="var(--blob-ramp-6)" stop-opacity="1" />
+          <stop offset="80%" stop-color="var(--blob-ramp-5)" stop-opacity="1" />
+        </linearGradient>
+      </defs>
+      <g transform="translate(900, 0)">
+        <path
+          class="blob-morph-a"
+          d="M0 388C-37.7 382.7 -75.4 377.5 -123.3 379.5C-171.1 381.5 -229.1 390.8 -270.2 371.9C-311.3 353 -335.5 306 -363.2 263.9C-391 221.8 -422.4 184.7 -435.6 141.5C-448.8 98.4 -443.9 49.2 -439 0L0 0Z"
+          fill="var(--blob-ramp-6)"
+        ></path>
+        <path
+          d="M0 323.3C-31.4 318.9 -62.9 314.5 -102.7 316.2C-142.6 317.9 -190.9 325.7 -225.2 309.9C-259.4 294.2 -279.6 255 -302.7 219.9C-325.8 184.9 -352 153.9 -363 117.9C-374 82 -369.9 41 -365.8 0L0 0Z"
+          fill="var(--blob-ramp-5)"
+        ></path>
+        <path
+          d="M0 258.7C-25.1 255.2 -50.3 251.6 -82.2 253C-114.1 254.3 -152.8 260.5 -180.1 247.9C-207.5 235.4 -223.7 204 -242.2 175.9C-260.7 147.9 -281.6 123.1 -290.4 94.4C-299.2 65.6 -295.9 32.8 -292.7 0L0 0Z"
+          fill="var(--blob-ramp-4)"
+        ></path>
+        <path
+          d="M0 194C-18.9 191.4 -37.7 188.7 -61.6 189.7C-85.6 190.7 -114.6 195.4 -135.1 186C-155.6 176.5 -167.7 153 -181.6 132C-195.5 110.9 -211.2 92.3 -217.8 70.8C-224.4 49.2 -222 24.6 -219.5 0L0 0Z"
+          fill="var(--blob-ramp-3)"
+        ></path>
+        <path
+          d="M0 129.3C-12.6 127.6 -25.1 125.8 -41.1 126.5C-57 127.2 -76.4 130.3 -90.1 124C-103.8 117.7 -111.8 102 -121.1 88C-130.3 73.9 -140.8 61.6 -145.2 47.2C-149.6 32.8 -148 16.4 -146.3 0L0 0Z"
+          fill="var(--blob-ramp-2)"
+        ></path>
+        <path
+          d="M0 64.7C-6.3 63.8 -12.6 62.9 -20.5 63.2C-28.5 63.6 -38.2 65.1 -45 62C-51.9 58.8 -55.9 51 -60.5 44C-65.2 37 -70.4 30.8 -72.6 23.6C-74.8 16.4 -74 8.2 -73.2 0L0 0Z"
+          fill="var(--blob-ramp-1)"
+        ></path>
+      </g>
+      <g transform="translate(0, 600)">
+        <path
+          class="blob-morph-b"
+          d="M0 -458C36.3 -423.7 72.6 -389.4 124.5 -383.3C176.5 -377.2 244 -399.4 270.2 -371.9C296.4 -344.5 281.2 -267.4 307.4 -223.4C333.6 -179.3 401.2 -168.3 420.4 -136.6C439.5 -104.9 410.3 -52.4 381 0L0 0Z"
+          fill="var(--blob-ramp-6)"
+        ></path>
+        <path
+          d="M0 -381.7C30.3 -353.1 60.5 -324.5 103.8 -319.4C147.1 -314.3 203.3 -332.8 225.2 -309.9C247 -287.1 234.4 -222.8 256.2 -186.1C278 -149.4 334.3 -140.3 350.3 -113.8C366.3 -87.4 341.9 -43.7 317.5 0L0 0Z"
+          fill="var(--blob-ramp-5)"
+        ></path>
+        <path
+          d="M0 -305.3C24.2 -282.5 48.4 -259.6 83 -255.5C117.6 -251.5 162.7 -266.2 180.1 -247.9C197.6 -229.6 187.5 -178.3 205 -148.9C222.4 -119.5 267.5 -112.2 280.2 -91.1C293 -69.9 273.5 -35 254 0L0 0Z"
+          fill="var(--blob-ramp-4)"
+        ></path>
+        <path
+          d="M0 -229C18.2 -211.8 36.3 -194.7 62.3 -191.6C88.2 -188.6 122 -199.7 135.1 -186C148.2 -172.2 140.6 -133.7 153.7 -111.7C166.8 -89.7 200.6 -84.2 210.2 -68.3C219.8 -52.4 205.1 -26.2 190.5 0L0 0Z"
+          fill="var(--blob-ramp-3)"
+        ></path>
+        <path
+          d="M0 -152.7C12.1 -141.2 24.2 -129.8 41.5 -127.8C58.8 -125.7 81.3 -133.1 90.1 -124C98.8 -114.8 93.7 -89.1 102.5 -74.5C111.2 -59.8 133.7 -56.1 140.1 -45.5C146.5 -35 136.8 -17.5 127 0L0 0Z"
+          fill="var(--blob-ramp-2)"
+        ></path>
+        <path
+          d="M0 -76.3C6.1 -70.6 12.1 -64.9 20.8 -63.9C29.4 -62.9 40.7 -66.6 45 -62C49.4 -57.4 46.9 -44.6 51.2 -37.2C55.6 -29.9 66.9 -28.1 70.1 -22.8C73.3 -17.5 68.4 -8.7 63.5 0L0 0Z"
+          fill="var(--blob-ramp-1)"
+        ></path>
+      </g>
+    </svg>
+
+    <!-- About: same motif family — ring tucked behind the frame corner,
+         dashed arc, three dots echoing the hero palette. -->
+    <svg
+      v-else
+      class="h-full w-full"
+      viewBox="0 0 400 400"
+      preserveAspectRatio="xMidYMid slice"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle
+        cx="30"
+        cy="30"
+        r="80"
+        stroke="var(--decor-stroke)"
+        stroke-opacity="0.45"
+        stroke-width="1.25"
+      />
+      <path
+        d="M 250 380 A 130 130 0 0 0 380 250"
+        stroke="var(--decor-stroke)"
+        stroke-opacity="0.5"
+        stroke-width="1"
+        stroke-dasharray="6 10"
+        stroke-linecap="round"
+      />
+      <circle
+        cx="352"
+        cy="66"
+        r="5"
+        fill="var(--decor-dot-accent)"
+        fill-opacity="0.8"
+      />
+      <circle
+        cx="34"
+        cy="330"
+        r="4"
+        fill="var(--decor-dot-blue)"
+        fill-opacity="0.75"
+      />
+      <circle
+        cx="366"
+        cy="344"
+        r="6"
+        fill="var(--decor-dot-green)"
+        fill-opacity="0.8"
+      />
+    </svg>
+  </div>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+defineProps({
+  variant: {
+    type: String,
+    default: 'blob',
+    validator: (value) => ['blob', 'about'].includes(value),
+  },
+  // Mirrors the blob scene vertically (contact reuses the hero waves upside-down)
+  flipY: {
+    type: Boolean,
+    default: false,
+  },
+});
+
+// Exposed for scroll-linked travel motion (useDecorTravel)
+const driftEl = ref(null);
+
+defineExpose({ driftEl });
+</script>

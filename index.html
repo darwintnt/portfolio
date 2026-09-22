@@ -7,20 +7,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Theme color para PWA y navegadores móviles -->
-    <meta name="theme-color" content="#1a202c" />
+    <meta name="theme-color" content="#F4F4F4" />
 
-    <!-- Preconnect para optimizar carga de fuentes -->
-    <link rel="preconnect" href="https://api.fontshare.com" />
-    <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin />
+    <!-- Theme pre-paint: light por defecto, respeta el tema guardado 'dark' (evita FOUC).
+         El meta va antes del script para que el script pueda actualizarlo. -->
+    <script>
+      try {
+        if (localStorage.getItem('theme') !== 'dark') {
+          document.documentElement.classList.add('light');
+        } else {
+          document
+            .querySelector('meta[name="theme-color"]')
+            ?.setAttribute('content', '#1a202c');
+        }
+      } catch (e) {
+        document.documentElement.classList.add('light');
+      }
+    </script>
 
     <!-- DNS prefetch para recursos externos -->
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 
-    <!-- Fuentes: Manrope de Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <!-- Las fuentes (Quicksand + Share Tech Mono) se auto-alojan vía Fontsource (npm), importadas en src/main.js -->
 
     <!-- Favicon (añade tus propios favicons) -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

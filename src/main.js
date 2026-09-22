@@ -1,5 +1,8 @@
 import { createApp, watch } from 'vue';
 import { createHead as unheadCreateHead } from '@unhead/vue/client';
+// Self-hosted fonts via Fontsource — loaded before style.css so @font-face rules are registered first
+import '@fontsource-variable/quicksand';
+import '@fontsource/share-tech-mono';
 import './style.css';
 import App from './App.vue';
 import i18n from './i18n';

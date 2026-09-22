@@ -1,62 +1,285 @@
 @import 'tailwindcss';
 
-/* Radial gradient texture */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image:
-    radial-gradient(circle at 50% 100%, transparent 20%, #103242 21%, #103242 34%, transparent 35%, transparent),
-    radial-gradient(circle at 50% 0%, transparent 20%, #103242 21%, #103242 34%, transparent 35%, transparent);
-  background-position: 0 0, -20px 0;
-  background-size: 40px 30px;
-  opacity: 0.05;
-  pointer-events: none;
-  z-index: 0;
+/* Fonts are self-hosted via Fontsource and imported in src/main.js (Vite resolves
+   their woff2 assets reliably; CSS @import from Tailwind 4 did not). */
+
+/* Design tokens — "Cálido Nocturno" */
+@theme {
+  --color-background: #161120;
+  --color-surface: #221b30;
+  --color-foreground: #f4f0fa;
+  --color-muted: #a79fb8;
+  --color-muted-foreground: #a79fb8;
+  --color-primary: #f4f0fa;
+  --color-accent: #fb923c;
+  --color-accent-strong: #f97316;
+  --color-soft-accent: #fed7aa;
+  --color-border: #3a2f4d;
+  --color-ring: #fb923c;
+
+  --font-sans: 'Quicksand Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-accent: 'Share Tech Mono', monospace;
+}
+
+/* Light theme — opt-in via `html.light` (set by pre-paint script in index.html).
+   Unlayered override beats @theme; dark tokens above remain the default. */
+html.light {
+  --color-background: #f4f4f4;
+  --color-surface: #ffffff;
+  --color-foreground: #241a2e;
+  --color-muted: #5e5568;
+  --color-soft-accent: #ffe8cc;
+  --color-border: #e8e0ef;
+  --color-accent: #c2410c;
+  --color-ring: #ea580c;
 }
 
 body {
-  background-color: #e0f9ff;
-  position: relative;
-  width: 100%;
+  background-color: var(--color-background);
+  /* Subtle warm radial glow at the top — no dot texture */
+  background-image: radial-gradient(
+    ellipse 80% 50% at 50% -10%,
+    rgba(249, 115, 22, 0.06),
+    transparent
+  );
+  background-repeat: no-repeat;
   min-height: 100vh;
-  color: #103242;
-}
-
-* {
-  font-family: 'Manrope', sans-serif;
+  color: var(--color-foreground);
+  font-family: 'Quicksand Variable', ui-sans-serif, system-ui, sans-serif;
   font-optical-sizing: auto;
-  font-style: normal;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
+.font-accent {
+  font-family: 'Share Tech Mono', monospace;
+}
 
-
+/* Text utilities */
 .text-primary {
-  color: #103242;
+  color: var(--color-foreground);
 }
 
+.text-accent {
+  color: var(--color-accent);
+}
+
+/* Buttons */
 .button-primary {
   display: inline-block;
   padding: 0.75rem 2rem;
   font-weight: 600;
-  color: white;
-  background: #103242;
-  border-radius: 0.5rem;
-  transition: background-color 200ms ease;
+  color: #161120;
+  background-image: linear-gradient(135deg, #fb923c, #f97316);
+  border-radius: 9999px;
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease;
 }
 
 .button-primary:hover {
-  background: #0a212d;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(249, 115, 22, 0.35);
 }
 
+.button-outline {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  color: var(--color-foreground);
+  border: 1px solid rgba(254, 215, 170, 0.4);
+  border-radius: 9999px;
+  transition:
+    color 200ms ease,
+    border-color 200ms ease;
+}
 
+.button-outline:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
 
+/* Chips — soft accent tags; consume optional per-chip vars (see .chip-c-*) */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+  white-space: nowrap;
+  border-radius: 9999px;
+  color: var(--chip-text, var(--color-foreground));
+  background-color: var(--chip-bg, rgba(254, 215, 170, 0.1));
+  border: 1px solid var(--chip-border, rgba(254, 215, 170, 0.2));
+  transition:
+    color 200ms ease,
+    border-color 200ms ease,
+    transform 200ms ease;
+}
+
+/* Monochrome chips (Technologies marquee) — ink-based, theme-aware by tokens.
+   Logos are black/white-only SVGs: inverted on dark, plain on light. */
+.chip-mono {
+  --chip-text: var(--color-foreground);
+  --chip-bg: color-mix(in srgb, var(--color-muted) 8%, transparent);
+  --chip-border: color-mix(in srgb, var(--color-muted) 30%, transparent);
+}
+
+.chip-mono img {
+  filter: invert(1);
+}
+
+html.light .chip-mono img {
+  filter: none;
+}
+
+/* Colored chips — per-tech identity; AA in both themes */
+.chip-c-orange {
+  --chip-text: #fb923c;
+  --chip-bg: rgba(251, 146, 60, 0.12);
+  --chip-border: rgba(251, 146, 60, 0.3);
+}
+
+.chip-c-blue {
+  --chip-text: #60a5fa;
+  --chip-bg: rgba(96, 165, 250, 0.12);
+  --chip-border: rgba(96, 165, 250, 0.3);
+}
+
+.chip-c-green {
+  --chip-text: #4ade80;
+  --chip-bg: rgba(74, 222, 128, 0.12);
+  --chip-border: rgba(74, 222, 128, 0.3);
+}
+
+.chip-c-purple {
+  --chip-text: #c084fc;
+  --chip-bg: rgba(192, 132, 252, 0.12);
+  --chip-border: rgba(192, 132, 252, 0.3);
+}
+
+.chip-c-pink {
+  --chip-text: #f472b6;
+  --chip-bg: rgba(244, 114, 182, 0.12);
+  --chip-border: rgba(244, 114, 182, 0.3);
+}
+
+.chip-c-cyan {
+  --chip-text: #22d3ee;
+  --chip-bg: rgba(34, 211, 238, 0.12);
+  --chip-border: rgba(34, 211, 238, 0.3);
+}
+
+html.light .chip-c-orange {
+  --chip-text: #c2410c;
+  --chip-bg: rgba(194, 65, 12, 0.08);
+  --chip-border: rgba(194, 65, 12, 0.25);
+}
+
+html.light .chip-c-blue {
+  --chip-text: #1d4ed8;
+  --chip-bg: rgba(29, 78, 216, 0.08);
+  --chip-border: rgba(29, 78, 216, 0.25);
+}
+
+html.light .chip-c-green {
+  --chip-text: #15803d;
+  --chip-bg: rgba(21, 128, 61, 0.08);
+  --chip-border: rgba(21, 128, 61, 0.25);
+}
+
+html.light .chip-c-purple {
+  --chip-text: #7e22ce;
+  --chip-bg: rgba(126, 34, 206, 0.08);
+  --chip-border: rgba(126, 34, 206, 0.25);
+}
+
+html.light .chip-c-pink {
+  --chip-text: #be185d;
+  --chip-bg: rgba(190, 24, 93, 0.08);
+  --chip-border: rgba(190, 24, 93, 0.25);
+}
+
+html.light .chip-c-cyan {
+  --chip-text: #0e7490;
+  --chip-bg: rgba(14, 116, 144, 0.08);
+  --chip-border: rgba(14, 116, 144, 0.25);
+}
+
+.chip:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+::selection {
+  background-color: #fb923c;
+  color: #161120;
+}
+
+/* Geometric section decorations (SectionDecor.vue) — thin strokes read from
+   muted/border tokens; dots reuse the chip dark/light shade pairs so shapes
+   stay visible in both themes. */
+:root {
+  --decor-stroke: #a79fb8;
+  --decor-dot-accent: #fb923c;
+  --decor-dot-blue: #60a5fa;
+  --decor-dot-green: #4ade80;
+  --decor-dot-pink: #f472b6;
+}
+
+html.light {
+  --decor-stroke: #5e5568;
+  --decor-dot-accent: #c2410c;
+  --decor-dot-blue: #1d4ed8;
+  --decor-dot-green: #15803d;
+  --decor-dot-pink: #be185d;
+}
+
+/* Hero blob scene (SectionDecor blob variant) — 6-step ramp from accent
+   orange blending into the page background. Decorative only (aria-hidden),
+   so no contrast requirement: just keep the ramp harmonious per theme. */
+:root {
+  --blob-ramp-1: #fb923c;
+  --blob-ramp-2: #f97316;
+  --blob-ramp-3: #9a3412;
+  --blob-ramp-4: #3a2f4d;
+  --blob-ramp-5: #221b30;
+  --blob-ramp-6: #161120;
+}
+
+html.light {
+  --blob-ramp-1: #c2410c;
+  --blob-ramp-2: #ea580c;
+  --blob-ramp-3: #fb923c;
+  --blob-ramp-4: #ffd9b0;
+  --blob-ramp-5: #faecdc;
+  --blob-ramp-6: #f4f4f4;
+}
+
+/* SectionDecor wrapper: gentle fade-in so decoration never pops over text */
+.section-decor--fade {
+  animation: decor-fade 0.8s ease-out forwards;
+  opacity: 0;
+  will-change: transform;
+}
+
+@keyframes decor-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Entrance animation — staggered via inline animation-delay */
 .animate-slide-up {
   animation: slide-up 0.6s ease-out forwards;
   opacity: 0;
 }
-
-
 
 @keyframes slide-up {
   0% {
@@ -69,6 +292,7 @@ body {
   }
 }
 
+/* Marquee / infinite scroll */
 @keyframes animate-infinite-scroll {
   from {
     transform: translateX(0);
@@ -80,4 +304,73 @@ body {
 
 .animate-infinite-scroll {
   animation: animate-infinite-scroll 25s linear infinite;
+}
+
+/* Blob scene morph — CSS `d` property morphing on the two outermost blob
+   paths (SectionDecor blob variant). Progressive enhancement: the paths keep
+   their original `d` attribute, so browsers without CSS `d` support (e.g.
+   Safari) simply render the static blob. Reduced-motion users also get the
+   static blob (animation only binds under no-preference). */
+@media (prefers-reduced-motion: no-preference) {
+  .blob-morph-a {
+    animation: blob-morph-a 14s ease-in-out infinite alternate;
+  }
+
+  .blob-morph-b {
+    animation: blob-morph-b 14s ease-in-out infinite alternate;
+    animation-delay: -7s;
+  }
+}
+
+@keyframes blob-morph-a {
+  from {
+    d: path(
+      'M0 388C-37.7 382.7 -75.4 377.5 -123.3 379.5C-171.1 381.5 -229.1 390.8 -270.2 371.9C-311.3 353 -335.5 306 -363.2 263.9C-391 221.8 -422.4 184.7 -435.6 141.5C-448.8 98.4 -443.9 49.2 -439 0L0 0Z'
+    );
+  }
+
+  to {
+    d: path(
+      'M0 388C-37.1 377 -74.3 371.8 -121.5 373.8C-173.7 375.8 -225.7 384.9 -274.3 366.3C-306.6 358.3 -330.5 310.6 -357.8 259.9C-396.9 218.5 -416.1 181.9 -442.1 139.4C-455.5 96.9 -450.6 49.9 -432.4 0L0 0Z'
+    );
+  }
+}
+
+@keyframes blob-morph-b {
+  from {
+    d: path(
+      'M0 -458C36.3 -423.7 72.6 -389.4 124.5 -383.3C176.5 -377.2 244 -399.4 270.2 -371.9C296.4 -344.5 281.2 -267.4 307.4 -223.4C333.6 -179.3 401.2 -168.3 420.4 -136.6C439.5 -104.9 410.3 -52.4 381 0L0 0Z'
+    );
+  }
+
+  to {
+    d: path(
+      'M0 -458C35.8 -417.3 73.7 -395.2 122.6 -389C179.1 -382.9 240.3 -405.4 274.3 -366.3C292 -349.7 277 -263.4 312 -226.8C328.6 -182 407.2 -170.8 414.1 -134.6C446.1 -103.3 404.1 -53.2 375.3 0L0 0Z'
+    );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body {
+    transition: none;
+  }
+
+  .animate-slide-up {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .animate-infinite-scroll {
+    animation: none;
+  }
+
+  .chip:hover {
+    transform: none;
+  }
+
+  .section-decor--fade {
+    animation: none;
+    opacity: 1;
+  }
 }

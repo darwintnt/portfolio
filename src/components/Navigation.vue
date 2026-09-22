@@ -1,15 +1,15 @@
 <template>
   <header
     :class="[
-      'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+      'fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300',
       isScrolled
-        ? 'bg-background/95 backdrop-blur-lg shadow-sm'
-        : 'bg-transparent',
+        ? 'bg-background/85 backdrop-blur-md border-border'
+        : 'bg-transparent border-transparent',
     ]"
   >
     <nav class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
-      <a href="#" class="text-2xl font-bold tracking-tight text-foreground">
-        DG
+      <a href="/" class="font-accent text-3xl text-accent leading-none">
+        DG 
       </a>
 
       <!-- Desktop Navigation -->
@@ -18,13 +18,71 @@
           v-for="link in navLinks"
           :key="link.name"
           :href="link.href"
-          class="text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-200 relative group"
+          class="text-sm font-medium transition-colors duration-200 relative group"
+          :class="
+            activeSection === link.href.slice(1)
+              ? 'text-accent'
+              : 'text-muted hover:text-primary'
+          "
         >
           {{ link.name }}
           <span
-            class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"
+            class="absolute -bottom-1 left-0 h-0.5 bg-accent transition-all duration-300"
+            :class="
+              activeSection === link.href.slice(1)
+                ? 'w-full'
+                : 'w-0 group-hover:w-full'
+            "
           ></span>
         </a>
+
+        <!-- Theme Toggle -->
+        <button
+          type="button"
+          class="p-2.5 rounded-full border border-border text-muted hover:border-accent hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 transition-colors duration-300"
+          :aria-label="t('nav.theme')"
+          :title="t('nav.theme')"
+          @click="toggleTheme"
+        >
+          <svg
+            v-if="!isLight"
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-sun"
+          >
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2" />
+            <path d="M12 20v2" />
+            <path d="m4.93 4.93 1.41 1.41" />
+            <path d="m17.66 17.66 1.41 1.41" />
+            <path d="M2 12h2" />
+            <path d="M20 12h2" />
+            <path d="m6.34 17.66-1.41 1.41" />
+            <path d="m19.07 4.93-1.41 1.41" />
+          </svg>
+          <svg
+            v-else
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-moon"
+          >
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+          </svg>
+        </button>
 
         <!-- Language Switcher -->
         <LanguageSwitcher />
@@ -32,7 +90,7 @@
 
       <!-- Mobile Menu Button -->
       <button
-        class="md:hidden text-foreground hover:text-primary transition-colors"
+        class="md:hidden text-primary hover:text-accent transition-colors"
         @click="toggleMobileMenu"
         aria-label="Toggle menu"
       >
@@ -75,21 +133,74 @@
     <!-- Mobile Menu -->
     <div
       v-if="isMobileMenuOpen"
-      class="md:hidden bg-background/95 backdrop-blur-lg shadow-sm"
+      class="md:hidden bg-surface/95 backdrop-blur-lg border-b border-border"
     >
       <div class="px-6 py-6 space-y-4">
         <a
           v-for="link in navLinks"
           :key="link.name"
           :href="link.href"
-          class="block text-base font-medium text-muted-foreground hover:text-primary transition-colors py-2"
+          class="block text-base font-medium transition-colors duration-200 py-2"
+          :class="
+            activeSection === link.href.slice(1)
+              ? 'text-accent'
+              : 'text-muted hover:text-primary'
+          "
           @click="closeMobileMenu"
         >
           {{ link.name }}
         </a>
 
-        <!-- Language Switcher Mobile -->
-        <div class="pt-4">
+        <!-- Theme + Language (mobile) -->
+        <div class="pt-4 flex items-center gap-3">
+          <button
+            type="button"
+            class="p-2.5 rounded-full border border-border text-muted hover:border-accent hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 transition-colors duration-300"
+            :aria-label="t('nav.theme')"
+            :title="t('nav.theme')"
+            @click="toggleTheme"
+          >
+            <svg
+              v-if="!isLight"
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-sun"
+            >
+              <circle cx="12" cy="12" r="4" />
+              <path d="M12 2v2" />
+              <path d="M12 20v2" />
+              <path d="m4.93 4.93 1.41 1.41" />
+              <path d="m17.66 17.66 1.41 1.41" />
+              <path d="M2 12h2" />
+              <path d="M20 12h2" />
+              <path d="m6.34 17.66-1.41 1.41" />
+              <path d="m19.07 4.93-1.41 1.41" />
+            </svg>
+            <svg
+              v-else
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-moon"
+            >
+              <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+            </svg>
+          </button>
+
+          <!-- Language Switcher Mobile -->
           <LanguageSwitcher />
         </div>
       </div>
@@ -107,9 +218,33 @@ interface NavLink {
   href: string;
 }
 
+const SECTION_IDS = ['about', 'technologies', 'portfolio', 'contact'] as const;
+
 const { t } = useI18n();
 const isScrolled = ref<boolean>(false);
 const isMobileMenuOpen = ref<boolean>(false);
+const activeSection = ref<string | null>(null);
+
+// Theme toggle: source of truth = 'light' class on <html> (set by pre-paint script)
+const isLight = ref<boolean>(document.documentElement.classList.contains('light'));
+
+const applyTheme = (light: boolean): void => {
+  document.documentElement.classList.toggle('light', light);
+  isLight.value = light;
+  try {
+    localStorage.setItem('theme', light ? 'light' : 'dark');
+  } catch {
+    /* localStorage unavailable */
+  }
+  const themeColor = document.querySelector('meta[name="theme-color"]');
+  if (themeColor) {
+    themeColor.setAttribute('content', light ? '#F4F4F4' : '#1a202c');
+  }
+};
+
+const toggleTheme = (): void => {
+  applyTheme(!isLight.value);
+};
 
 const navLinks = computed<NavLink[]>(() => [
   { name: t('nav.about'), href: '#about' },
@@ -119,7 +254,27 @@ const navLinks = computed<NavLink[]>(() => [
 ]);
 
 const handleScroll = (): void => {
-  isScrolled.value = window.scrollY > 50;
+  isScrolled.value = window.scrollY > 24;
+
+  // Scroll-spy: highlight the last section whose top passed the viewport probe
+  const probe = window.scrollY + window.innerHeight / 3;
+  let current: string | null = null;
+  for (const id of SECTION_IDS) {
+    const section = document.getElementById(id);
+    if (section && section.offsetTop <= probe) {
+      current = id;
+    }
+  }
+
+  // At the bottom of the page, always highlight the last section
+  const atBottom =
+    window.innerHeight + window.scrollY >=
+    document.documentElement.scrollHeight - 4;
+  if (atBottom) {
+    current = SECTION_IDS[SECTION_IDS.length - 1];
+  }
+
+  activeSection.value = current;
 };
 
 const toggleMobileMenu = (): void => {
@@ -131,7 +286,9 @@ const closeMobileMenu = (): void => {
 };
 
 onMounted((): void => {
-  window.addEventListener('scroll', handleScroll);
+  isLight.value = document.documentElement.classList.contains('light');
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  handleScroll();
 });
 
 onUnmounted((): void => {

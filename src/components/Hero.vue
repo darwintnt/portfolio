@@ -1,72 +1,74 @@
 <template>
   <section
-    class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20"
+    class="min-h-screen flex items-center relative overflow-hidden pt-24 pb-16"
   >
+    <!-- Blob scene decor: drifts down with scroll, below text, above bg -->
+    <SectionDecor ref="decorComp" variant="blob" class="z-[1]" />
+
     <!-- Gradient overlay -->
     <div
       class="absolute inset-0 bg-linear-to-b from-transparent via-transparent to-background/50 z-0"
     ></div>
 
-    <!-- Decorative elements -->
-
     <div class="container mx-auto px-6 relative z-10">
-      <div class="max-w-5xl mx-auto text-center">
-        <h1
-          class="text-6xl md:text-8xl font-bold mb-6 animate-slide-up leading-tight"
+      <!-- Sober typographic hero: typography as protagonist -->
+      <div class="max-w-6xl mx-auto text-left">
+        <p
+          class="font-accent text-sm md:text-md text-accent inline-flex items-center gap-2 bg-soft-accent/15 border border-soft-accent/20 rounded-full px-5 py-1.5 mb-8 animate-slide-up"
         >
-          <span class="text-primary">Darwin Gómez</span>
+          {{ t('hero.openToWork') }}
+        </p>
+
+        <h1
+          class="text-5xl md:text-7xl lg:text-8xl font-semibold text-primary mb-6 animate-slide-up leading-[1.05] tracking-tight"
+        >
+          Darwin Gómez
         </h1>
 
         <h2
-          class="text-3xl md:text-5xl font-semibold text-muted-foreground mb-8 animate-slide-up"
-          :style="{ animationDelay: '0.2s' }"
+          class="text-2xl md:text-4xl font-semibold text-muted mb-4 animate-slide-up"
+          :style="{ animationDelay: '0.15s' }"
         >
-          {{ t('hero.subtitle') }} 🇨🇴
+          {{ t('hero.subtitle') }}
         </h2>
 
         <p
-          class="text-primary font-bold py-4 text-lg animate-slide-up"
+          class="text-xl md:text-2xl text-muted max-w-2xl mb-10 leading-relaxed animate-slide-up"
           :style="{ animationDelay: '0.3s' }"
-        >
-          {{ t('hero.openToWork') }} {{ t('hero.openToWorkTag') }}
-        </p>
-
-        <p
-          class="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed animate-slide-up"
-          :style="{ animationDelay: '0.4s' }"
         >
           {{ t('hero.description') }}
         </p>
 
+        <!-- CTAs: solid orange primary + outline secondary -->
         <div
-          class="flex flex-wrap items-center justify-center gap-6 mb-16 animate-slide-up"
-          :style="{ animationDelay: '0.6s' }"
+          class="flex flex-wrap items-center gap-5 mb-14 animate-slide-up"
+          :style="{ animationDelay: '0.45s' }"
         >
-          <button class="button-primary text-lg">
-            <a href="#portfolio">{{ t('hero.btnPortfolio') }}</a>
-          </button>
-          <button class="button-primary text-lg">
-            <a href="#contact">{{ t('hero.btnContact') }}</a>
-          </button>
+          <a href="#portfolio" class="button-primary text-lg">
+            {{ t('hero.btnPortfolio') }}
+          </a>
+          <a href="#contact" class="button-outline text-lg">
+            {{ t('hero.btnContact') }}
+          </a>
         </div>
 
         <!-- Social Links -->
         <div
-          class="flex items-center justify-center gap-8 animate-slide-up"
-          :style="{ animationDelay: '0.8s' }"
+          class="flex items-center gap-7 animate-slide-up"
+          :style="{ animationDelay: '0.6s' }"
         >
           <a
             href="https://github.com/darwintnt"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Darwin's Github account"
-            class="text-muted-foreground hover:text-primary transition-all duration-300 transform hover:scale-110"
+            class="text-muted hover:text-accent transition-all duration-300 transform hover:scale-110"
           >
             <svg
               role="img"
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
-              width="32"
+              width="30"
               fill="currentColor"
             >
               <path
@@ -80,13 +82,13 @@
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Darwin's Linkedin account"
-            class="text-muted-foreground hover:text-primary transition-all duration-300 transform hover:scale-110"
+            class="text-muted hover:text-accent transition-all duration-300 transform hover:scale-110"
           >
             <svg
               role="img"
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
-              width="32"
+              width="30"
               fill="currentColor"
             >
               <path
@@ -98,7 +100,7 @@
           <a
             href="mailto:darwintnt@hotmail.com"
             aria-label="Darwin's email"
-            class="text-muted-foreground hover:text-primary transition-all duration-300 transform hover:scale-110"
+            class="text-muted hover:text-accent transition-all duration-300 transform hover:scale-110"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -106,7 +108,7 @@
               viewBox="0 0 24 24"
               stroke-width="2"
               stroke="currentColor"
-              width="32"
+              width="30"
             >
               <path
                 stroke-linecap="round"
@@ -122,7 +124,15 @@
 </template>
 
 <script setup>
+import { computed, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
+import SectionDecor from '@/components/SectionDecor.vue';
+import { useDecorTravel } from '@/composables/useDecorTravel';
 
 const { t } = useI18n();
+
+// Decor "travels" toward About as the user scrolls (transform-only drift)
+const decorComp = ref(null);
+const driftEl = computed(() => decorComp.value?.driftEl ?? null);
+useDecorTravel({ driftEl, mode: 'hero' });
 </script>
