@@ -8,8 +8,9 @@
     aria-hidden="true"
   >
     <!-- Blob scene: Haikei geometry, recolorized. Gradient stops and path fills
-         both use --blob-ramp-1..6 tokens. Gradient ids are namespaced
-         blob-grad-* to avoid document-wide id collisions. -->
+         both use --blob-ramp-1..6 tokens; the outermost path of each corner
+         group carries a blob-morph-a/b hook for the CSS d morphing (style.css).
+         Gradient ids are namespaced blob-grad-* to avoid id collisions. -->
     <svg
       v-if="variant === 'blob'"
       class="h-full w-full"
@@ -127,6 +128,7 @@
       </defs>
       <g transform="translate(900, 0)">
         <path
+          class="blob-morph-a"
           d="M0 388C-37.7 382.7 -75.4 377.5 -123.3 379.5C-171.1 381.5 -229.1 390.8 -270.2 371.9C-311.3 353 -335.5 306 -363.2 263.9C-391 221.8 -422.4 184.7 -435.6 141.5C-448.8 98.4 -443.9 49.2 -439 0L0 0Z"
           fill="var(--blob-ramp-6)"
         ></path>
@@ -153,6 +155,7 @@
       </g>
       <g transform="translate(0, 600)">
         <path
+          class="blob-morph-b"
           d="M0 -458C36.3 -423.7 72.6 -389.4 124.5 -383.3C176.5 -377.2 244 -399.4 270.2 -371.9C296.4 -344.5 281.2 -267.4 307.4 -223.4C333.6 -179.3 401.2 -168.3 420.4 -136.6C439.5 -104.9 410.3 -52.4 381 0L0 0Z"
           fill="var(--blob-ramp-6)"
         ></path>

@@ -290,6 +290,50 @@ html.light {
   animation: animate-infinite-scroll 25s linear infinite;
 }
 
+/* Blob scene morph — CSS `d` property morphing on the two outermost blob
+   paths (SectionDecor blob variant). Progressive enhancement: the paths keep
+   their original `d` attribute, so browsers without CSS `d` support (e.g.
+   Safari) simply render the static blob. Reduced-motion users also get the
+   static blob (animation only binds under no-preference). */
+@media (prefers-reduced-motion: no-preference) {
+  .blob-morph-a {
+    animation: blob-morph-a 14s ease-in-out infinite alternate;
+  }
+
+  .blob-morph-b {
+    animation: blob-morph-b 14s ease-in-out infinite alternate;
+    animation-delay: -7s;
+  }
+}
+
+@keyframes blob-morph-a {
+  from {
+    d: path(
+      'M0 388C-37.7 382.7 -75.4 377.5 -123.3 379.5C-171.1 381.5 -229.1 390.8 -270.2 371.9C-311.3 353 -335.5 306 -363.2 263.9C-391 221.8 -422.4 184.7 -435.6 141.5C-448.8 98.4 -443.9 49.2 -439 0L0 0Z'
+    );
+  }
+
+  to {
+    d: path(
+      'M0 388C-37.1 377 -74.3 371.8 -121.5 373.8C-173.7 375.8 -225.7 384.9 -274.3 366.3C-306.6 358.3 -330.5 310.6 -357.8 259.9C-396.9 218.5 -416.1 181.9 -442.1 139.4C-455.5 96.9 -450.6 49.9 -432.4 0L0 0Z'
+    );
+  }
+}
+
+@keyframes blob-morph-b {
+  from {
+    d: path(
+      'M0 -458C36.3 -423.7 72.6 -389.4 124.5 -383.3C176.5 -377.2 244 -399.4 270.2 -371.9C296.4 -344.5 281.2 -267.4 307.4 -223.4C333.6 -179.3 401.2 -168.3 420.4 -136.6C439.5 -104.9 410.3 -52.4 381 0L0 0Z'
+    );
+  }
+
+  to {
+    d: path(
+      'M0 -458C35.8 -417.3 73.7 -395.2 122.6 -389C179.1 -382.9 240.3 -405.4 274.3 -366.3C292 -349.7 277 -263.4 312 -226.8C328.6 -182 407.2 -170.8 414.1 -134.6C446.1 -103.3 404.1 -53.2 375.3 0L0 0Z'
+    );
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   body {
     transition: none;
