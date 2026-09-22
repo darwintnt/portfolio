@@ -16,7 +16,7 @@
           </p>
 
           <h1
-            class="text-5xl md:text-7xl font-extrabold text-primary mb-6 animate-slide-up leading-[1.05] tracking-tight"
+            class="text-5xl md:text-7xl font-bold text-primary mb-6 animate-slide-up leading-[1.05] tracking-tight"
           >
             Darwin Gómez
           </h1>

@@ -15,7 +15,7 @@
             {{ t('about.greeting') }}
           </p>
           <h2
-            class="text-4xl md:text-5xl font-extrabold text-primary tracking-tight"
+            class="text-4xl md:text-5xl font-bold text-primary tracking-tight"
           >
             {{ t('about.title').split(' ')[0] }}
             <span class="text-accent">{{ t('about.titleHighlight') }}</span>

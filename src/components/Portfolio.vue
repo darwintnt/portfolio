@@ -9,7 +9,7 @@
           <p class="text-accent uppercase tracking-widest text-xs font-semibold mb-3">
             {{ t('nav.portfolio') }}
           </p>
-          <h2 class="text-4xl md:text-5xl font-extrabold text-primary tracking-tight">
+          <h2 class="text-4xl md:text-5xl font-bold text-primary tracking-tight">
             {{ t('portfolio.title').split(' ')[0] }}
             <span class="text-accent">{{ t('portfolio.titleFeatured') }}</span>
           </h2>
@@ -117,7 +117,7 @@
         </div>
 
         <!-- Other Projects -->
-        <h3 class="text-3xl md:text-4xl font-extrabold text-primary tracking-tight text-center mb-16">
+        <h3 class="text-3xl md:text-4xl font-bold text-primary tracking-tight text-center mb-16">
           {{ t('portfolio.otherProjects') }}
           <span class="text-accent">{{
             t('portfolio.otherProjectsHighlight')

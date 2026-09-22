@@ -22,7 +22,7 @@
           <p class="text-accent uppercase tracking-widest text-xs font-semibold mb-3">
             {{ t('nav.contact') }}
           </p>
-          <h2 class="text-3xl md:text-4xl font-extrabold text-primary tracking-tight mb-6">
+          <h2 class="text-3xl md:text-4xl font-bold text-primary tracking-tight mb-6">
             {{ t('contact.getInTouch').split(' ').slice(0, 2).join(' ') }}
             <span class="text-accent">{{ t('contact.titleHighlight') }}</span>
           </h2>

@@ -1,5 +1,7 @@
 @import 'tailwindcss';
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300..800&family=Caveat:wght@600&display=swap');
+
+/* Fonts are self-hosted via Fontsource and imported in src/main.js (Vite resolves
+   their woff2 assets reliably; CSS @import from Tailwind 4 did not). */
 
 /* Design tokens — "Cálido Nocturno" */
 @theme {
@@ -15,8 +17,8 @@
   --color-border: #3a2f4d;
   --color-ring: #fb923c;
 
-  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
-  --font-accent: 'Caveat', cursive;
+  --font-sans: 'Quicksand Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-accent: 'Caveat Variable', cursive;
 }
 
 /* Light theme — opt-in via `html.light` (set by pre-paint script in index.html).
@@ -43,7 +45,7 @@ body {
   background-repeat: no-repeat;
   min-height: 100vh;
   color: var(--color-foreground);
-  font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  font-family: 'Quicksand Variable', ui-sans-serif, system-ui, sans-serif;
   font-optical-sizing: auto;
   transition:
     background-color 0.3s ease,
@@ -51,7 +53,7 @@ body {
 }
 
 .font-accent {
-  font-family: 'Caveat', cursive;
+  font-family: 'Caveat Variable', cursive;
 }
 
 /* Text utilities */
