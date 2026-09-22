@@ -123,7 +123,7 @@
             <div class="flex flex-col md:flex-row gap-4 my-4 items-center">
               <a
                 :class="
-                  locale === 'es'
+                  locale === 'en'
                     ? 'button-primary w-full md:w-60'
                     : 'button-outline w-full md:w-60'
                 "
@@ -154,8 +154,8 @@
               <a
                 :class="
                   locale === 'es'
-                    ? 'button-outline w-full md:w-60'
-                    : 'button-primary w-full md:w-60'
+                    ? 'button-primary w-full md:w-60'
+                    : 'button-outline w-full md:w-60'
                 "
                 href="https://drive.google.com/file/d/1VqqjekoOJlcvfjVfN0jQc1X6xDFza-wU/view?usp=drive_link"
                 target="_blank"
