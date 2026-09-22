@@ -222,6 +222,27 @@ html.light {
   --decor-dot-pink: #be185d;
 }
 
+/* Hero blob scene (SectionDecor blob variant) — 6-step ramp from accent
+   orange blending into the page background. Decorative only (aria-hidden),
+   so no contrast requirement: just keep the ramp harmonious per theme. */
+:root {
+  --blob-ramp-1: #fb923c;
+  --blob-ramp-2: #f97316;
+  --blob-ramp-3: #9a3412;
+  --blob-ramp-4: #3a2f4d;
+  --blob-ramp-5: #221b30;
+  --blob-ramp-6: #161120;
+}
+
+html.light {
+  --blob-ramp-1: #c2410c;
+  --blob-ramp-2: #ea580c;
+  --blob-ramp-3: #fb923c;
+  --blob-ramp-4: #ffd9b0;
+  --blob-ramp-5: #faecdc;
+  --blob-ramp-6: #f4f4f4;
+}
+
 /* SectionDecor wrapper: gentle fade-in so decoration never pops over text */
 .section-decor--fade {
   animation: decor-fade 0.8s ease-out forwards;

@@ -2,8 +2,8 @@
   <section
     class="min-h-screen flex items-center relative overflow-hidden pt-24 pb-16"
   >
-    <!-- Geometric decor: drifts down with scroll, below text, above bg -->
-    <SectionDecor ref="decorComp" variant="hero" class="z-[1]" />
+    <!-- Blob scene decor: drifts down with scroll, below text, above bg -->
+    <SectionDecor ref="decorComp" variant="blob" class="z-[1]" />
 
     <!-- Gradient overlay -->
     <div
@@ -131,9 +131,8 @@ import { useDecorTravel } from '@/composables/useDecorTravel';
 
 const { t } = useI18n();
 
-// Decor "travels" toward About as the user scrolls (drift + ring rotation)
+// Decor "travels" toward About as the user scrolls (transform-only drift)
 const decorComp = ref(null);
 const driftEl = computed(() => decorComp.value?.driftEl ?? null);
-const ringEl = computed(() => decorComp.value?.ringEl ?? null);
-useDecorTravel({ driftEl, ringEl, mode: 'hero' });
+useDecorTravel({ driftEl, mode: 'hero' });
 </script>
