@@ -34,6 +34,34 @@ html.light {
   --color-ring: #ea580c;
 }
 
+/* Dark color band — JetBrains-style alternating section.
+   Pins the dark-theme palette so the band reads dark in BOTH page themes. */
+.band-dark {
+  --color-foreground: #f4f0fa;
+  --color-primary: #f4f0fa;
+  --color-muted: #a79fb8;
+  --color-muted-foreground: #a79fb8;
+  --color-border: #3a2f4d;
+  --color-surface: #221b30;
+  --color-soft-accent: #fed7aa;
+  background-color: #161120;
+}
+
+/* In dark theme the page bg is already dark — lift the band one tone for contrast */
+html:not(.light) .band-dark {
+  background-color: #221b30;
+}
+
+/* Warm accent band — light soft-accent in light theme, warm tint in dark */
+.band-accent {
+  background-color: rgba(254, 215, 170, 0.08);
+}
+
+html.light .band-accent {
+  background-color: var(--color-soft-accent);
+  --color-accent: #9a3412; /* deepen accent for AA on #FFE8CC (4.7:1) */
+}
+
 body {
   background-color: var(--color-background);
   /* Subtle warm radial glow at the top — no dot texture */
@@ -272,34 +300,6 @@ html.light .band-dark .chip-c-cyan {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  /* Dark color band — JetBrains-style alternating section.
-   Pins the dark-theme palette so the band reads dark in BOTH page themes. */
-  .band-dark {
-    --color-foreground: #f4f0fa;
-    --color-primary: #f4f0fa;
-    --color-muted: #a79fb8;
-    --color-muted-foreground: #a79fb8;
-    --color-border: #3a2f4d;
-    --color-surface: #221b30;
-    --color-soft-accent: #fed7aa;
-    background-color: #161120;
-  }
-
-  /* In dark theme the page bg is already dark — lift the band one tone for contrast */
-  html:not(.light) .band-dark {
-    background-color: #221b30;
-  }
-
-  /* Warm accent band — light soft-accent in light theme, warm tint in dark */
-  .band-accent {
-    background-color: rgba(254, 215, 170, 0.08);
-  }
-
-  html.light .band-accent {
-    background-color: var(--color-soft-accent);
-    --color-accent: #9a3412; /* deepen accent for AA on #FFE8CC (4.7:1) */
-  }
-
   body {
     transition: none;
   }
