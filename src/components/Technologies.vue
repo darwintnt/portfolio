@@ -31,17 +31,17 @@
             class="w-full inline-flex flex-nowrap overflow-hidden [mask-image:linear-gradient(to_right,transparent_0,black_128px,black_calc(100%-128px),transparent_100%)]"
           >
             <ul
-              class="flex items-center justify-center md:justify-start [&_li]:mx-4 [&_img]:max-w-none animate-infinite-scroll"
+              class="flex items-center justify-center md:justify-start [&_li]:mx-4 [&_img]:max-w-none animate-infinite-scroll pointer-events-none"
             >
               <template v-for="logo in logos" :key="logo.alt">
                 <li>
-                  <div class="chip" :class="chipColorClass(logo.alt)">
+                  <div class="chip chip-mono">
                     <img
                       :src="logo.src"
                       :alt="logo.alt"
                       width="24"
                       height="24"
-                      class="h-6 w-6 invert"
+                      class="h-6 w-6"
                     />
                     <span class="text-sm font-medium">{{ logo.alt }}</span>
                   </div>
@@ -49,18 +49,18 @@
               </template>
             </ul>
             <ul
-              class="flex items-center justify-center md:justify-start [&_li]:mx-4 [&_img]:max-w-none animate-infinite-scroll"
+              class="flex items-center justify-center md:justify-start [&_li]:mx-4 [&_img]:max-w-none animate-infinite-scroll pointer-events-none"
               aria-hidden="true"
             >
               <template v-for="logo in logos" :key="logo.alt">
                 <li>
-                  <div class="chip" :class="chipColorClass(logo.alt)">
+                  <div class="chip chip-mono">
                     <img
                       :src="logo.src"
                       :alt="logo.alt"
                       width="24"
                       height="24"
-                      class="h-6 w-6 invert"
+                      class="h-6 w-6"
                     />
                     <span class="text-sm font-medium">{{ logo.alt }}</span>
                   </div>
@@ -75,8 +75,6 @@
 </template>
 <script setup>
 import { useI18n } from 'vue-i18n';
-
-import { chipColorClass } from '@/utils/chipColor';
 
 import Laravel from '@/assets/logos/laravel.svg?url';
 import PHP from '@/assets/logos/php.svg?url';
@@ -140,9 +138,5 @@ const logos = [
 
 .animate-infinite-scroll {
   animation: infinite-scroll 50s linear infinite;
-}
-
-.animate-infinite-scroll:hover {
-  animation-play-state: paused;
 }
 </style>

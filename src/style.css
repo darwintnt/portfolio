@@ -119,6 +119,22 @@ body {
     transform 200ms ease;
 }
 
+/* Monochrome chips (Technologies marquee) — ink-based, theme-aware by tokens.
+   Logos are black/white-only SVGs: inverted on dark, plain on light. */
+.chip-mono {
+  --chip-text: var(--color-foreground);
+  --chip-bg: color-mix(in srgb, var(--color-muted) 8%, transparent);
+  --chip-border: color-mix(in srgb, var(--color-muted) 30%, transparent);
+}
+
+.chip-mono img {
+  filter: invert(1);
+}
+
+html.light .chip-mono img {
+  filter: none;
+}
+
 /* Colored chips — per-tech identity; AA in both themes */
 .chip-c-orange {
   --chip-text: #fb923c;
