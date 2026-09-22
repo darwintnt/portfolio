@@ -1,60 +1,65 @@
 <template>
   <section id="technologies" class="py-32 relative overflow-hidden">
-    <!-- Background decorative element -->
-    
-
     <div class="container mx-auto px-6 relative">
       <div class="max-w-6xl mx-auto">
-        <h3 class="text-4xl md:text-5xl font-bold mb-16 text-center">
-          <span class="text-primary">{{ t('technologies.title') }}</span>
-        </h3>
+        <!-- Section heading: overline + big heading -->
+        <div class="text-center mb-16">
+          <p
+            class="text-accent uppercase tracking-widest text-xs font-semibold mb-3"
+          >
+            {{ t('about.technologies') }}
+          </p>
+          <h2
+            class="text-4xl md:text-5xl font-extrabold text-primary tracking-tight"
+          >
+            {{ t('technologies.title') }}
+          </h2>
+        </div>
 
         <div class="mb-12 text-center max-w-3xl mx-auto">
-          <p class="text-lg md:text-xl text-muted-foreground">
+          <p class="text-lg md:text-xl text-muted">
             {{ t('technologies.description') }}
           </p>
         </div>
 
-        <!-- Logo carousel -->
+        <!-- Chip marquee -->
         <div class="relative">
           <div
             class="w-full inline-flex flex-nowrap overflow-hidden [mask-image:linear-gradient(to_right,transparent_0,black_128px,black_calc(100%-128px),transparent_100%)]"
           >
             <ul
-              class="flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none animate-infinite-scroll"
+              class="flex items-center justify-center md:justify-start [&_li]:mx-4 [&_img]:max-w-none animate-infinite-scroll"
             >
-              <template v-for="logo in logos">
-                <li class="group">
-                  <div
-                    class="p-4 rounded-xl bg-white transition-all duration-300"
-                  >
+              <template v-for="logo in logos" :key="logo.alt">
+                <li>
+                  <div class="chip">
                     <img
                       :src="logo.src"
                       :alt="logo.alt"
-                      width="60"
-                      height="60"
-                      class="transition-transform"
+                      width="24"
+                      height="24"
+                      class="h-6 w-6 invert"
                     />
+                    <span class="text-sm font-medium">{{ logo.alt }}</span>
                   </div>
                 </li>
               </template>
             </ul>
             <ul
-              class="flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none animate-infinite-scroll"
+              class="flex items-center justify-center md:justify-start [&_li]:mx-4 [&_img]:max-w-none animate-infinite-scroll"
               aria-hidden="true"
             >
-              <template v-for="logo in logos">
-                <li class="group">
-                  <div
-                    class="p-4 rounded-xl bg-white transition-all duration-300"
-                  >
+              <template v-for="logo in logos" :key="logo.alt">
+                <li>
+                  <div class="chip">
                     <img
                       :src="logo.src"
                       :alt="logo.alt"
-                      width="60"
-                      height="60"
-                      class="transition-transform"
+                      width="24"
+                      height="24"
+                      class="h-6 w-6 invert"
                     />
+                    <span class="text-sm font-medium">{{ logo.alt }}</span>
                   </div>
                 </li>
               </template>

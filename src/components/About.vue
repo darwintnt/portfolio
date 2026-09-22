@@ -2,21 +2,31 @@
   <section id="about" class="py-32 relative">
     <!-- Decorative background -->
     <div
-      class="absolute inset-0 bg-gradient-to-b from-transparent via-card/20 to-transparent"
+      class="absolute inset-0 bg-linear-to-b from-transparent via-surface/50 to-transparent"
     ></div>
 
     <div class="container mx-auto px-6 relative">
       <div class="max-w-6xl mx-auto">
-        <h2 class="text-4xl md:text-5xl font-bold mb-16 text-center">
-          {{ t('about.title').split(' ')[0] }}
-          <span class="text-[#103242]">{{ t('about.titleHighlight') }}</span>
-        </h2>
+        <!-- Section heading: overline + big heading -->
+        <div class="text-center mb-16">
+          <p
+            class="text-accent uppercase tracking-widest text-xs font-semibold mb-3"
+          >
+            {{ t('about.greeting') }}
+          </p>
+          <h2
+            class="text-4xl md:text-5xl font-extrabold text-primary tracking-tight"
+          >
+            {{ t('about.title').split(' ')[0] }}
+            <span class="text-accent">{{ t('about.titleHighlight') }}</span>
+          </h2>
+        </div>
 
         <div class="grid md:grid-cols-5 gap-16 items-center">
           <div class="md:col-span-3 space-y-6">
-            <p class="text-lg md:text-xl text-muted-foreground leading-relaxed">
+            <p class="text-lg md:text-xl text-muted leading-relaxed">
               {{ t('about.description') }}
-              <span class="text-[#103242] font-bold">
+              <span class="text-accent font-bold">
                 <a
                   href="https://www.insoftar.com/"
                   target="_blank"
@@ -30,14 +40,21 @@
             </p>
           </div>
 
-          <div class="md:col-span-2 relative group">
-            <div class="relative">
-              <div class="relative bg-[#103242] rounded-2xl overflow-hidden">
+          <div class="md:col-span-2">
+            <div class="relative max-w-sm mx-auto">
+              <!-- Warm glow frame (same treatment as Hero) -->
+              <div
+                class="absolute -inset-4 rounded-[2rem] bg-linear-to-br from-accent/40 via-accent-strong/20 to-transparent blur-2xl opacity-70"
+                aria-hidden="true"
+              ></div>
+              <div
+                class="relative rounded-[2rem] overflow-hidden border border-soft-accent/20 bg-surface"
+              >
                 <div class="aspect-square flex items-center justify-center">
                   <img
                     src="@/assets/hero2.webp"
                     :alt="t('about.greeting')"
-                    class="w-full h-full object-cover object-top rounded-2xl"
+                    class="w-full h-full object-cover object-top"
                     width="600"
                     height="600"
                     loading="lazy"

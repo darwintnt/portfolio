@@ -1,10 +1,5 @@
 <template>
-  <footer class="py-12 relative">
-    <!-- Background gradient -->
-    <div
-      class="absolute inset-0 bg-gradient-to-t from-card/20 to-transparent"
-    ></div>
-
+  <footer class="border-t border-border bg-surface/40 py-12 relative">
     <div class="container mx-auto px-6 relative">
       <div class="flex flex-col md:flex-row items-center justify-between gap-6">
         <div class="flex items-center gap-8">
@@ -13,7 +8,7 @@
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Darwin's Github account"
-            class="text-muted-foreground hover:text-primary transition-all duration-300 transform hover:scale-110"
+            class="text-muted hover:text-accent transition-all duration-300 transform hover:scale-110"
           >
             <svg
               role="img"
@@ -33,7 +28,7 @@
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Darwin's Linkedin account"
-            class="text-muted-foreground hover:text-primary transition-all duration-300 transform hover:scale-110"
+            class="text-muted hover:text-accent transition-all duration-300 transform hover:scale-110"
           >
             <svg
               role="img"
@@ -51,7 +46,7 @@
           <a
             href="mailto:darwintnt@hotmail.com"
             aria-label="Darwin's email"
-            class="text-muted-foreground hover:text-primary transition-all duration-300 transform hover:scale-110"
+            class="text-muted hover:text-accent transition-all duration-300 transform hover:scale-110"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -70,10 +65,15 @@
           </a>
         </div>
 
-        <p class="text-muted-foreground text-sm">
-          © {{ date }} {{ t('footer.designedBy') }}
-          <span class="text-primary font-semibold">DarwinTnT</span>
-        </p>
+        <div class="flex flex-col items-center md:items-end gap-1">
+          <span class="font-accent text-3xl text-accent leading-none">
+            {{ t('hero.title') }} 🇨🇴
+          </span>
+          <p class="text-muted text-sm">
+            © {{ date }} {{ t('footer.designedBy') }}
+            <span class="text-primary font-semibold">DarwinTnT</span>
+          </p>
+        </div>
       </div>
     </div>
   </footer>
@@ -85,4 +85,3 @@ import { useI18n } from 'vue-i18n';
 const { t } = useI18n();
 const date = new Date().getFullYear();
 </script>
-<style lang="css"></style>

@@ -1,14 +1,14 @@
 <template>
   <header
     :class="[
-      'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+      'fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300',
       isScrolled
-        ? 'bg-background/95 backdrop-blur-lg shadow-sm'
-        : 'bg-transparent',
+        ? 'bg-background/85 backdrop-blur-md border-border'
+        : 'bg-transparent border-transparent',
     ]"
   >
     <nav class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
-      <a href="#" class="text-2xl font-bold tracking-tight text-foreground">
+      <a href="#" class="text-2xl font-bold tracking-tight text-primary">
         DG
       </a>
 
@@ -18,11 +18,21 @@
           v-for="link in navLinks"
           :key="link.name"
           :href="link.href"
-          class="text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-200 relative group"
+          class="text-sm font-medium transition-colors duration-200 relative group"
+          :class="
+            activeSection === link.href.slice(1)
+              ? 'text-accent'
+              : 'text-muted hover:text-primary'
+          "
         >
           {{ link.name }}
           <span
-            class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"
+            class="absolute -bottom-1 left-0 h-0.5 bg-accent transition-all duration-300"
+            :class="
+              activeSection === link.href.slice(1)
+                ? 'w-full'
+                : 'w-0 group-hover:w-full'
+            "
           ></span>
         </a>
 
@@ -32,7 +42,7 @@
 
       <!-- Mobile Menu Button -->
       <button
-        class="md:hidden text-foreground hover:text-primary transition-colors"
+        class="md:hidden text-primary hover:text-accent transition-colors"
         @click="toggleMobileMenu"
         aria-label="Toggle menu"
       >
@@ -75,14 +85,19 @@
     <!-- Mobile Menu -->
     <div
       v-if="isMobileMenuOpen"
-      class="md:hidden bg-background/95 backdrop-blur-lg shadow-sm"
+      class="md:hidden bg-surface/95 backdrop-blur-lg border-b border-border"
     >
       <div class="px-6 py-6 space-y-4">
         <a
           v-for="link in navLinks"
           :key="link.name"
           :href="link.href"
-          class="block text-base font-medium text-muted-foreground hover:text-primary transition-colors py-2"
+          class="block text-base font-medium transition-colors duration-200 py-2"
+          :class="
+            activeSection === link.href.slice(1)
+              ? 'text-accent'
+              : 'text-muted hover:text-primary'
+          "
           @click="closeMobileMenu"
         >
           {{ link.name }}
@@ -107,9 +122,12 @@ interface NavLink {
   href: string;
 }
 
+const SECTION_IDS = ['about', 'technologies', 'portfolio', 'contact'] as const;
+
 const { t } = useI18n();
 const isScrolled = ref<boolean>(false);
 const isMobileMenuOpen = ref<boolean>(false);
+const activeSection = ref<string | null>(null);
 
 const navLinks = computed<NavLink[]>(() => [
   { name: t('nav.about'), href: '#about' },
@@ -119,7 +137,27 @@ const navLinks = computed<NavLink[]>(() => [
 ]);
 
 const handleScroll = (): void => {
-  isScrolled.value = window.scrollY > 50;
+  isScrolled.value = window.scrollY > 24;
+
+  // Scroll-spy: highlight the last section whose top passed the viewport probe
+  const probe = window.scrollY + window.innerHeight / 3;
+  let current: string | null = null;
+  for (const id of SECTION_IDS) {
+    const section = document.getElementById(id);
+    if (section && section.offsetTop <= probe) {
+      current = id;
+    }
+  }
+
+  // At the bottom of the page, always highlight the last section
+  const atBottom =
+    window.innerHeight + window.scrollY >=
+    document.documentElement.scrollHeight - 4;
+  if (atBottom) {
+    current = SECTION_IDS[SECTION_IDS.length - 1];
+  }
+
+  activeSection.value = current;
 };
 
 const toggleMobileMenu = (): void => {
@@ -131,7 +169,8 @@ const closeMobileMenu = (): void => {
 };
 
 onMounted((): void => {
-  window.addEventListener('scroll', handleScroll);
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  handleScroll();
 });
 
 onUnmounted((): void => {

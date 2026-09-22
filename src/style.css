@@ -84,22 +84,27 @@ body {
 
 /* Chips — soft accent tags */
 .chip {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   padding: 0.25rem 0.75rem;
   font-size: 0.75rem;
   line-height: 1.25rem;
+  white-space: nowrap;
   border-radius: 9999px;
   background-color: rgba(254, 215, 170, 0.1);
   border: 1px solid rgba(254, 215, 170, 0.2);
   color: var(--color-foreground);
   transition:
     color 200ms ease,
-    border-color 200ms ease;
+    border-color 200ms ease,
+    transform 200ms ease;
 }
 
 .chip:hover {
   border-color: var(--color-accent);
   color: var(--color-accent);
+  transform: translateY(-2px);
 }
 
 ::selection {
@@ -147,5 +152,9 @@ body {
 
   .animate-infinite-scroll {
     animation: none;
+  }
+
+  .chip:hover {
+    transform: none;
   }
 }
