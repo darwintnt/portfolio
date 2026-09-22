@@ -8,8 +8,8 @@
     ]"
   >
     <nav class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
-      <a href="#" class="text-2xl font-bold tracking-tight text-primary">
-        DG
+      <a href="/" class="font-accent text-3xl text-accent leading-none">
+        DG 
       </a>
 
       <!-- Desktop Navigation -->
@@ -226,7 +226,7 @@ const isMobileMenuOpen = ref<boolean>(false);
 const activeSection = ref<string | null>(null);
 
 // Theme toggle: source of truth = 'light' class on <html> (set by pre-paint script)
-const isLight = ref<boolean>(false);
+const isLight = ref<boolean>(document.documentElement.classList.contains('light'));
 
 const applyTheme = (light: boolean): void => {
   document.documentElement.classList.toggle('light', light);
