@@ -1,25 +1,12 @@
 <template>
-  <section id="contact_me" class="py-24 relative">
+  <section id="contact_me" class="band-accent py-24 relative">
     <div class="container mx-auto px-6 relative z-10">
-      <div
-        class="max-w-2xl mx-auto text-center relative bg-surface/60 border border-border rounded-3xl p-10 md:p-16 overflow-hidden"
-      >
-        <!-- Warm radial glow behind the card -->
-        <div
-          class="absolute inset-0 pointer-events-none"
-          style="
-            background: radial-gradient(
-              ellipse 70% 60% at 50% 0%,
-              rgba(249, 115, 22, 0.06),
-              transparent
-            );
-          "
-          aria-hidden="true"
-        />
-
+      <div class="max-w-2xl mx-auto text-center relative">
         <div class="relative">
           <!-- Section heading: overline + big heading -->
-          <p class="text-accent uppercase tracking-widest text-xs font-semibold mb-3">
+          <p
+            class="text-accent uppercase tracking-widest text-xs font-semibold mb-3"
+          >
             {{ t('nav.contact') }}
           </p>
           <h2
@@ -104,7 +91,10 @@
 
           <div class="flex flex-col justify-center items-center mt-8 gap-2">
             <div class="flex gap-2 items-center text-muted">
-              <span class="w-2 h-2 rounded-full bg-accent inline-block" aria-hidden="true" />
+              <span
+                class="w-2 h-2 rounded-full bg-accent inline-block"
+                aria-hidden="true"
+              />
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -133,7 +123,9 @@
                 target="_blank"
                 rel="noreferrer"
               >
-                <span class="inline-flex items-center justify-center gap-3 w-full">
+                <span
+                  class="inline-flex items-center justify-center gap-3 w-full"
+                >
                   <span class="block">{{ t('contact.cvEnglish') }}</span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -163,7 +155,9 @@
                 target="_blank"
                 rel="noreferrer"
               >
-                <span class="inline-flex items-center justify-center gap-3 w-full">
+                <span
+                  class="inline-flex items-center justify-center gap-3 w-full"
+                >
                   <span class="block">{{ t('contact.cvSpanish') }}</span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
