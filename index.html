@@ -6,7 +6,11 @@
     <!-- Viewport para responsive design -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Theme pre-paint: light por defecto, respeta el tema guardado 'dark' (evita FOUC) -->
+    <!-- Theme color para PWA y navegadores móviles -->
+    <meta name="theme-color" content="#FAF6F0" />
+
+    <!-- Theme pre-paint: light por defecto, respeta el tema guardado 'dark' (evita FOUC).
+         El meta va antes del script para que el script pueda actualizarlo. -->
     <script>
       try {
         if (localStorage.getItem('theme') !== 'dark') {
@@ -20,9 +24,6 @@
         document.documentElement.classList.add('light');
       }
     </script>
-
-    <!-- Theme color para PWA y navegadores móviles -->
-    <meta name="theme-color" content="#FAF6F0" />
 
     <!-- DNS prefetch para recursos externos -->
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
