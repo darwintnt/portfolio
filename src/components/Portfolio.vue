@@ -19,44 +19,42 @@
           </h2>
         </div>
 
-        <!-- Featured Projects -->
+        <!-- Featured Projects: immersive image cards -->
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-32">
           <div
             v-for="project in featuredProjects"
             :key="project.title"
-            class="group bg-surface border border-border border-l-4 border-l-accent/80 rounded-3xl overflow-hidden transition-all duration-[250ms] hover:-translate-y-1 hover:border-accent/60 hover:shadow-[0_16px_40px_-12px_rgba(249,115,22,0.15)] h-full flex flex-col"
+            class="card-immersive group relative flex aspect-[4/5] flex-col overflow-hidden rounded-3xl bg-surface transition-all duration-[250ms] hover:-translate-y-1 hover:shadow-[0_16px_40px_-12px_rgba(22,17,32,0.25)]"
           >
-            <!-- Project Image -->
-            <div class="relative overflow-hidden">
-              <div
-                class="aspect-video bg-background flex items-center justify-center"
+            <!-- Project image fills the whole card -->
+            <v-lazy-image
+              :src="project.image"
+              :alt="project.title"
+              class="absolute inset-0 h-full w-full object-cover transition-transform duration-[250ms] group-hover:scale-105"
+            />
+            <!-- Always-on dark scrim for text readability (both themes) -->
+            <div
+              class="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#161120]/90 via-[#161120]/40 to-transparent"
+              aria-hidden="true"
+            />
+            <!-- Content layered over the scrim, anchored to the bottom -->
+            <div class="relative z-10 flex flex-1 flex-col justify-end p-8">
+              <span
+                class="font-accent text-sm leading-none mb-2 text-[#fb923c]"
               >
-                <v-lazy-image
-                  :src="project.image"
-                  :alt="project.title"
-                  class="w-full h-full object-cover rounded-none transition-transform duration-[250ms] group-hover:scale-105"
-                />
-              </div>
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-[#161120]/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-[250ms] pointer-events-none"
-                aria-hidden="true"
-              />
-            </div>
-
-            <!-- Project Info -->
-            <div class="p-8 flex-1 flex flex-col">
-              <span class="font-accent text-accent text-sm leading-none mb-2">
                 ✦ {{ t('portfolio.featuredProject') }}
               </span>
               <h3
-                class="text-xl font-bold text-primary mb-3 group-hover:text-accent transition-colors"
+                class="text-white text-2xl font-semibold tracking-tight mb-3 transition-colors md:text-3xl group-hover:text-[#fb923c]"
               >
                 {{ project.title }}
               </h3>
-              <p class="text-muted text-sm leading-relaxed mb-6 flex-1">
+              <p
+                class="text-white/70 mb-6 text-sm leading-relaxed line-clamp-3"
+              >
                 {{ project.description }}
               </p>
-              <div class="flex flex-wrap gap-2 mb-6">
+              <div class="mb-6 flex flex-wrap gap-2">
                 <span
                   v-for="tech in project.tools"
                   :key="tech"
@@ -72,7 +70,7 @@
                   :href="project.github_link"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="text-muted hover:text-accent transition-colors"
+                  class="text-white/60 transition-colors hover:text-[#fb923c]"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -95,7 +93,7 @@
                   :href="project.link"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="text-muted hover:text-accent transition-colors"
+                  class="text-white/60 transition-colors hover:text-[#fb923c]"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
