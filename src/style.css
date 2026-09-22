@@ -19,8 +19,21 @@
   --font-accent: 'Caveat', cursive;
 }
 
+/* Light theme — opt-in via `html.light` (set by pre-paint script in index.html).
+   Unlayered override beats @theme; dark tokens above remain the default. */
+html.light {
+  --color-background: #FAF6F0;
+  --color-surface: #FFFFFF;
+  --color-foreground: #241A2E;
+  --color-muted: #5E5568;
+  --color-soft-accent: #FFE8CC;
+  --color-border: #E8E0EF;
+  --color-accent: #C2410C;
+  --color-ring: #EA580C;
+}
+
 body {
-  background-color: #161120;
+  background-color: var(--color-background);
   /* Subtle warm radial glow at the top — no dot texture */
   background-image: radial-gradient(
     ellipse 80% 50% at 50% -10%,
@@ -29,9 +42,12 @@ body {
   );
   background-repeat: no-repeat;
   min-height: 100vh;
-  color: #f4f0fa;
+  color: var(--color-foreground);
   font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
   font-optical-sizing: auto;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 .font-accent {
@@ -144,6 +160,10 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  body {
+    transition: none;
+  }
+
   .animate-slide-up {
     animation: none;
     opacity: 1;

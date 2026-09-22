@@ -6,6 +6,18 @@
     <!-- Viewport para responsive design -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Theme pre-paint: aplica el tema guardado antes del primer render (evita FOUC) -->
+    <script>
+      try {
+        if (localStorage.getItem('theme') === 'light') {
+          document.documentElement.classList.add('light');
+          document
+            .querySelector('meta[name="theme-color"]')
+            ?.setAttribute('content', '#FAF6F0');
+        }
+      } catch (e) {}
+    </script>
+
     <!-- Theme color para PWA y navegadores móviles -->
     <meta name="theme-color" content="#1a202c" />
 
