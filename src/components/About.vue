@@ -42,6 +42,8 @@
 
           <div class="md:col-span-2">
             <div class="relative max-w-sm mx-auto">
+              <!-- Same motif family as hero; ring tucked behind frame corner -->
+              <SectionDecor variant="about" />
               <!-- Warm glow frame (same treatment as Hero) -->
               <div
                 class="absolute -inset-4 rounded-[2rem] bg-linear-to-br from-accent/40 via-accent-strong/20 to-transparent blur-2xl opacity-70"
@@ -71,6 +73,7 @@
 
 <script setup>
 import { useI18n } from 'vue-i18n';
+import SectionDecor from '@/components/SectionDecor.vue';
 
 const { t } = useI18n();
 </script>

@@ -2,6 +2,9 @@
   <section
     class="min-h-screen flex items-center relative overflow-hidden pt-24 pb-16"
   >
+    <!-- Geometric decor: drifts down with scroll, below text, above bg -->
+    <SectionDecor variant="hero" class="z-[1]" />
+
     <!-- Gradient overlay -->
     <div
       class="absolute inset-0 bg-linear-to-b from-transparent via-transparent to-background/50 z-0"
@@ -122,6 +125,7 @@
 
 <script setup>
 import { useI18n } from 'vue-i18n';
+import SectionDecor from '@/components/SectionDecor.vue';
 
 const { t } = useI18n();
 </script>
