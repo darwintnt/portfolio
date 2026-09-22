@@ -13,7 +13,7 @@
          Gradient ids are namespaced blob-grad-* to avoid id collisions. -->
     <svg
       v-if="variant === 'blob'"
-      class="h-full w-full"
+      :class="['h-full w-full', { '-scale-y-100': flipY }]"
       viewBox="0 0 900 600"
       preserveAspectRatio="xMidYMid slice"
       xmlns="http://www.w3.org/2000/svg"
@@ -241,6 +241,11 @@ defineProps({
     type: String,
     default: 'blob',
     validator: (value) => ['blob', 'about'].includes(value),
+  },
+  // Mirrors the blob scene vertically (contact reuses the hero waves upside-down)
+  flipY: {
+    type: Boolean,
+    default: false,
   },
 });
 
