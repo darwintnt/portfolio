@@ -6,10 +6,14 @@
       <div class="max-w-7xl mx-auto">
         <!-- Section heading: overline + big heading -->
         <div class="text-center mb-20">
-          <p class="text-accent uppercase tracking-widest text-xs font-semibold mb-3">
+          <p
+            class="text-accent uppercase tracking-widest text-xs font-semibold mb-3"
+          >
             {{ t('nav.portfolio') }}
           </p>
-          <h2 class="text-4xl md:text-5xl font-bold text-primary tracking-tight">
+          <h2
+            class="text-4xl md:text-5xl font-bold text-primary tracking-tight"
+          >
             {{ t('portfolio.title').split(' ')[0] }}
             <span class="text-accent">{{ t('portfolio.titleFeatured') }}</span>
           </h2>
@@ -41,7 +45,7 @@
 
             <!-- Project Info -->
             <div class="p-8 flex-1 flex flex-col">
-              <span class="font-accent text-accent text-xl leading-none mb-2">
+              <span class="font-accent text-accent text-sm leading-none mb-2">
                 ✦ {{ t('portfolio.featuredProject') }}
               </span>
               <h3
@@ -71,8 +75,8 @@
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    :width="size || 24"
-                    :height="size || 24"
+                    width="24"
+                    height="24"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -94,8 +98,8 @@
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    :width="size || 24"
-                    :height="size || 24"
+                    width="24"
+                    height="24"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -117,7 +121,9 @@
         </div>
 
         <!-- Other Projects -->
-        <h3 class="text-3xl md:text-4xl font-bold text-primary tracking-tight text-center mb-16">
+        <h3
+          class="text-3xl md:text-4xl font-bold text-primary tracking-tight text-center mb-16"
+        >
           {{ t('portfolio.otherProjects') }}
           <span class="text-accent">{{
             t('portfolio.otherProjectsHighlight')
@@ -155,8 +161,8 @@
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    :width="size || 18"
-                    :height="size || 18"
+                    width="18"
+                    height="18"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -179,8 +185,8 @@
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    :width="size || 18"
-                    :height="size || 18"
+                    width="18"
+                    height="18"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
