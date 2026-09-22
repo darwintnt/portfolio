@@ -24,7 +24,7 @@
 /* Light theme — opt-in via `html.light` (set by pre-paint script in index.html).
    Unlayered override beats @theme; dark tokens above remain the default. */
 html.light {
-  --color-background: #faf6f0;
+  --color-background: #f4f4f4;
   --color-surface: #ffffff;
   --color-foreground: #241a2e;
   --color-muted: #5e5568;

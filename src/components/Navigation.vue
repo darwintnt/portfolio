@@ -238,7 +238,7 @@ const applyTheme = (light: boolean): void => {
   }
   const themeColor = document.querySelector('meta[name="theme-color"]');
   if (themeColor) {
-    themeColor.setAttribute('content', light ? '#FAF6F0' : '#1a202c');
+    themeColor.setAttribute('content', light ? '#F4F4F4' : '#1a202c');
   }
 };
 
