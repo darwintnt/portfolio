@@ -35,7 +35,7 @@
             >
               <template v-for="logo in logos" :key="logo.alt">
                 <li>
-                  <div class="chip">
+                  <div class="chip" :class="chipColorClass(logo.alt)">
                     <img
                       :src="logo.src"
                       :alt="logo.alt"
@@ -54,7 +54,7 @@
             >
               <template v-for="logo in logos" :key="logo.alt">
                 <li>
-                  <div class="chip">
+                  <div class="chip" :class="chipColorClass(logo.alt)">
                     <img
                       :src="logo.src"
                       :alt="logo.alt"
@@ -75,6 +75,8 @@
 </template>
 <script setup>
 import { useI18n } from 'vue-i18n';
+
+import { chipColorClass } from '@/utils/chipColor';
 
 import Laravel from '@/assets/logos/laravel.svg?url';
 import PHP from '@/assets/logos/php.svg?url';

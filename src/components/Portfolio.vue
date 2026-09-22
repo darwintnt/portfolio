@@ -61,6 +61,7 @@
                   v-for="tech in project.tools"
                   :key="tech"
                   class="chip !px-2.5 !py-0.5"
+                  :class="chipColorClass(tech)"
                 >
                   {{ tech }}
                 </span>
@@ -217,6 +218,7 @@
                 v-for="tech in project.tools"
                 :key="tech"
                 class="chip !px-2.5 !py-0.5"
+                :class="chipColorClass(tech)"
               >
                 {{ tech }}
               </span>
@@ -232,6 +234,7 @@
 import { useI18n } from 'vue-i18n';
 import portfolios from '@/assets/data/portfolio.json';
 import VLazyImage from 'v-lazy-image';
+import { chipColorClass } from '@/utils/chipColor';
 
 const { t } = useI18n();
 const featuredProjects = portfolios.filter((project) => project.principal);
