@@ -1,7 +1,7 @@
 <template>
   <section
     id="technologies"
-    class="band-dark border-y border-border py-32 relative overflow-hidden"
+    class="py-32 relative overflow-hidden"
   >
     <div class="container mx-auto px-6 relative">
       <div class="max-w-6xl mx-auto">

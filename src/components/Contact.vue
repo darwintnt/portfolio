@@ -1,5 +1,5 @@
 <template>
-  <section id="contact_me" class="band-accent py-24 relative">
+  <section id="contact_me" class="py-24 relative">
     <div class="container mx-auto px-6 relative z-10">
       <div class="max-w-2xl mx-auto text-center relative">
         <div class="relative">
