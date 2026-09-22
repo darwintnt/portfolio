@@ -192,6 +192,52 @@ html.light .chip-c-cyan {
   --chip-border: rgba(14, 116, 144, 0.25);
 }
 
+/* Immersive project cards — the scrim is dark in both themes, so chips inside
+   them must keep the dark shade pairs even in light theme. Plain
+   .card-immersive .chip-c-* (0,2,0) loses to html.light .chip-c-* (0,2,1),
+   hence the html.light-prefixed selector is repeated in each rule. */
+.card-immersive .chip-c-orange,
+html.light .card-immersive .chip-c-orange {
+  --chip-text: #fb923c;
+  --chip-bg: rgba(251, 146, 60, 0.12);
+  --chip-border: rgba(251, 146, 60, 0.3);
+}
+
+.card-immersive .chip-c-blue,
+html.light .card-immersive .chip-c-blue {
+  --chip-text: #60a5fa;
+  --chip-bg: rgba(96, 165, 250, 0.12);
+  --chip-border: rgba(96, 165, 250, 0.3);
+}
+
+.card-immersive .chip-c-green,
+html.light .card-immersive .chip-c-green {
+  --chip-text: #4ade80;
+  --chip-bg: rgba(74, 222, 128, 0.12);
+  --chip-border: rgba(74, 222, 128, 0.3);
+}
+
+.card-immersive .chip-c-purple,
+html.light .card-immersive .chip-c-purple {
+  --chip-text: #c084fc;
+  --chip-bg: rgba(192, 132, 252, 0.12);
+  --chip-border: rgba(192, 132, 252, 0.3);
+}
+
+.card-immersive .chip-c-pink,
+html.light .card-immersive .chip-c-pink {
+  --chip-text: #f472b6;
+  --chip-bg: rgba(244, 114, 182, 0.12);
+  --chip-border: rgba(244, 114, 182, 0.3);
+}
+
+.card-immersive .chip-c-cyan,
+html.light .card-immersive .chip-c-cyan {
+  --chip-text: #22d3ee;
+  --chip-bg: rgba(34, 211, 238, 0.12);
+  --chip-border: rgba(34, 211, 238, 0.3);
+}
+
 .chip:hover {
   border-color: var(--color-accent);
   color: var(--color-accent);
