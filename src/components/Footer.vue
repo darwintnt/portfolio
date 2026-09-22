@@ -66,9 +66,6 @@
         </div>
 
         <div class="flex flex-col items-center md:items-end gap-1">
-          <span class="font-accent text-3xl text-accent leading-none">
-            {{ t('hero.title') }}
-          </span>
           <p class="text-muted text-sm">
             © {{ date }} {{ t('footer.designedBy') }}
             <span class="text-primary font-semibold">DarwinTnT</span>
