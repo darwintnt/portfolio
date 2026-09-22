@@ -7,7 +7,7 @@ Redesign the portfolio UX-UI to a dark-mode warm direction with strong personali
 - **Palette**: Background `#161120` (warm eggplant), Surface/Card `#221B30`, Foreground `#F4F0FA`, Muted `#A79FB8`, Accent `#FB923C`→`#F97316` (warm orange), soft accent `#FED7AA` @15%.
 - **Typography**: Plus Jakarta Sans (headings 700/800 + body), Caveat (handwritten accent only: "Open to Work" badge, personal phrases, footer signature).
 - **Layout**: Asymmetric hero (not centered) with big name + framed avatar + differentiated CTAs; portfolio cards with rounded corners, warm hover overlay, chip-style tech tags; warmer contact section; marquee kept with chip aesthetics on dark.
-- **Intocable**: dark-mode only (single theme), i18n ES/EN, SEO via @unhead/vue, data structure (portfolio.json), PWA, GA.
+- **Intocable**: dark-mode only (single theme), i18n ES/EN, SEO via @unhead/vue, data structure (portfolio.json), PWA, GA. *(Superseded 2026-09-22: light mode is now opt-in via the header theme toggle — see odd/tasks/light-mode-toggle.md. Dark remains the default.)*
 
 ## Constraints
 - Vue 3.5 + Vite 8 + Tailwind CSS 4 + vue-i18n 11. No new heavy deps unless necessary.
@@ -39,3 +39,4 @@ Redesign the portfolio UX-UI to a dark-mode warm direction with strong personali
 - T5 done: Portfolio cards → `bg-surface border-border rounded-3xl` + warm hover (`-translate-y-1`, `border-accent/60`, glow shadow `rgba(249,115,22,0.15)`, 250ms). Featured cards get accent `border-l-4` + Caveat `✦ portfolio.featuredProject` tag (existing key, no new locale entries). Images: hover warm overlay gradient `from-[#161120]/70` + `group-hover:scale-105`. Tech tags → `.chip` with `!px-2.5 !py-0.5`. Links `text-muted hover:text-accent`. Heading pattern applied (overline = `nav.portfolio`). Data flow from portfolio.json untouched.
 - T6 done: Contact wrapped in `bg-surface/60 border-border rounded-3xl` card with radial warm glow `rgba(249,115,22,0.06)` behind; heading pattern (overline = `nav.contact`). CV buttons: `.button-primary` for current-locale CV, `.button-outline` for the other (locale-aware via `useI18n().locale`); exact Google Drive links kept. Social links → rounded-full icon buttons `border-border hover:border-accent hover:text-accent` + focus-visible ring. Location line muted with warm accent dot. No suitable Caveat closing-phrase key exists → skipped per task rules.
 - Verification (T5+T6): `npm run build` exit 0 (built in 467ms); `rg "e0f9ff|103242|Manrope" src/` → zero hits; `rg "button-primary" src/components/Contact.vue` → 2 hits (both CV buttons).
+- Post-review fix: visual browser review found CV buttons inverted (English CV highlighted while site was in EN). Commit a4aaf70 `fix(contact): highlight CV button of the active locale` — build exit 0 (416ms).
