@@ -1,6 +1,12 @@
 /**
- * Script para generar sitemap.xml automáticamente
- * Ejecutar con: node scripts/generate-sitemap.js
+ * Generates public/sitemap.xml.
+ *
+ * This site is a single-page SPA with client-side i18n (no vue-router, no real
+ * per-language URLs), so the sitemap advertises only the canonical homepage.
+ * Google ignores changefreq/priority, and hreflang alternates would point to
+ * URLs that do not exist (e.g. /en/ returns 404).
+ *
+ * Run with: node scripts/generate-sitemap.js (wired as a prebuild hook)
  */
 
 import fs from 'fs';
@@ -10,79 +16,30 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Configuración
+// Configuration
 const SITE_URL = 'https://www.darwintnt.co';
-const LANGUAGES = ['es', 'en'];
-const DEFAULT_LANGUAGE = 'es';
 
-// Rutas de la aplicación (añade más si tienes rutas adicionales)
-const routes = [
-    {
-        path: '/',
-        changefreq: 'weekly',
-        priority: '1.0',
-    },
-    // Añade más rutas aquí si usas Vue Router
-    // {
-    //   path: '/about',
-    //   changefreq: 'monthly',
-    //   priority: '0.8',
-    // },
-];
+// Update manually ONLY when the homepage content meaningfully changes.
+// Google uses lastmod only when it is consistently and verifiably accurate;
+// auto-dating it on every build trains crawlers to distrust it.
+const SITE_LASTMOD = '2026-09-23';
 
 /**
- * Genera el contenido del sitemap.xml
+ * Builds the sitemap.xml content.
  */
 function generateSitemap() {
-    const today = new Date().toISOString().split('T')[0];
-
-    let xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
-`;
-
-    // Generar URLs para cada idioma
-    LANGUAGES.forEach((lang) => {
-        routes.forEach((route) => {
-            const isDefault = lang === DEFAULT_LANGUAGE;
-            const langPrefix = isDefault ? '' : `/${lang}`;
-            const url = `${SITE_URL}${langPrefix}${route.path}`;
-
-            xml += `
+    return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>${url}</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>${route.changefreq}</changefreq>
-    <priority>${route.priority}</priority>`;
-
-            // Añadir hreflang alternates
-            LANGUAGES.forEach((altLang) => {
-                const altIsDefault = altLang === DEFAULT_LANGUAGE;
-                const altLangPrefix = altIsDefault ? '' : `/${altLang}`;
-                const altUrl = `${SITE_URL}${altLangPrefix}${route.path}`;
-                xml += `
-    <xhtml:link rel="alternate" hreflang="${altLang}" href="${altUrl}" />`;
-            });
-
-            // x-default apunta al idioma predeterminado
-            const defaultUrl = `${SITE_URL}${route.path}`;
-            xml += `
-    <xhtml:link rel="alternate" hreflang="x-default" href="${defaultUrl}" />`;
-
-            xml += `
-  </url>`;
-        });
-    });
-
-    xml += `
-  
-</urlset>`;
-
-    return xml;
+    <loc>${SITE_URL}/</loc>
+    <lastmod>${SITE_LASTMOD}</lastmod>
+  </url>
+</urlset>
+`;
 }
 
 /**
- * Guarda el sitemap en public/sitemap.xml
+ * Saves the sitemap to public/sitemap.xml.
  */
 function saveSitemap() {
     try {
@@ -90,21 +47,18 @@ function saveSitemap() {
         const publicDir = path.resolve(__dirname, '../public');
         const sitemapPath = path.join(publicDir, 'sitemap.xml');
 
-        // Crear directorio public si no existe
+        // Create the public directory if it does not exist
         if (!fs.existsSync(publicDir)) {
             fs.mkdirSync(publicDir, { recursive: true });
         }
 
-        // Guardar sitemap
         fs.writeFileSync(sitemapPath, sitemapContent, 'utf8');
 
-        console.log('✅ Sitemap generado exitosamente en:', sitemapPath);
-        console.log(`📄 Total de URLs: ${LANGUAGES.length * routes.length}`);
+        console.log('✅ Sitemap generated at:', sitemapPath);
     } catch (error) {
-        console.error('❌ Error al generar sitemap:', error);
+        console.error('❌ Failed to generate sitemap:', error);
         process.exit(1);
     }
 }
 
-// Ejecutar
 saveSitemap();
