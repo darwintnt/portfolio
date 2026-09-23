@@ -1,5 +1,13 @@
 [
   {
+    "title": "Santago SAS",
+    "description": "Custom software development agency",
+    "image": "https://res.cloudinary.com/danxyyswm/image/upload/v1790204067/Screenshot_2026-09-23_at_5.54.02_PM_pmctjp.png",
+    "link": "https://santago.co",
+    "tools": ["Typescript", "Angular", "Tailwind", "Vercel"],
+    "principal": true
+  },
+  {
     "title": "Ecommerce Custom",
     "description": "My own online store as an alternative to Shopify or other e-commerce SaaS platforms—focused on simplicity, avoiding buyer overwhelm or feature overload, and offering a clean, straightforward interface for the shopping experience.",
     "image": "https://res.cloudinary.com/danxyyswm/image/upload/v1790108839/Screenshot_2026-09-22_at_3.26.50_PM_ewxcah.png",
