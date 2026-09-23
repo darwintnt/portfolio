@@ -25,17 +25,32 @@
         <div class="grid md:grid-cols-5 gap-16 items-center">
           <div class="md:col-span-3 space-y-6">
             <p class="text-lg md:text-xl text-muted leading-relaxed">
-              {{ t('about.description') }}
-              <span class="text-accent font-bold">
-                <a
-                  href="https://www.insoftar.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="hover:underline"
-                >
-                  Insoftar LLC.
-                </a>
-              </span>
+              <i18n-t keypath="about.description" tag="span" scope="global">
+                <template #santagoLink>
+                  <span class="text-accent font-bold">
+                    <a
+                      href="https://santago.co"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="hover:underline"
+                    >
+                      Santago SAS
+                    </a>
+                  </span>
+                </template>
+                <template #insoftarLink>
+                  <span class="text-accent font-bold">
+                    <a
+                      href="https://www.insoftar.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="hover:underline"
+                    >
+                      Insoftar LLC.
+                    </a>
+                  </span>
+                </template>
+              </i18n-t>
               {{ t('about.descriptionContinue') }}
             </p>
           </div>
